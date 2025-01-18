@@ -1,6 +1,6 @@
 {
 	"name": "next-icons-website",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"private": true,
 	"scripts": {
 		"dev": "next dev -p 3000",
@@ -26,7 +26,7 @@
 		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
-		"@deemlol/next-icons": "^0.1.3",
+		"@deemlol/next-icons": "^0.1.5",
 		"@marsidev/react-turnstile": "^1.1.0",
 		"@types/node": "^22.10.2",
 		"@types/nodemailer": "^6.4.17",
