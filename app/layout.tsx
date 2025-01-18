@@ -57,16 +57,32 @@ export const metadata: Metadata = {
 	appleWebApp: {
 		title: "Next-Icons.xyz",
 	},
+	authors: [
+		{
+			name: "Alexandr Virgovič",
+			url: "https://www.deemdev.xyz",
+		},
+	],
 	title: "Next Icons ~ Icon library for React and Next.js",
 	description: "Lightweight icon component library for React and Next.js, designed for simplicity and seamless integration.",
 	keywords: ["next", "nextjs", "react", "icons", "svg", "next-icons", "react-icons", "nextjs-icons", "lucide-react"],
 	openGraph: {
+		siteName: "Next-Icons.xyz",
 		title: "Next-Icons.xyz ~ Icon library for React and Next.js",
 		description: "Lightweight icon component library for React and Next.js, designed for simplicity and seamless integration.",
+		locale: "en_US",
 		type: "website",
+		emails: "contact@next-icons.xyz",
+		images: [
+			{
+				url: "https://www.next-icons.xyz/assets/NextIconsWhite.png",
+			},
+		],
 		url: new URL(DOMAIN_BASE_URL),
-		images: "https://avatars.githubusercontent.com/u/192825983?s=200&v=4",
 	},
+	category: "Icons",
+	robots: "index, follow",
+	publisher: "Vercel",
 	metadataBase: new URL(DOMAIN_BASE_URL),
 };
 
@@ -83,20 +99,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 			<head>
 				<meta charSet="UTF-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-
-				<meta name="slurp" content="index, follow" />
-				<meta name="naver" content="index, follow" />
-				<meta name="yandex" content="index, follow" />
-				<meta name="robots" content="index, follow" />
-				<meta name="bingbot" content="index, follow" />
-				<meta name="googlebot" content="index, follow" />
-				<meta name="twitterbot" content="index, follow" />
-				<meta name="twitterbot" content="index, follow" />
-				<meta name="duckduckbot" content="index, follow" />
-				<meta name="baiduspider" content="index, follow" />
-				<meta name="mobile-web-app-capable" content="yes" />
-				<meta name="apple-mobile-web-app-capable" content="yes" />
-				<meta name="facebookexternalhit" content="index, follow" />
 
 				<link rel="shortcut icon" type="images/x-icon" href="/assets/favicons/favicon.ico" />
 				<link rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/apple-icon-57x57.png" />
