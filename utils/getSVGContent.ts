@@ -1,8 +1,10 @@
 "use server";
 
+import { DOMAIN_BASE_URL } from "@/utils/constants";
+
 export async function getSVGContent(iconName: string) {
 	try {
-		const response = await fetch(`https://next-icons.xyz/assets/icons/${iconName}.svg`);
+		const response = await fetch(`${DOMAIN_BASE_URL}/assets/icons/${iconName}.svg`);
 		if (!response.ok) return null;
 
 		const content = await response.text();
