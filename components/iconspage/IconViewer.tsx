@@ -37,42 +37,52 @@ export default function IconViewer({ name, children }: IconViewerProps) {
 	const handleDownload = useCallback(async () => {
 		const svgContent = await getSVGContent(name);
 
-		if (svgContent) {
-			const blob = new Blob([svgContent], { type: "image/svg+xml" });
-			const url = URL.createObjectURL(blob);
-			const a = document.createElement("a");
+		try {
+			if (svgContent) {
+				const blob = new Blob([svgContent], { type: "image/svg+xml" });
+				const url = URL.createObjectURL(blob);
+				const a = document.createElement("a");
 
-			a.href = url;
-			a.download = `${name}.svg`;
+				a.href = url;
+				a.download = `${name}.svg`;
 
-			document.body.appendChild(a);
-			a.click();
-			document.body.removeChild(a);
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
 
-			URL.revokeObjectURL(url);
-		} else {
-			return toast.error("Failed to download SVG", {
-				className: "font-[family-name:var(--font-clashdisplay-regular)] text-[15px]",
-				duration: 5_000,
-			});
+				URL.revokeObjectURL(url);
+			} else {
+				return toast.error("Failed to download SVG", {
+					className: "font-[family-name:var(--font-clashdisplay-regular)] text-[15px]",
+					duration: 5_000,
+				});
+			}
+		} catch (err) {
+			console.log("An error occurred while downloading the SVG");
+			console.error(err);
 		}
 	}, [name]);
 
 	const handleCopySvg = useCallback(async () => {
 		const svgContent = await getSVGContent(name);
 
-		if (svgContent) {
-			await navigator.clipboard.writeText(svgContent);
+		try {
+			if (svgContent) {
+				await navigator.clipboard.writeText(svgContent);
 
-			return toast.success("Successfully copied SVG to clipboard", {
-				className: "font-[family-name:var(--font-clashdisplay-regular)] text-[15px]",
-				duration: 5_000,
-			});
-		} else {
-			return toast.error("Failed to copy SVG", {
-				className: "font-[family-name:var(--font-clashdisplay-regular)] text-[15px]",
-				duration: 5_000,
-			});
+				return toast.success("Successfully copied SVG to clipboard", {
+					className: "font-[family-name:var(--font-clashdisplay-regular)] text-[15px]",
+					duration: 5_000,
+				});
+			} else {
+				return toast.error("Failed to copy SVG", {
+					className: "font-[family-name:var(--font-clashdisplay-regular)] text-[15px]",
+					duration: 5_000,
+				});
+			}
+		} catch (err) {
+			console.log("An error occurred while copying the SVG");
+			console.error(err);
 		}
 	}, [name]);
 
