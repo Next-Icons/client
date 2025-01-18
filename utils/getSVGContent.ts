@@ -1,16 +1,16 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
-
 export async function getSVGContent(iconName: string) {
-	const filePath = path.join(process.cwd(), "public", "assets", "icons", `${iconName}.svg`);
-
 	try {
-		const content = await fs.readFile(filePath, "utf-8");
+		const response = await fetch(`https://next-icons.xyz/assets/icons/${iconName}.svg`);
+		if (!response.ok) return null;
 
+		const content = await response.text();
 		return content;
-	} catch {
+	} catch (err) {
+		console.log("An error occurred while fetching the SVG content");
+		console.error(err);
+
 		return null;
 	}
 }
