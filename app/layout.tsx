@@ -53,9 +53,9 @@ const ClashDisplayVariable = localFont({
 });
 
 export const metadata: Metadata = {
-	applicationName: "Next-Icons.xyz",
+	applicationName: "NextIcons.com",
 	appleWebApp: {
-		title: "Next-Icons.xyz",
+		title: "NextIcons.com",
 	},
 	authors: [
 		{
@@ -67,12 +67,12 @@ export const metadata: Metadata = {
 	description: "Lightweight icon component library for React and Next.js, designed for simplicity and seamless integration.",
 	keywords: ["next", "nextjs", "react", "icons", "svg", "next-icons", "react-icons", "nextjs-icons", "lucide-react"],
 	openGraph: {
-		siteName: "Next-Icons.xyz",
-		title: "Next-Icons.xyz ~ Icon library for React and Next.js",
+		siteName: "NextIcons.com",
+		title: "Next Icons ~ Icon library for React and Next.js",
 		description: "Lightweight icon component library for React and Next.js, designed for simplicity and seamless integration.",
 		locale: "en_US",
 		type: "website",
-		emails: "contact@next-icons.xyz",
+		emails: "contact@nexticons.com",
 		url: new URL(DOMAIN_BASE_URL),
 	},
 	category: "Icons",
@@ -95,7 +95,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 				<meta charSet="UTF-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
-				<meta property="og:image" content="https://www.next-icons.xyz/assets/NextIconsWhite.png" />
+				<meta property="og:image" content="https://www.nexticons.com/assets/NextIconsWhite.png" />
 				<meta property="og:image:width" content="512" />
 				<meta property="og:image:height" content="512" />
 				<meta property="og:image:type" content="image/png" />

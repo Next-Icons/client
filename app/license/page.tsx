@@ -12,7 +12,7 @@ export default function License() {
 					transition={{ type: "spring", stiffness: 260, damping: 20 }}
 					className="mb-16 text-start font-[family-name:var(--font-clashdisplay-bold)] text-6xl text-purple-500"
 				>
-					Next-Icons License
+					Next Icons License
 				</motion.h1>
 			</div>
 

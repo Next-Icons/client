@@ -1,4 +1,4 @@
-export const DOMAIN_BASE_URL = "https://www.next-icons.xyz";
+export const DOMAIN_BASE_URL = "https://www.nexticons.com";
 
 export const SHOWCASE_PROJECTS = [
 	{

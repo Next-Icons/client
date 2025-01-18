@@ -15,7 +15,7 @@ export default function FooterExport() {
 			<div className="flex flex-col items-start justify-between space-y-5 lg:flex-row lg:items-center lg:space-y-0">
 				<div>
 					<p className="text-start font-[family-name:var(--font-clashdisplay-medium)] text-sm text-black dark:text-white lg:text-base">
-						© {new Date().getFullYear()} Next-Icons. All rights reserved.
+						© {new Date().getFullYear()} Next Icons. All rights reserved.
 					</p>
 				</div>
 
