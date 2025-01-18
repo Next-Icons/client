@@ -365,7 +365,7 @@ export default function Contact() {
 
 				<motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 1 }} className="mt-6">
 					<Turnstile
-						siteKey="0x4AAAAAAA5fWzUlBOjiw2ne"
+						siteKey="0x4AAAAAAA5p5zDHmQpPyF_R"
 						id="cf-turnstile-challenge"
 						ref={turnstileRef}
 						options={{
