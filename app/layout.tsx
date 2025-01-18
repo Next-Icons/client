@@ -73,11 +73,6 @@ export const metadata: Metadata = {
 		locale: "en_US",
 		type: "website",
 		emails: "contact@next-icons.xyz",
-		images: [
-			{
-				url: "https://www.next-icons.xyz/assets/NextIconsWhite.png",
-			},
-		],
 		url: new URL(DOMAIN_BASE_URL),
 	},
 	category: "Icons",
@@ -99,6 +94,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 			<head>
 				<meta charSet="UTF-8" />
 				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+
+				<meta property="og:image" content="https://www.next-icons.xyz/assets/NextIconsWhite.png" />
+				<meta property="og:image:width" content="512" />
+				<meta property="og:image:height" content="512" />
+				<meta property="og:image:type" content="image/png" />
+				<meta property="twitter:card" content="summary" />
 
 				<link rel="shortcut icon" type="images/x-icon" href="/assets/favicons/favicon.ico" />
 				<link rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/apple-icon-57x57.png" />
