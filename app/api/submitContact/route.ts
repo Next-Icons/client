@@ -103,8 +103,6 @@ export async function POST(req: NextRequest) {
 			subject: subject,
 			html: `
             <div style="background-color: #f5f5f5; padding: 20px; text-align: left;">
-                <img src="cid:nexticonslogo" alt="Next Icons" style="max-width: 100px; margin-bottom: 20px;" />
-
                 <h1 style="color: #000000; font-size: 36px; font-weight: bold; margin-bottom: 6px;">
                     New Contact Form Submission
                 </h1>
@@ -128,13 +126,6 @@ export async function POST(req: NextRequest) {
             </div>
         </div>
 `,
-			attachments: [
-				{
-					filename: "NextIconsBlack.png",
-					path: `${process.cwd()}/public/assets/NextIconsBlack.png`,
-					cid: "nexticonslogo",
-				},
-			],
 		});
 
 		return NextResponse.json({ message: "Your message has been successfully submitted", success: true }, { status: 200 });
