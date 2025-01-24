@@ -37,7 +37,7 @@ export default function CookiesConsent() {
 					transition={{ duration: 0.5 }}
 					className="fixed bottom-4 left-0 right-0 z-50 w-full px-4 lg:left-4 lg:max-w-md lg:px-0"
 				>
-					<div className="rounded-2xl bg-[#161618] p-4 shadow-xl">
+					<div className="rounded-2xl bg-zinc-100 p-4 shadow-xl dark:bg-[#161618]">
 						<div className="flex items-center justify-between">
 							<motion.div
 								initial={{ opacity: 0, x: 50 }}
@@ -53,7 +53,7 @@ export default function CookiesConsent() {
 									strokeWidth="2"
 									strokeLinecap="round"
 									strokeLinejoin="round"
-									className="h-8 w-8 text-purple-500"
+									className="h-8 w-8 text-black dark:text-purple-500"
 								>
 									<path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5" />
 									<path d="M8.5 8.5v.01" />
@@ -63,7 +63,7 @@ export default function CookiesConsent() {
 									<path d="M7 14v.01" />
 								</svg>
 
-								<h1 className="font-[family-name:var(--font-clashdisplay-semibold)] text-xl text-purple-500 lg:text-2xl">
+								<h1 className="font-[family-name:var(--font-clashdisplay-semibold)] text-xl text-black dark:text-purple-500 lg:text-2xl">
 									We are using cookies!
 								</h1>
 							</motion.div>
@@ -76,7 +76,7 @@ export default function CookiesConsent() {
 								whileTap={{ scale: 0.95 }}
 								onClick={() => setShowCookiesConsent(false)}
 							>
-								<X className="h-7 w-7 text-white" />
+								<X className="h-7 w-7 text-zinc-500 dark:text-white" />
 							</motion.button>
 						</div>
 
@@ -84,7 +84,7 @@ export default function CookiesConsent() {
 							initial={{ opacity: 0, y: 50 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.4 }}
-							className="mt-4 text-justify font-[family-name:var(--font-clashdisplay-regular)] text-sm text-gray-300"
+							className="mt-4 text-justify font-[family-name:var(--font-clashdisplay-regular)] text-sm text-zinc-600 dark:text-gray-300"
 						>
 							We may place these for analysis of our visitor data, to improve our website and to give you a great website experience. Data is
 							collected completely anonymously, and your identity is not shared with anyone. Thank you for helping us!

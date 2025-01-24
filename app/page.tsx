@@ -1,16 +1,16 @@
 "use client";
 
+const CustomizeIcon = dynamic(() => import("@/components/home/CustomizeIcon"), { ssr: false });
+import FeatureCard from "@/components/home/FeatureCard";
+
 //prettier-ignore
-import { Search, Github, Codesandbox, ChevronDown, ChevronLeft, ChevronRight, ChevronUp, Phone, PhoneCall, PhoneForwarded, PhoneIncoming, PhoneMissed, PhoneOff, PhoneOutgoing, Monitor } from "@deemlol/next-icons";
+import { Search, ChevronDown, Clipboard, ChevronLeft, ChevronRight, ChevronUp, Phone, PhoneCall, PhoneForwarded, PhoneIncoming, PhoneMissed, PhoneOff, PhoneOutgoing, Monitor } from "@deemlol/next-icons";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { toast } from "sonner";
 import Link from "next/link";
-
-const CustomizeIcon = dynamic(() => import("@/components/homepage/CustomizeIcon"), { ssr: false });
-import FeatureCard from "@/components/homepage/FeatureCard";
-import Showcase from "@/components/homepage/Showcase";
 
 export default function Home() {
 	const [iconCount, setIconCount] = useState(0);
@@ -38,6 +38,10 @@ export default function Home() {
 
 		fetchData();
 	}, []);
+
+	const copyToClipboard = (text: string) => {
+		navigator.clipboard.writeText(text);
+	};
 
 	const handleSearchClick = () => {
 		return router.push("/icons");
@@ -115,26 +119,33 @@ export default function Home() {
 									</Link>
 								</motion.div>
 
-								<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full lg:w-1/2">
-									<Link
-										href={"/guide"}
-										className="flex items-center justify-center gap-2 rounded-2xl bg-gray-900 px-4 py-2 text-center font-[family-name:var(--font-clashdisplay-medium)] text-base text-white dark:bg-white dark:text-black"
-									>
-										<Codesandbox size={24} />
-										Get Started
-									</Link>
-								</motion.div>
+								<div className="w-full lg:w-1/2">
+									<div className="flex items-center justify-between rounded-2xl bg-zinc-200 p-2.5 text-black dark:bg-[#161618] dark:text-white">
+										<div className="w-full overflow-x-auto">
+											<pre className="whitespace-pre-wrap font-[family-name:var(--font-clashdisplay-regular)] text-sm">
+												<code className="space-x-2">
+													<span className="text-zinc-500 dark:text-zinc-300">$</span>
+													<span>npm i @deemlol/next-icons</span>
+												</code>
+											</pre>
+										</div>
 
-								<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full lg:w-1/2">
-									<Link
-										href={"https://github.com/Next-Icons"}
-										target="_blank"
-										className="flex items-center justify-center gap-2 rounded-2xl border-2 border-gray-300 bg-white px-4 py-2 font-[family-name:var(--font-clashdisplay-medium)] text-base text-gray-900 dark:border-gray-500 dark:bg-background dark:text-white"
-									>
-										<Github size={24} />
-										GitHub
-									</Link>
-								</motion.div>
+										<div className="ml-2 flex-shrink-0">
+											<Clipboard
+												className="cursor-pointer text-zinc-500 dark:text-zinc-300"
+												size={18}
+												onClick={() => {
+													copyToClipboard(`npm i @deemlol/next-icons`);
+
+													return toast.success("Successfully copied to clipboard", {
+														className: "font-[family-name:var(--font-clashdisplay-regular)] text-[15px]",
+														duration: 5_000,
+													});
+												}}
+											/>
+										</div>
+									</div>
+								</div>
 							</motion.div>
 						</div>
 
@@ -190,10 +201,6 @@ export default function Home() {
 
 				<section className="py-10 lg:py-20">
 					<CustomizeIcon />
-				</section>
-
-				<section className="py-10 lg:py-20">
-					<Showcase />
 				</section>
 			</div>
 		</div>

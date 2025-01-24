@@ -1,5 +1,7 @@
 "use client";
 
+import { DOMAIN_BASE_URL } from "@/utils/constants";
+
 import { ArrowUpRight } from "@deemlol/next-icons";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -10,34 +12,44 @@ export default function FooterExport() {
 			initial={{ opacity: 0, y: 50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 1.9 }}
-			className="border-t border-gray-300 bg-white px-6 py-6 shadow-lg dark:border-gray-600 dark:bg-[#1b1b1f]"
+			className="border-t border-gray-300 bg-white px-6 py-2 shadow-lg dark:border-zinc-600 dark:bg-[#161618]"
 		>
-			<div className="flex flex-col items-start justify-between space-y-5 lg:flex-row lg:items-center lg:space-y-0">
+			<div className="flex flex-col items-start justify-between space-y-5 sm:items-center lg:flex-row lg:items-center lg:space-y-0">
 				<div>
-					<p className="text-start font-[family-name:var(--font-clashdisplay-medium)] text-sm text-black dark:text-white lg:text-base">
-						© {new Date().getFullYear()} Next Icons. All rights reserved.
+					<p className="text-start font-[family-name:var(--font-clashdisplay-medium)] text-sm text-black dark:text-white sm:text-lg lg:text-base">
+						© {new Date().getFullYear()} <Link href={DOMAIN_BASE_URL}>Next Icons</Link>. All rights reserved.
 					</p>
 				</div>
 
-				<div className="flex items-center justify-center space-x-6 text-center font-[family-name:var(--font-clashdisplay-regular)] text-sm text-black dark:text-white lg:space-x-10 lg:text-lg">
-					<Link href={"/license"} className="flex items-center space-x-1 hover:text-black/80 dark:hover:text-white/80">
+				<div className="flex items-center justify-center space-x-6 text-center font-[family-name:var(--font-clashdisplay-regular)] text-sm text-black dark:text-white sm:text-base lg:space-x-10 lg:text-lg">
+					<Link href={"/license"} className="flex items-center space-x-1 transition-colors duration-300 hover:text-purple-500">
 						<span>License</span>
-						<ArrowUpRight size={16} className="text-gray-400 hover:text-gray-400/80" />
+						<ArrowUpRight size={14} className="text-gray-400" />
 					</Link>
 
-					<Link href={"/contact"} className="flex items-center space-x-1 hover:text-black/80 dark:hover:text-white/80">
+					<Link href={"/contact"} className="flex items-center space-x-1 transition-colors duration-300 hover:text-purple-500">
 						<span>Contact</span>
-						<ArrowUpRight size={16} className="text-gray-400 hover:text-gray-400/80" />
+						<ArrowUpRight size={14} className="text-gray-400" />
 					</Link>
 
-					<Link href={"/guide"} className="flex items-center space-x-1 hover:text-black/80 dark:hover:text-white/80">
-						<span>Guide</span>
-						<ArrowUpRight size={16} className="text-gray-400 hover:text-gray-400/80" />
+					<Link
+						href={"https://www.npmjs.com/package/@deemlol/next-icons"}
+						rel="noopener noreferrer"
+						target="_blank"
+						className="flex items-center space-x-1 transition-colors duration-300 hover:text-purple-500"
+					>
+						<span>NPM</span>
+						<ArrowUpRight size={14} className="text-gray-400" />
 					</Link>
 
-					<Link href={"/icons"} className="flex items-center space-x-1 hover:text-black/80 dark:hover:text-white/80">
-						<span>Icons</span>
-						<ArrowUpRight size={16} className="text-gray-400 hover:text-gray-400/80" />
+					<Link
+						href={"https://github.com/Next-Icons"}
+						rel="noopener noreferrer"
+						target="_blank"
+						className="flex items-center space-x-1 transition-colors duration-300 hover:text-purple-500"
+					>
+						<span>GitHub</span>
+						<ArrowUpRight size={14} className="text-gray-400" />
 					</Link>
 				</div>
 

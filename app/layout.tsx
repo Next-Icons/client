@@ -1,56 +1,15 @@
-import CookiesConsent from "@/components/CookiesConsent";
+//prettier-ignore
+import { ClashDisplayBold, ClashDisplayExtraLight, ClashDisplayLight, ClashDisplayMedium, ClashDisplayRegular, ClashDisplaySemiBold, ClashDisplayVariable } from "@/lib/fonts";
 import ToasterExport from "@/components/layout/ToasterExport";
 import NavbarExport from "@/components/layout/NavbarExport";
 import FooterExport from "@/components/layout/FooterExport";
+import CookiesConsent from "@/components/CookiesConsent";
 import { DOMAIN_BASE_URL } from "@/utils/constants";
 import "../public/styles/globals.css";
 
 import type { Metadata, Viewport } from "next";
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "next-themes";
-import localFont from "next/font/local";
-
-const ClashDisplayBold = localFont({
-	src: "../public/fonts/ClashDisplay-Bold.ttf",
-	variable: "--font-clashdisplay-bold",
-	display: "swap",
-});
-
-const ClashDisplayExtraLight = localFont({
-	src: "../public/fonts/ClashDisplay-Extralight.ttf",
-	variable: "--font-clashdisplay-extralight",
-	display: "swap",
-});
-
-const ClashDisplayLight = localFont({
-	src: "../public/fonts/ClashDisplay-Light.ttf",
-	variable: "--font-clashdisplay-light",
-	display: "swap",
-});
-
-const ClashDisplayMedium = localFont({
-	src: "../public/fonts/ClashDisplay-Medium.ttf",
-	variable: "--font-clashdisplay-medium",
-	display: "swap",
-});
-
-const ClashDisplayRegular = localFont({
-	src: "../public/fonts/ClashDisplay-Regular.ttf",
-	variable: "--font-clashdisplay-regular",
-	display: "swap",
-});
-
-const ClashDisplaySemiBold = localFont({
-	src: "../public/fonts/ClashDisplay-Semibold.ttf",
-	variable: "--font-clashdisplay-semibold",
-	display: "swap",
-});
-
-const ClashDisplayVariable = localFont({
-	src: "../public/fonts/ClashDisplay-Variable.ttf",
-	variable: "--font-clashdisplay-variable",
-	display: "swap",
-});
 
 export const metadata: Metadata = {
 	applicationName: "NextIcons.com",
@@ -63,6 +22,7 @@ export const metadata: Metadata = {
 			url: "https://www.deemdev.xyz",
 		},
 	],
+	creator: "Alexandr Virgovič",
 	title: "Next Icons ~ Icon library for React and Next.js",
 	description: "Lightweight icon component library for React and Next.js, designed for simplicity and seamless integration.",
 	keywords: ["next", "nextjs", "react", "icons", "svg", "next-icons", "react-icons", "nextjs-icons", "lucide-react"],
@@ -75,8 +35,7 @@ export const metadata: Metadata = {
 		emails: "contact@nexticons.com",
 		url: new URL(DOMAIN_BASE_URL),
 	},
-	category: "Icons",
-	robots: "index, follow",
+	category: "Icons Website",
 	publisher: "Vercel",
 	metadataBase: new URL(DOMAIN_BASE_URL),
 };

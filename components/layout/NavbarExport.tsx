@@ -1,7 +1,7 @@
 "use client";
 
-import { Separator } from "@/components/ui/separator";
 import ThemeToggle from "@/components/layout/ThemeToggle";
+import { Separator } from "@/components/ui/separator";
 
 import { AlignRight, X } from "@deemlol/next-icons";
 import { useState, useEffect } from "react";
@@ -67,29 +67,24 @@ export default function NavbarExport() {
 								transition={{ delay: 0.4 }}
 							>
 								<Link
-									href={"/guide"}
-									className="font-[family-name:var(--font-clashdisplay-variable)] text-lg text-background transition-colors hover:text-purple-500 dark:text-white dark:hover:text-purple-400"
-								>
-									Get Started
-								</Link>
-
-								<Link
 									href={"/icons"}
-									className="font-[family-name:var(--font-clashdisplay-variable)] text-lg text-background transition-colors hover:text-purple-500 dark:text-white dark:hover:text-purple-400"
+									className="font-[family-name:var(--font-clashdisplay-variable)] text-lg text-background transition-colors duration-300 hover:text-purple-500 dark:text-white dark:hover:text-purple-400"
 								>
 									Icons
 								</Link>
 
 								<Link
 									href={"/license"}
-									className="font-[family-name:var(--font-clashdisplay-regular)] text-lg text-background transition-colors hover:text-purple-500 dark:text-white dark:hover:text-purple-400"
+									className="font-[family-name:var(--font-clashdisplay-regular)] text-lg text-background transition-colors duration-300 hover:text-purple-500 dark:text-white dark:hover:text-purple-400"
 								>
 									License
 								</Link>
 
 								<Link
-									href={"/changelog"}
-									className="font-[family-name:var(--font-clashdisplay-regular)] text-lg text-background transition-colors hover:text-purple-500 dark:text-white dark:hover:text-purple-400"
+									href={"https://github.com/Next-Icons/next-icons/releases"}
+									rel="noopener noreferrer"
+									target="_blank"
+									className="font-[family-name:var(--font-clashdisplay-regular)] text-lg text-background transition-colors duration-300 hover:text-purple-500 dark:text-white dark:hover:text-purple-400"
 								>
 									Change Log
 								</Link>
@@ -142,15 +137,6 @@ export default function NavbarExport() {
 
 					<div className="mt-14 flex flex-col px-6">
 						<Link
-							href={"/guide"}
-							className="mb-1.5 font-[family-name:var(--font-clashdisplay-variable)] text-2xl uppercase text-background dark:text-white"
-						>
-							Get Started
-						</Link>
-
-						<div className="mb-6 h-[1px] bg-gray-600" />
-
-						<Link
 							href={"/icons"}
 							className="mb-1.5 font-[family-name:var(--font-clashdisplay-variable)] text-2xl uppercase text-background dark:text-white"
 						>
@@ -169,7 +155,9 @@ export default function NavbarExport() {
 						<div className="mb-6 h-[1px] bg-gray-600" />
 
 						<Link
-							href={"/changelog"}
+							href={"https://github.com/Next-Icons/next-icons/releases"}
+							rel="noopener noreferrer"
+							target="_blank"
 							className="mb-1.5 font-[family-name:var(--font-clashdisplay-variable)] text-2xl uppercase text-background dark:text-white"
 						>
 							Change Log

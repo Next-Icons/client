@@ -2,8 +2,8 @@
 
 import { getSVGContent } from "@/utils/getSVGContent";
 
-import { Clipboard, Download, X } from "@deemlol/next-icons";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Clipboard, Download, X } from "@deemlol/next-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "sonner";
 

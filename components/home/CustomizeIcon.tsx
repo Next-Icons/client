@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
 
-export default function DynamicIconSection() {
+export default function CustomizeIcon() {
 	const { resolvedTheme } = useTheme();
 
 	const [iconColor, setIconColor] = useState("#000000");
