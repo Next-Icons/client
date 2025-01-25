@@ -26,7 +26,7 @@
 		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
-		"@deemlol/next-icons": "^0.1.5",
+		"@deemlol/next-icons": "^0.1.8",
 		"@marsidev/react-turnstile": "^1.1.0",
 		"@types/node": "^22.10.10",
 		"@types/nodemailer": "^6.4.17",
