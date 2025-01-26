@@ -7,7 +7,7 @@ import CookiesConsent from "@/components/CookiesConsent";
 import { DOMAIN_BASE_URL } from "@/utils/constants";
 import "../public/styles/globals.css";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import NextTopLoader from "nextjs-toploader";

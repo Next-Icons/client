@@ -44,7 +44,7 @@ export default function Home() {
 	};
 
 	const handleSearchClick = () => {
-		return router.push("/icons");
+		return router.replace("/icons");
 	};
 
 	const titleContainer = {
