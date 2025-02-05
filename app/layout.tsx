@@ -7,8 +7,6 @@ import CookiesConsent from "@/components/CookiesConsent";
 import { DOMAIN_BASE_URL } from "@/utils/constants";
 import "../public/styles/globals.css";
 
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
 import type { Metadata, Viewport } from "next";
 import NextTopLoader from "nextjs-toploader";
 import { ThemeProvider } from "next-themes";
@@ -94,6 +92,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 				<meta property="og:image:type" content="image/png" />
 				<meta property="twitter:card" content="summary" />
 
+				<script defer data-domain="nexticons.com" src="https://stats.sattler.dev/js/script.js"></script>
+
 				<link rel="shortcut icon" type="images/x-icon" href="/assets/favicons/favicon.ico" />
 				<link rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/apple-icon-57x57.png" />
 				<link rel="apple-touch-icon" sizes="60x60" href="/assets/favicons/apple-icon-60x60.png" />
@@ -114,8 +114,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 			<body className={`${ClashDisplayBold.variable} bg-white dark:bg-[#121212] ${ClashDisplayExtraLight.variable} ${ClashDisplayLight.variable} ${ClashDisplayMedium.variable} ${ClashDisplayRegular.variable} ${ClashDisplaySemiBold.variable} ${ClashDisplayVariable.variable} antialiased`}>
 				<ThemeProvider attribute={"class"} defaultTheme="dark" enableSystem={false}>
 					<NextTopLoader color="#a855f7" showSpinner={false} />
-					<Analytics />
-					<SpeedInsights />
 					<ToasterExport />
 					<CookiesConsent />
 
