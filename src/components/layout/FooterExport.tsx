@@ -58,7 +58,7 @@ export default function FooterExport() {
 	const { trigger } = useWebHaptics();
 
 	return (
-		<footer className="overflow-hidden border-t border-[#ffffff]/5 bg-[#111111] pt-10 pb-6">
+		<footer className="overflow-hidden border-t border-[#ffffff]/15 bg-[#111111] pt-10 pb-6">
 			<div className="mx-auto max-w-7xl px-4 2xl:px-0">
 				<div className="mb-10 grid gap-12 lg:grid-cols-12 lg:gap-24">
 					<div className="lg:col-span-5">
@@ -105,7 +105,7 @@ export default function FooterExport() {
 												onClick={() => trigger("light")}
 												className={`group flex w-fit items-center ${link?.badge ? "cursor-not-allowed opacity-100" : "transition-colors duration-300 hover:text-[#bffb4f]"} gap-2 text-sm text-[#ffffff]/70 ${GroteskRoman.className}`}
 											>
-												<span className={link?.badge ? "opacity-50" : ""}>{link?.name}</span>
+												<span className={link?.badge ? "opacity-70" : ""}>{link?.name}</span>
 
 												{link?.badge && (
 													<span
