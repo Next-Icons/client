@@ -129,7 +129,7 @@ export default function FooterExport() {
 							&copy; {currentYear} Next Icons. All rights reserved.
 						</p>
 
-						<div className={`flex items-center gap-6`}>
+						<div className={`flex flex-col items-center gap-4 sm:flex-row sm:gap-6`}>
 							<Link
 								href="https://startupfa.me/s/next-icons?utm_source=nexticons.com"
 								target="_blank"
@@ -137,11 +137,27 @@ export default function FooterExport() {
 								aria-label="Featured on Startup Fame"
 							>
 								<Image
-									src="/default-small-rounded.webp"
+									src="/featured/startupfame.webp"
 									alt="Next Icons - Featured on Startup Fame"
+									width={240}
+									height={37}
+									priority={true}
+									draggable={false}
+								/>
+							</Link>
+
+							<Link
+								href="https://twelve.tools"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Featured on Twelve Tools"
+							>
+								<Image
+									src="/featured/twelvetools.svg"
+									alt="Next Icons - Featured on Twelve Tools"
 									width={160}
 									height={37}
-									priority={false}
+									priority={true}
 									draggable={false}
 								/>
 							</Link>
