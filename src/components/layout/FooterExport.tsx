@@ -129,7 +129,7 @@ export default function FooterExport() {
 							&copy; {currentYear} Next Icons. All rights reserved.
 						</p>
 
-						<div className={`flex flex-col items-center gap-4 sm:flex-row sm:gap-6`}>
+						<div className={`flex flex-col items-start gap-4 sm:flex-row lg:items-center`}>
 							<Link
 								href="https://startupfa.me/s/next-icons?utm_source=nexticons.com"
 								target="_blank"
@@ -156,6 +156,22 @@ export default function FooterExport() {
 									src="/featured/twelvetools.svg"
 									alt="Next Icons - Featured on Twelve Tools"
 									width={160}
+									height={37}
+									priority={true}
+									draggable={false}
+								/>
+							</Link>
+
+							<Link
+								href="https://wired.business"
+								target="_blank"
+								rel="noopener noreferrer"
+								aria-label="Featured on Wired Business"
+							>
+								<Image
+									src="/featured/wiredbusiness.svg"
+									alt="Next Icons - Featured on Wired Business"
+									width={150}
 									height={37}
 									priority={true}
 									draggable={false}
