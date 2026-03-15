@@ -69,7 +69,7 @@ export default function FooterExport() {
 						>
 							<Image
 								src="/Logo.png"
-								alt="Next Icons"
+								alt="Next Icons Logo"
 								width={40}
 								height={40}
 								priority={true}
@@ -103,9 +103,9 @@ export default function FooterExport() {
 												target={link?.external ? "_blank" : undefined}
 												rel={link?.external ? "noopener noreferrer" : undefined}
 												onClick={() => trigger("light")}
-												className={`group flex w-fit items-center ${link?.badge ? "cursor-not-allowed opacity-50" : "transition-colors duration-300 hover:text-[#bffb4f]"} gap-2 text-sm text-[#ffffff]/70 ${GroteskRoman.className}`}
+												className={`group flex w-fit items-center ${link?.badge ? "cursor-not-allowed opacity-100" : "transition-colors duration-300 hover:text-[#bffb4f]"} gap-2 text-sm text-[#ffffff]/70 ${GroteskRoman.className}`}
 											>
-												<span>{link?.name}</span>
+												<span className={link?.badge ? "opacity-50" : ""}>{link?.name}</span>
 
 												{link?.badge && (
 													<span
@@ -134,6 +134,7 @@ export default function FooterExport() {
 								href={"https://vercel.com?utm_source=powered-by-vercel"}
 								target="_blank"
 								rel="noopener noreferrer"
+								aria-label="Powered by Vercel"
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"

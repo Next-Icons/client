@@ -12,24 +12,24 @@ import * as React from "react";
 import Link from "next/link";
 
 const PREVIEW_ICONS = [
-	ChevronDown,
-	ChevronLeft,
-	ChevronRight,
-	ChevronUp,
-	Phone,
-	PhoneCall,
-	PhoneIncoming,
-	PhoneOutgoing,
-	PhoneMissed,
-	PhoneOff,
-	PhoneForwarded,
-	Monitor,
-	Download,
-	Search,
-	Settings,
-	Zap,
-	Box,
-	Layers,
+	{ icon: ChevronDown, name: "Chevron Down" },
+	{ icon: ChevronLeft, name: "Chevron Left" },
+	{ icon: ChevronRight, name: "Chevron Right" },
+	{ icon: ChevronUp, name: "Chevron Up" },
+	{ icon: Phone, name: "Phone" },
+	{ icon: PhoneCall, name: "Phone Call" },
+	{ icon: PhoneIncoming, name: "Phone Incoming" },
+	{ icon: PhoneOutgoing, name: "Phone Outgoing" },
+	{ icon: PhoneMissed, name: "Phone Missed" },
+	{ icon: PhoneOff, name: "Phone Off" },
+	{ icon: PhoneForwarded, name: "Phone Forwarded" },
+	{ icon: Monitor, name: "Monitor" },
+	{ icon: Download, name: "Download" },
+	{ icon: Search, name: "Search" },
+	{ icon: Settings, name: "Settings" },
+	{ icon: Zap, name: "Zap" },
+	{ icon: Box, name: "Box" },
+	{ icon: Layers, name: "Layers" },
 ];
 
 export default function Hero() {
@@ -195,10 +195,11 @@ export default function Hero() {
 						</button>
 
 						<div className="grid grid-cols-6 gap-5">
-							{PREVIEW_ICONS.map((Icon, i) => (
+							{PREVIEW_ICONS.map(({ icon: Icon, name }, i) => (
 								<button
 									key={i}
 									type="button"
+									aria-label={name}
 									className="group relative flex aspect-square items-center justify-center rounded-xl transition-transform duration-300 hover:scale-200 lg:scale-150"
 								>
 									<Icon size={20} strokeWidth={1.5} color="#000000" />

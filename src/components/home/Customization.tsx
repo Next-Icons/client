@@ -143,6 +143,7 @@ export default function Customization() {
 							<div>
 								<div className="mb-4 flex items-center justify-between">
 									<label
+										htmlFor="icon-size-input"
 										className={`block text-lg tracking-wide text-[#ffffff] ${GroteskMedium.className}`}
 									>
 										Size
@@ -154,6 +155,7 @@ export default function Customization() {
 								</div>
 
 								<input
+									id="icon-size-input"
 									type="range"
 									min="16"
 									max="48"
@@ -170,6 +172,7 @@ export default function Customization() {
 							<div>
 								<div className="mb-4 flex items-center justify-between">
 									<label
+										htmlFor="icon-stroke-width-input"
 										className={`block text-lg tracking-wide text-[#ffffff] ${GroteskMedium.className}`}
 									>
 										Stroke Width
@@ -181,6 +184,7 @@ export default function Customization() {
 								</div>
 
 								<input
+									id="icon-stroke-width-input"
 									type="range"
 									min="1"
 									max="3"

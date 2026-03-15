@@ -128,7 +128,7 @@ export default function NavbarExport() {
 						<Link href={"/"} className="group flex shrink-0 cursor-pointer items-center gap-3">
 							<Image
 								src={"/Logo.png"}
-								alt="NextIcon"
+								alt="Next Icons Logo"
 								width={40}
 								height={40}
 								priority={true}
@@ -352,7 +352,7 @@ export default function NavbarExport() {
 									>
 										<Image
 											src={"/Logo.png"}
-											alt="NextIcon"
+											alt="Next Icons Logo"
 											width={40}
 											height={40}
 											priority
