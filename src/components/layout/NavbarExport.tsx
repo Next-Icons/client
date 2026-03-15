@@ -360,11 +360,11 @@ export default function NavbarExport() {
 											preload={false}
 										/>
 
-										<h1
+										<h2
 											className={`${GroteskBlack.className} text-3xl tracking-wide text-[#ffffff]`}
 										>
 											Next Icons
-										</h1>
+										</h2>
 									</Link>
 
 									<button
