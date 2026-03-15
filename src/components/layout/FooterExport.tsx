@@ -2,6 +2,7 @@
 
 import { GroteskBlack, GroteskBold, GroteskLight, GroteskRoman } from "@/utils/fonts";
 import { GITHUB_REPO_URL, NPM_PACKAGE_URL } from "@/utils/constants";
+import StatusWidget from "../StatusWidget";
 
 import { useWebHaptics } from "web-haptics/react";
 import Image from "next/image";
@@ -80,10 +81,12 @@ export default function FooterExport() {
 						</Link>
 
 						<p
-							className={`mt-4 max-w-sm text-base leading-relaxed text-[#ffffff]/70 ${GroteskRoman.className}`}
+							className={`mt-4 mb-4 max-w-sm text-base leading-relaxed text-[#ffffff]/70 ${GroteskRoman.className}`}
 						>
 							An open-source icon library for React and Next.js.
 						</p>
+
+						<StatusWidget />
 					</div>
 
 					<div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:col-span-7">

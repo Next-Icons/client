@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
 				headers: [
 					{
 						key: "Content-Security-Policy",
-						value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; connect-src 'self' https://api.github.com https://api.npmjs.org ws: wss:; upgrade-insecure-requests;",
+						value: "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://quiccstatus.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; frame-src 'self' https://status.deemdev.com https://quiccstatus.com; connect-src 'self' https://api.github.com https://api.npmjs.org https://status.deemdev.com https://quiccstatus.com ws: wss:; upgrade-insecure-requests;",
 					},
 					{
 						key: "X-DNS-Prefetch-Control",
