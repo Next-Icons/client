@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@layer base {
+	::selection {
+		background: #bffb4f;
+		color: #000000;
+	}
+	::-moz-selection {
+		background: #bffb4f;
+		color: #000000;
+	}
+}
