@@ -1,0 +1,86 @@
+# Next Icons
+
+Open source SVG icon library for React and Next.js.
+
+Next Icons provides a collection of clean, consistent SVG icons designed on a 24x24 grid.
+The library focuses on simplicity, performance, and easy integration into modern React-based applications.
+
+Icons are distributed as React components and work well with frameworks such as Next.js and styling systems like TailwindCSS.
+
+## Key Features
+
+- SVG icons optimized for React
+- Consistent 24x24 grid system
+- Lightweight package
+- Easy integration with Next.js
+- Customizable via CSS or Tailwind
+- Designed for modern frontend workflows
+
+## Product
+
+Icons Library
+https://www.nexticons.com/icons
+
+## Website Pages
+
+Contact
+https://www.nexticons.com/contact
+
+Privacy Policy
+https://www.nexticons.com/legal/privacy
+
+## Developer Resources
+
+GitHub Repository
+https://github.com/Next-Icons/next-icons
+
+NPM Package
+https://www.npmjs.com/package/@deemlol/next-icons
+
+License
+https://github.com/Next-Icons/next-icons/blob/main/LICENCE
+
+Changelog
+https://github.com/Next-Icons/next-icons/blob/main/CHANGELOG.md
+
+## Usage Context
+
+Next Icons is intended for developers building web applications with:
+
+- React
+- Next.js
+- TypeScript
+- JavaScript
+- TailwindCSS
+- Standard CSS styling
+
+Icons are imported as React components and used directly in JSX.
+
+## Example Usage
+
+```js
+import { Home } from "@deemlol/next-icons";
+
+function App() {
+  return <Home size={24} />;
+}
+
+## When to Use Next Icons
+
+Next Icons is a good choice when developers need:
+
+- A lightweight icon library for React
+- Icons designed for Next.js projects
+- Consistent SVG icons on a 24x24 grid
+- Simple integration without complex configuration
+- Icons that work well with TailwindCSS
+
+## Alternatives
+
+Other popular icon libraries include:
+
+- Lucide
+- Heroicons
+- Tabler Icons
+- Phosphor Icons
+- React Icons

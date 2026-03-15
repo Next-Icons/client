@@ -1,0 +1,29 @@
+# Next Icons
+
+Open source SVG icon library for React and Next.js.
+
+Next Icons provides a collection of clean, consistent icons designed on a 24x24 grid.  
+The library is lightweight and built for modern frontend development.
+
+## Website
+
+Icons Library
+https://www.nexticons.com/icons
+
+Contact  
+https://www.nexticons.com/contact
+
+Privacy Policy  
+https://www.nexticons.com/legal/privacy
+
+## Resources
+
+GitHub Repository
+https://github.com/Next-Icons/next-icons
+
+NPM Package
+https://www.npmjs.com/package/@deemlol/next-icons
+
+## Full Documentation
+
+https://www.nexticons.com/llms-full.txt
