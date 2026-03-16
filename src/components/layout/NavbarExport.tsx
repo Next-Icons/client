@@ -1,11 +1,11 @@
 "use client";
 
+import { GITHUB_REPO_NAME, GITHUB_REPO_URL, X_URL } from "@/utils/constants";
 import { GroteskBlack, GroteskMedium, GroteskRoman } from "@/utils/fonts";
-import { GITHUB_REPO_NAME, GITHUB_REPO_URL } from "@/utils/constants";
 import { useGithubStats } from "@/hooks/useGithubStats";
 import GlobalSearch from "./GlobalSearch";
 
-import { Menu, X, ChevronDown, GitHub, Sparkles2, PlayCircle, AppWindow, Type } from "@deemlol/next-icons";
+import { Menu, X, ChevronDown, GitHub, Sparkles2, PlayCircle, AppWindow, Type, TwitterNew } from "@deemlol/next-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWebHaptics } from "web-haptics/react";
 import Image from "next/image";
@@ -286,12 +286,21 @@ export default function NavbarExport() {
 							<div className="mx-1 h-7 w-px bg-[#fafafa]/30"></div>
 
 							<Link
+								href={X_URL}
+								target="_blank"
+								rel="noopener noreferrer"
+								className={`mt-2 flex items-center justify-center leading-none text-[#ffffff] ${GroteskRoman.className}`}
+							>
+								<TwitterNew size={26} strokeWidth={1.5} />
+							</Link>
+
+							<Link
 								href={GITHUB_REPO_URL}
 								target="_blank"
 								rel="noopener noreferrer"
-								className={`flex cursor-pointer items-center gap-2 text-lg text-[#ffffff] ${GroteskRoman.className}`}
+								className={`flex items-center gap-2 text-lg leading-none text-[#ffffff] ${GroteskRoman.className}`}
 							>
-								<GitHub size={18} strokeWidth={1.5} />
+								<GitHub size={20} strokeWidth={1.5} />
 								<span>{loading ? 0 : formattedStars}</span>
 							</Link>
 						</div>
