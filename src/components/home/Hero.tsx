@@ -161,6 +161,18 @@ export default function Hero() {
 								)}
 							</span>
 						</button>
+
+						<Link
+							href={
+								"https://chatgpt.com/?prompt=I%27m%20interested%20in%20learning%20more%20about%20how%20to%20use%20https%3A%2F%2Fwww.nexticons.com%20and%20incorporate%20it%20into%20my%20project"
+							}
+							target="_blank"
+							rel="noopener noreferrer"
+							onClick={() => trigger("light")}
+							className={`hidden w-fit cursor-pointer self-center rounded-lg border border-[#fafafa]/15 bg-[#161616] px-3 py-2 text-center text-xs text-[#ffffff] transition-colors duration-300 hover:border-[#bffb4f] hover:text-[#bffb4f] lg:inline-flex ${GroteskRoman.className}`}
+						>
+							Ask AI
+						</Link>
 					</div>
 				</motion.div>
 
