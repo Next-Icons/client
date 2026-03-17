@@ -2,7 +2,7 @@
 
 import { GroteskMedium, GroteskRoman } from "@/utils/fonts";
 
-import { Search, Sparkles2, Type, GitHub, Email, List, NPMJs } from "@deemlol/next-icons";
+import { Search, Sparkles2, Type, GitHub, Email, List, NPMJs, PlayCircle } from "@deemlol/next-icons";
 import { motion, AnimatePresence } from "framer-motion";
 import { useWebHaptics } from "web-haptics/react";
 import { useRouter } from "next/navigation";
@@ -24,6 +24,14 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "/icons",
 		description: "Browse our collection of icons",
 		icon: Sparkles2,
+		category: "Page",
+	},
+	{
+		id: "animated-icons",
+		name: "Animated Icons",
+		url: "/animated-icons",
+		description: "Browse all of our animated icons",
+		icon: PlayCircle,
 		category: "Page",
 	},
 	{

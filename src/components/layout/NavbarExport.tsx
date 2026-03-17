@@ -45,8 +45,8 @@ const NAVBAR_LINKS: NavbarLink[] = [
 				name: "Animated Icons",
 				icon: PlayCircle,
 				desc: "Browse all of our animated icons",
-				url: "#",
-				disabled: true,
+				url: "/animated-icons",
+				disabled: false,
 			},
 			{
 				name: "UI Components",

@@ -1,16 +1,14 @@
 "use client";
 
 import { GroteskBold, GroteskMedium } from "@/utils/fonts";
-import { useGithubStats } from "@/hooks/useGithubStats";
-import { GITHUB_REPO_NAME } from "@/utils/constants";
 import { useNpmStats } from "@/hooks/useNpmStats";
 
 import { motion } from "framer-motion";
 import * as React from "react";
 
 export default function Stats() {
+	const [animatedIconCount, setAnimatedIconCount] = React.useState(0);
 	const { formattedDownloads } = useNpmStats("@deemlol/next-icons");
-	const { formattedStars } = useGithubStats(GITHUB_REPO_NAME);
 	const [iconCount, setIconCount] = React.useState(0);
 
 	React.useEffect(() => {
@@ -36,14 +34,37 @@ export default function Stats() {
 		fetchData();
 	}, []);
 
+	React.useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const res = await fetch("/api/allAnimatedIcons", {
+					method: "GET",
+				});
+
+				if (res?.ok) {
+					const data = await res?.json();
+
+					setAnimatedIconCount(data?.icons || 0);
+				} else {
+					console.log("Failed to fetch the animated icon count");
+				}
+			} catch (err) {
+				console.log("An error occurred while fetching the animated icon count");
+				console.error(err);
+			}
+		};
+
+		fetchData();
+	}, []);
+
 	return (
 		<section className="relative z-10 border-y border-[#ffffff]/3 bg-[#111111]/50 backdrop-blur-sm">
 			<div className="mx-auto max-w-7xl px-4 py-14 2xl:px-0">
 				<div className="grid grid-cols-3 gap-4 sm:gap-0">
 					{[
 						{ number: formattedDownloads || "0", label: "Downloads" },
-						{ number: iconCount || "0", label: "Unique Icons" },
-						{ number: formattedStars || "0", label: "GitHub Stars" },
+						{ number: iconCount || "0", label: "Static Icons" },
+						{ number: animatedIconCount || "0", label: "Animated Icons" },
 					].map((stat, i) => (
 						<motion.div
 							key={i}

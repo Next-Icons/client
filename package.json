@@ -1,6 +1,6 @@
 {
 	"name": "nexticons-website-client",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbopack -p 3000",
@@ -11,12 +11,12 @@
 		"format:write": "prettier --write ."
 	},
 	"dependencies": {
-		"@deemlol/next-icons": "^0.2.5",
+		"@deemlol/next-icons": "^0.2.7",
 		"@vercel/analytics": "^2.0.1",
 		"@vercel/speed-insights": "^2.0.0",
 		"canvas-confetti": "^1.9.4",
-		"framer-motion": "^12.36.0",
-		"next": "^16.1.6",
+		"framer-motion": "^12.38.0",
+		"next": "^16.1.7",
 		"nodemailer": "^8.0.2",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
@@ -32,7 +32,7 @@
 		"babel-plugin-react-compiler": "^1.0.0",
 		"dotenv": "^17.3.1",
 		"eslint": "^9.39.4",
-		"eslint-config-next": "^16.1.6",
+		"eslint-config-next": "^16.1.7",
 		"prettier": "^3.8.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
 		"tailwindcss": "^4.2.1",
