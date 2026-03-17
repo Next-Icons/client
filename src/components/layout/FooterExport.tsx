@@ -33,6 +33,7 @@ const FOOTER_LINKS: FooterSection[] = [
 		title: "Legal",
 		links: [
 			{ name: "Privacy Policy", href: "/legal/privacy" },
+			{ name: "Branding Guideline", href: "/legal/branding-guideline" },
 			{
 				name: "License",
 				href: "https://github.com/Next-Icons/next-icons/blob/main/LICENCE",

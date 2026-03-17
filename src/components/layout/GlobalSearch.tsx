@@ -51,6 +51,14 @@ const SEARCH_ITEMS: SearchItem[] = [
 		category: "Page",
 	},
 	{
+		id: "branding-guideline",
+		name: "Branding Guideline",
+		url: "/legal/branding-guideline",
+		description: "Read our branding guideline",
+		icon: Type,
+		category: "Page",
+	},
+	{
 		id: "github",
 		name: "GitHub Repository",
 		url: "https://github.com/Next-Icons/next-icons",

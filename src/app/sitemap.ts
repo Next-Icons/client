@@ -34,5 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			changeFrequency: "monthly",
 			priority: 0.8,
 		},
+		{
+			url: `${DOMAIN_BASE_URL}/legal/branding-guideline`,
+			lastModified: new Date().toISOString(),
+			changeFrequency: "monthly",
+			priority: 0.7,
+		},
 	];
 }

@@ -286,6 +286,7 @@ export default function NavbarExport() {
 							<Link
 								href={X_URL}
 								target="_blank"
+								aria-label="Check out our Twitter"
 								rel="noopener noreferrer"
 								className={`mt-2 flex items-center justify-center leading-none text-[#ffffff]`}
 							>
@@ -296,6 +297,7 @@ export default function NavbarExport() {
 								href={GITHUB_REPO_URL}
 								target="_blank"
 								rel="noopener noreferrer"
+								aria-label="Check out our GitHub repository"
 								className={`flex items-center gap-2 text-lg leading-none text-[#ffffff] ${GoogleSansMedium.className}`}
 							>
 								<GitHub size={20} strokeWidth={1.5} />
@@ -484,6 +486,7 @@ export default function NavbarExport() {
 											href={GITHUB_REPO_URL}
 											target="_blank"
 											rel="noopener noreferrer"
+											aria-label="Check out our GitHub repository"
 											onClick={() => {
 												setIsMobileMenuOpen(false);
 												trigger("medium");
