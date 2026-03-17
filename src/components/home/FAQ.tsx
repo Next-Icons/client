@@ -110,9 +110,7 @@ export default function FAQ() {
 	const { trigger } = useWebHaptics();
 
 	return (
-		<section className="relative overflow-hidden px-4 pt-10 pb-28 lg:pt-18 lg:pb-36 2xl:px-0">
-			<div className="pointer-events-none absolute top-32 left-1/2 -z-10 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[#bffb4f]/10 blur-[120px]" />
-
+		<section className="overflow-hidden px-4 pt-10 pb-28 lg:pt-18 lg:pb-36 2xl:px-0">
 			<div className="mx-auto max-w-7xl">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
