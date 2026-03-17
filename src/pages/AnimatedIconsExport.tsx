@@ -1,7 +1,7 @@
 "use client";
 
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 import AnimatedIconModal from "@/components/icons/AnimatedIconModal";
-import { GroteskBold, GroteskRoman } from "@/utils/fonts";
 import ColorPicker from "@/components/icons/ColorPicker";
 
 import { Search, ChevronLeft, ChevronRight, Settings, RotateCcw, Mail } from "@deemlol/next-icons";
@@ -81,7 +81,7 @@ export default function AnimatedIconsExport() {
 									setSearchQuery(e?.target?.value);
 									trigger("light");
 								}}
-								className={`w-full rounded-lg border border-[#ffffff]/5 bg-[#ffffff]/3 py-2.5 pr-4 pl-12 text-start text-base text-[#ffffff] backdrop-blur-md transition-all duration-300 outline-none focus:border-[#bffb4f]/50 ${GroteskRoman.className}`}
+								className={`w-full rounded-lg border border-[#ffffff]/5 bg-[#ffffff]/3 py-2.5 pr-4 pl-12 text-start text-base text-[#ffffff] backdrop-blur-md transition-all duration-300 outline-none focus:border-[#bffb4f]/50 ${GoogleSansRegular.className}`}
 							/>
 						</div>
 
@@ -98,7 +98,7 @@ export default function AnimatedIconsExport() {
 						>
 							<Settings size={19} strokeWidth={1.5} />
 
-							<span className={GroteskRoman.className}>Customize View</span>
+							<span className={GoogleSansMedium.className}>Customize View</span>
 						</button>
 					</div>
 
@@ -119,7 +119,7 @@ export default function AnimatedIconsExport() {
 												setGlobalColor("#FFFFFF");
 												trigger("medium");
 											}}
-											className={`flex cursor-pointer items-center gap-2 rounded-lg bg-[#ffffff]/6 px-4 py-1.5 text-xs text-[#ffffff]/80 transition-all duration-300 hover:bg-[#ffffff]/10 ${GroteskRoman.className}`}
+											className={`flex cursor-pointer items-center gap-2 rounded-lg bg-[#ffffff]/6 px-4 py-1.5 text-xs text-[#ffffff]/80 transition-all duration-300 hover:bg-[#ffffff]/10 ${GoogleSansRegular.className}`}
 										>
 											<RotateCcw size={14} strokeWidth={1.5} />
 											Reset to default
@@ -129,7 +129,7 @@ export default function AnimatedIconsExport() {
 									<div className="grid gap-12 sm:grid-cols-3">
 										<div>
 											<label
-												className={`mb-2 block text-start text-sm text-[#ffffff] ${GroteskRoman.className}`}
+												className={`mb-2 block text-start text-sm text-[#ffffff] ${GoogleSansMedium.className}`}
 											>
 												Size: {globalSize}px
 											</label>
@@ -150,7 +150,7 @@ export default function AnimatedIconsExport() {
 
 										<div>
 											<label
-												className={`mb-2 block text-start text-sm text-[#ffffff] ${GroteskRoman.className}`}
+												className={`mb-2 block text-start text-sm text-[#ffffff] ${GoogleSansMedium.className}`}
 											>
 												Stroke: {globalStroke}px
 											</label>
@@ -171,7 +171,7 @@ export default function AnimatedIconsExport() {
 
 										<div>
 											<label
-												className={`mb-2 block text-start text-sm text-[#ffffff] ${GroteskRoman.className}`}
+												className={`mb-2 block text-start text-sm text-[#ffffff] ${GoogleSansMedium.className}`}
 											>
 												Color
 											</label>
@@ -203,7 +203,7 @@ export default function AnimatedIconsExport() {
 							/>
 
 							<span
-								className={`text-center text-[0.6rem] tracking-wider text-[#ffffff] sm:text-xs ${GroteskRoman.className}`}
+								className={`text-center text-[0.6rem] tracking-tight text-[#ffffff] sm:text-xs ${GoogleSansMedium.className}`}
 							>
 								{name}
 							</span>
@@ -214,13 +214,13 @@ export default function AnimatedIconsExport() {
 				{currentIcons?.length === 0 && (
 					<div className="flex flex-col items-center justify-center py-14 lg:py-24">
 						<h3
-							className={`mb-4 text-center text-[1.48rem] text-[#bffb4f] lg:text-6xl ${GroteskBold.className}`}
+							className={`mb-4 text-center text-[1.35rem] tracking-tight text-[#bffb4f] lg:text-6xl ${GoogleSansBold.className}`}
 						>
 							Can&apos;t find what you&apos;re looking for?
 						</h3>
 
 						<p
-							className={`mb-8 max-w-2xl text-justify text-base text-[#ffffff] lg:text-center lg:text-lg ${GroteskRoman.className}`}
+							className={`mb-8 max-w-3xl text-justify text-base text-[#ffffff] lg:text-center lg:text-lg ${GoogleSansRegular.className}`}
 						>
 							We are happy to add new icons, as soon as possible. Feel free to request any new icon!
 						</p>
@@ -230,7 +230,7 @@ export default function AnimatedIconsExport() {
 							onClick={() => {
 								trigger("light");
 							}}
-							className={`flex items-center justify-center gap-3 rounded-lg bg-[#bffb4f] px-16 py-3 text-base text-[#000000] transition-all duration-300 hover:bg-[#bffb4f]/90 active:scale-95 lg:text-lg ${GroteskRoman.className}`}
+							className={`flex items-center justify-center gap-3 rounded-lg bg-[#bffb4f] px-16 py-3 text-base text-[#000000] transition-all duration-300 hover:bg-[#bffb4f]/90 active:scale-95 lg:text-lg ${GoogleSansMedium.className}`}
 						>
 							<Mail size={22} strokeWidth={1.5} />
 							<span>Request an icon</span>
@@ -270,7 +270,7 @@ export default function AnimatedIconsExport() {
 										currentPage === p
 											? "border-none bg-[#bffb4f] text-[#000000]"
 											: "border-[#ffffff]/8 bg-[#ffffff]/4 text-[#ffffff] hover:bg-[#ffffff]/8"
-									} ${GroteskRoman.className}`}
+									} ${GoogleSansMedium.className}`}
 								>
 									{p}
 								</button>

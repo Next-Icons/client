@@ -1,4 +1,4 @@
-import { GroteskBlack, GroteskBold, GroteskLight, GroteskMedium, GroteskRoman, GroteskThin } from "@/utils/fonts";
+import { GoogleSansRegular, GoogleSansMedium, GoogleSansSemiBold, GoogleSansBold } from "@/utils/fonts";
 import { DOMAIN_BASE_URL, EMAIL_ADDRESS } from "@/utils/constants";
 import FooterExport from "@/components/layout/FooterExport";
 import NavbarExport from "@/components/layout/NavbarExport";
@@ -145,7 +145,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 		<html lang="en" suppressHydrationWarning>
 			<body
 				suppressHydrationWarning
-				className={`bg-[#121212] ${GroteskBlack.className} ${GroteskBold.className} ${GroteskLight.className} ${GroteskMedium.className} ${GroteskRoman.className} ${GroteskThin.className} antialiased`}
+				className={`bg-[#121212] ${GoogleSansRegular.className} ${GoogleSansMedium.className} ${GoogleSansSemiBold.className} ${GoogleSansBold.className} antialiased`}
 			>
 				<NavbarExport />
 				<main>{children}</main>

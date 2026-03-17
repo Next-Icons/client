@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskMedium, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 import ColorPicker from "@/components/icons/ColorPicker";
 
 import { useWebHaptics } from "web-haptics/react";
@@ -112,7 +112,11 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 				<div className="relative w-full max-w-2xl transform rounded-xl border border-[#ffffff]/8 bg-[#111111] text-left shadow-xl transition-all sm:my-8">
 					<div className="flex items-center justify-between border-b border-[#ffffff]/10 p-4">
-						<h2 className={`text-start text-2xl text-[#ffffff] ${GroteskMedium.className}`}>{name}</h2>
+						<h2
+							className={`text-start text-2xl tracking-tight text-[#ffffff] ${GoogleSansMedium.className}`}
+						>
+							{name}
+						</h2>
 
 						<button
 							onClick={() => {
@@ -126,7 +130,9 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 					</div>
 
 					<div className="p-4">
-						<div className="group relative mb-6 rounded-xl bg-[#0a0a0a] p-4 font-mono text-sm text-[#FFFFFF]">
+						<div
+							className={`group relative mb-6 rounded-xl bg-[#0a0a0a] p-4 text-sm text-[#FFFFFF] ${GoogleSansRegular.className}`}
+						>
 							<span className="text-[#c678dd]">import</span> {"{ "}{" "}
 							<span className="text-[#e06c75]">{name}</span> {" }"}{" "}
 							<span className="text-[#c678dd]">from</span>{" "}
@@ -160,7 +166,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 							<div className="space-y-8">
 								<div>
 									<label
-										className={`mb-3 block text-base tracking-wider text-[#ffffff] ${GroteskRoman.className}`}
+										className={`mb-3 block text-base text-[#ffffff] ${GoogleSansMedium.className}`}
 									>
 										Sizes
 									</label>
@@ -179,7 +185,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 														: "border-[#ffffff]/8 bg-[#ffffff]/4 text-[#ffffff] hover:bg-[#ffffff]/10"
 												}`}
 											>
-												<span className={`text-center text-xs ${GroteskRoman.className}`}>
+												<span className={`text-center text-xs ${GoogleSansRegular.className}`}>
 													{s}px
 												</span>
 											</button>
@@ -200,7 +206,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 										/>
 
 										<span
-											className={`w-8 text-start text-xs text-[#ffffff] ${GroteskRoman.className}`}
+											className={`w-8 text-start text-xs text-[#ffffff] ${GoogleSansRegular.className}`}
 										>
 											{size}px
 										</span>
@@ -209,7 +215,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 								<div>
 									<label
-										className={`mb-3 block text-base tracking-wider text-[#ffffff] ${GroteskRoman.className}`}
+										className={`mb-3 block text-base text-[#ffffff] ${GoogleSansMedium.className}`}
 									>
 										Colors
 									</label>
@@ -219,7 +225,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 								<div>
 									<label
-										className={`mb-3 block text-base tracking-wider text-[#ffffff] ${GroteskRoman.className}`}
+										className={`mb-3 block text-base text-[#ffffff] ${GoogleSansMedium.className}`}
 									>
 										Stroke: {strokeWidth}px
 									</label>
@@ -245,7 +251,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 						<div className="mt-12 grid gap-8 sm:grid-cols-2">
 							<div>
 								<label
-									className={`mb-3 block text-sm tracking-wider text-[#ffffff] uppercase ${GroteskMedium.className}`}
+									className={`mb-3 block text-sm tracking-wider text-[#ffffff] uppercase ${GoogleSansMedium.className}`}
 								>
 									Export As
 								</label>
@@ -256,7 +262,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											handleDownloadSvg();
 											trigger("success");
 										}}
-										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GroteskRoman.className}`}
+										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
 										SVG
 									</button>
@@ -266,7 +272,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											handleDownloadImage("png");
 											trigger("success");
 										}}
-										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GroteskRoman.className}`}
+										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
 										PNG
 									</button>
@@ -276,7 +282,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											handleDownloadImage("jpeg");
 											trigger("success");
 										}}
-										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GroteskRoman.className}`}
+										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
 										JPG
 									</button>
@@ -285,7 +291,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 							<div>
 								<label
-									className={`mb-3 block text-sm tracking-wider text-[#ffffff] uppercase ${GroteskMedium.className}`}
+									className={`mb-3 block text-sm tracking-wider text-[#ffffff] uppercase ${GoogleSansMedium.className}`}
 								>
 									Copy To Clipboard
 								</label>
@@ -296,7 +302,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											handleCopySvg();
 											trigger("success");
 										}}
-										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GroteskRoman.className}`}
+										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
 										{copiedSvg ? <span className="text-[#bffb4f]">Copied!</span> : "Copy SVG"}
 									</button>
@@ -306,7 +312,7 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											handleCopy(usageCode, setCopiedUsage);
 											trigger("success");
 										}}
-										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GroteskRoman.className}`}
+										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
 										{copiedUsage ? <span className="text-[#bffb4f]">Copied!</span> : "Copy JSX"}
 									</button>

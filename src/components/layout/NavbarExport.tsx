@@ -1,7 +1,7 @@
 "use client";
 
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 import { GITHUB_REPO_NAME, GITHUB_REPO_URL, X_URL } from "@/utils/constants";
-import { GroteskBlack, GroteskMedium, GroteskRoman } from "@/utils/fonts";
 import { useGithubStats } from "@/hooks/useGithubStats";
 import GlobalSearch from "./GlobalSearch";
 
@@ -120,7 +120,7 @@ export default function NavbarExport() {
 				animate={{ y: 0 }}
 				transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 				className={`fixed top-0 right-0 left-0 z-50 py-4 transition-colors duration-300 ${
-					isScrolled ? "bg-[#121212]/40 backdrop-blur-md" : "bg-transparent"
+					isScrolled && !isMobileMenuOpen ? "bg-[#121212]/40 backdrop-blur-md" : "bg-transparent"
 				}`}
 			>
 				<div className="mx-auto max-w-7xl px-4 2xl:px-0">
@@ -136,9 +136,7 @@ export default function NavbarExport() {
 								preload={false}
 							/>
 
-							<h1 className={`${GroteskBlack.className} text-3xl tracking-wide text-[#ffffff]`}>
-								Next Icons
-							</h1>
+							<h1 className={`${GoogleSansBold.className} text-3xl text-[#ffffff]`}>Next Icons</h1>
 						</Link>
 
 						<div className="hidden items-center px-4 py-1.5 lg:flex">
@@ -164,7 +162,7 @@ export default function NavbarExport() {
 								>
 									{link?.hasDropdown ? (
 										<div
-											className={`relative z-10 flex cursor-pointer items-center gap-2 px-6 py-1.5 text-base ${GroteskRoman.className} transition-colors duration-300 ${
+											className={`relative z-10 flex cursor-pointer items-center gap-2 px-6 py-1.5 text-base ${GoogleSansMedium.className} transition-colors duration-300 ${
 												hoveredLink === link?.name ? "text-[#000000]" : "text-[#ffffff]"
 											}`}
 										>
@@ -191,7 +189,7 @@ export default function NavbarExport() {
 									) : (
 										<Link
 											href={link?.href}
-											className={`relative z-10 flex items-center gap-2 px-6 py-1.5 text-base ${GroteskRoman.className} transition-colors duration-300 ${
+											className={`relative z-10 flex items-center gap-2 px-6 py-1.5 text-base ${GoogleSansMedium.className} transition-colors duration-300 ${
 												hoveredLink === link?.name ? "text-[#000000]" : "text-[#ffffff]"
 											}`}
 										>
@@ -250,14 +248,14 @@ export default function NavbarExport() {
 															<div className="flex-1">
 																<div className="flex items-center gap-2">
 																	<div
-																		className={`${GroteskMedium.className} text-start text-sm tracking-wide text-[#000000]`}
+																		className={`${GoogleSansBold.className} text-start text-sm tracking-wide text-[#000000]`}
 																	>
 																		{item?.name}
 																	</div>
 
 																	{item?.disabled && (
 																		<span
-																			className={`rounded-full bg-[#000000] px-2 py-0.5 text-[10px] text-[#bffb4f] ${GroteskRoman.className}`}
+																			className={`rounded-full bg-[#000000] px-2 py-0.5 text-[10px] text-[#bffb4f] ${GoogleSansRegular.className}`}
 																		>
 																			Soon
 																		</span>
@@ -265,7 +263,7 @@ export default function NavbarExport() {
 																</div>
 
 																<div
-																	className={`${GroteskRoman.className} text-start text-xs tracking-wide text-[#3f3f46]`}
+																	className={`${GoogleSansRegular.className} text-start text-xs text-[#3f3f46]`}
 																>
 																	{item?.desc}
 																</div>
@@ -289,7 +287,7 @@ export default function NavbarExport() {
 								href={X_URL}
 								target="_blank"
 								rel="noopener noreferrer"
-								className={`mt-2 flex items-center justify-center leading-none text-[#ffffff] ${GroteskRoman.className}`}
+								className={`mt-2 flex items-center justify-center leading-none text-[#ffffff]`}
 							>
 								<TwitterNew size={26} strokeWidth={1.5} />
 							</Link>
@@ -298,7 +296,7 @@ export default function NavbarExport() {
 								href={GITHUB_REPO_URL}
 								target="_blank"
 								rel="noopener noreferrer"
-								className={`flex items-center gap-2 text-lg leading-none text-[#ffffff] ${GroteskRoman.className}`}
+								className={`flex items-center gap-2 text-lg leading-none text-[#ffffff] ${GoogleSansMedium.className}`}
 							>
 								<GitHub size={20} strokeWidth={1.5} />
 								<span>{loading ? 0 : formattedStars}</span>
@@ -369,9 +367,7 @@ export default function NavbarExport() {
 											preload={false}
 										/>
 
-										<h2
-											className={`${GroteskBlack.className} text-3xl tracking-wide text-[#ffffff]`}
-										>
+										<h2 className={`${GoogleSansBold.className} text-3xl text-[#ffffff]`}>
 											Next Icons
 										</h2>
 									</Link>
@@ -401,7 +397,7 @@ export default function NavbarExport() {
 														);
 														trigger("medium");
 													}}
-													className={`flex w-full items-center justify-between py-2 text-start text-3xl leading-none tracking-wide text-[#ffffff] ${GroteskRoman.className}`}
+													className={`flex w-full items-center justify-between py-2 text-start text-3xl leading-none text-[#ffffff] ${GoogleSansBold.className}`}
 												>
 													<span>{link?.name}</span>
 
@@ -417,7 +413,7 @@ export default function NavbarExport() {
 												<Link
 													href={link?.href}
 													onClick={() => setIsMobileMenuOpen(false)}
-													className={`block py-2 text-start text-3xl leading-none tracking-wide text-[#ffffff] ${GroteskRoman.className}`}
+													className={`block py-2 text-start text-3xl leading-none text-[#ffffff] ${GoogleSansBold.className}`}
 												>
 													{link?.name}
 												</Link>
@@ -454,14 +450,14 @@ export default function NavbarExport() {
 															<div className="flex flex-1 flex-col">
 																<div className="flex items-center gap-2">
 																	<span
-																		className={`text-start text-xl tracking-wide text-[#ffffff] ${GroteskRoman.className}`}
+																		className={`text-start text-xl tracking-wide text-[#ffffff] ${GoogleSansMedium.className}`}
 																	>
 																		{item?.name}
 																	</span>
 
 																	{item?.disabled && (
 																		<span
-																			className={`rounded-full border border-[#bffb4f]/20 bg-[#bffb4f]/10 px-2 py-0.5 text-[10px] text-[#bffb4f] ${GroteskMedium.className}`}
+																			className={`rounded-full border border-[#bffb4f]/20 bg-[#bffb4f]/10 px-2 py-0.5 text-[10px] text-[#bffb4f] ${GoogleSansRegular.className}`}
 																		>
 																			Soon
 																		</span>
@@ -469,7 +465,7 @@ export default function NavbarExport() {
 																</div>
 
 																<span
-																	className={`text-sm text-[#ffffff]/50 ${GroteskRoman.className}`}
+																	className={`text-sm text-[#ffffff]/70 ${GoogleSansRegular.className}`}
 																>
 																	{item?.desc}
 																</span>
@@ -492,7 +488,7 @@ export default function NavbarExport() {
 												setIsMobileMenuOpen(false);
 												trigger("medium");
 											}}
-											className={`inline-flex items-center gap-3 rounded-xl bg-[#bffb4f] px-4 py-1.5 text-lg text-[#000000] ${GroteskRoman.className}`}
+											className={`inline-flex items-center gap-3 rounded-xl bg-[#bffb4f] px-4 py-1.5 text-lg text-[#000000] ${GoogleSansMedium.className}`}
 										>
 											<GitHub size={20} strokeWidth={1.5} />
 											<span>{loading ? 0 : formattedStars}</span>

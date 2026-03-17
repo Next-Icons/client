@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskRoman } from "@/utils/fonts";
+import { GoogleSansMedium } from "@/utils/fonts";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useWebHaptics } from "web-haptics/react";
@@ -63,7 +63,7 @@ export default function ColorPicker({ color, onChange }: { color: string; onChan
 			>
 				<div className="h-6 w-6 rounded-full" style={{ backgroundColor: color }} />
 
-				<span className={`flex-1 text-start text-base tracking-wider text-[#ffffff] ${GroteskRoman.className}`}>
+				<span className={`flex-1 text-start text-base text-[#ffffff] ${GoogleSansMedium.className}`}>
 					{color}
 				</span>
 			</button>
@@ -82,7 +82,7 @@ export default function ColorPicker({ color, onChange }: { color: string; onChan
 						<div className="max-h-[60vh] space-y-5 overflow-y-auto overscroll-contain pr-1">
 							<div>
 								<label
-									className={`mb-2 block text-base tracking-tight text-[#ffffff] ${GroteskRoman.className}`}
+									className={`mb-2 block text-base tracking-tighter text-[#ffffff] ${GoogleSansMedium.className}`}
 								>
 									Hex Color
 								</label>
@@ -103,14 +103,14 @@ export default function ColorPicker({ color, onChange }: { color: string; onChan
 											trigger("light");
 										}}
 										maxLength={6}
-										className={`w-full rounded-lg border border-[#ffffff]/8 bg-[#ffffff]/4 py-2 pr-3 pl-7 text-sm tracking-wider text-[#ffffff] outline-none focus:border-[#bffb4f]/80 ${GroteskRoman.className}`}
+										className={`w-full rounded-lg border border-[#ffffff]/8 bg-[#ffffff]/4 py-2 pr-3 pl-7 text-sm tracking-tighter text-[#ffffff] outline-none focus:border-[#bffb4f]/80 ${GoogleSansMedium.className}`}
 									/>
 								</div>
 							</div>
 
 							<div>
 								<label
-									className={`mb-2 block text-base tracking-tight text-[#ffffff] ${GroteskRoman.className}`}
+									className={`mb-2 block text-base tracking-tight text-[#ffffff] ${GoogleSansMedium.className}`}
 								>
 									Quick Select
 								</label>

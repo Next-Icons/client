@@ -1,6 +1,6 @@
 # Next Icons
 
-Open source SVG icon library for React and Next.js.
+Open source SVG and animated icon library for React and Next.js.
 
 Next Icons provides a collection of clean, consistent SVG icons designed on a 24x24 grid.
 The library focuses on simplicity, performance, and easy integration into modern React-based applications.
@@ -10,6 +10,7 @@ Icons are distributed as React components and work well with frameworks such as 
 ## Key Features
 
 - SVG icons optimized for React
+- Animated icons for motion-rich UI use cases
 - Consistent 24x24 grid system
 - Lightweight package
 - Easy integration with Next.js
@@ -20,6 +21,9 @@ Icons are distributed as React components and work well with frameworks such as 
 
 Icons Library
 https://www.nexticons.com/icons
+
+Animated Icons
+https://www.nexticons.com/animated-icons
 
 ## Website Pages
 
@@ -64,6 +68,15 @@ import { Home } from "@deemlol/next-icons";
 function App() {
   return <Home size={24} />;
 }
+```
+
+```js
+import { Alarm } from "@deemlol/next-icons/animated";
+
+function App() {
+  return <Alarm size={24} />;
+}
+```
 
 ## When to Use Next Icons
 
@@ -71,6 +84,7 @@ Next Icons is a good choice when developers need:
 
 - A lightweight icon library for React
 - Icons designed for Next.js projects
+- Animated icons for interactive interfaces
 - Consistent SVG icons on a 24x24 grid
 - Simple integration without complex configuration
 - Icons that work well with TailwindCSS

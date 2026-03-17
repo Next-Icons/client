@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskBlack, GroteskBold, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 
 import { ChevronLeft, Search, Box, Zap } from "@deemlol/next-icons";
 import { useWebHaptics } from "web-haptics/react";
@@ -20,7 +20,7 @@ const NotFoundExport = () => {
 				transition={{ duration: 0.5 }}
 				className="relative"
 			>
-				<h1 className={`text-[8rem] leading-none text-[#bffb4f] lg:text-[18rem] ${GroteskBlack.className}`}>
+				<h1 className={`text-[8rem] leading-none text-[#bffb4f] lg:text-[18rem] ${GoogleSansBold.className}`}>
 					404
 				</h1>
 
@@ -49,13 +49,13 @@ const NotFoundExport = () => {
 				transition={{ delay: 0.1, duration: 0.5 }}
 			>
 				<h2
-					className={`mt-6 mb-4 text-center text-4xl text-[#ffffff] uppercase lg:mt-10 lg:text-7xl ${GroteskBold.className}`}
+					className={`mt-6 mb-4 text-center text-4xl text-[#ffffff] uppercase lg:mt-10 lg:text-7xl ${GoogleSansBold.className}`}
 				>
 					Page not found
 				</h2>
 
 				<p
-					className={`mx-auto mb-6 max-w-xl text-center text-base text-[#ffffff]/80 lg:text-lg ${GroteskRoman.className}`}
+					className={`mx-auto mb-6 max-w-2xl text-center text-base text-[#ffffff]/80 lg:text-lg ${GoogleSansRegular.className}`}
 				>
 					It looks like the page you&apos;re looking for either doesn&apos;t exist or has been moved.
 				</p>
@@ -70,7 +70,7 @@ const NotFoundExport = () => {
 				<Link
 					href={"/"}
 					onClick={() => trigger("medium")}
-					className={`group flex w-full items-center justify-center gap-2 rounded-xl bg-[#bffb4f] px-4 py-3.5 text-base text-[#000000] transition-all duration-300 hover:bg-[#aeea44] hover:shadow-[0_0_20px_rgba(191,251,79,0.3)] active:scale-95 ${GroteskRoman.className}`}
+					className={`group flex w-full items-center justify-center gap-2 rounded-xl bg-[#bffb4f] px-4 py-3.5 text-base text-[#000000] transition-all duration-300 hover:bg-[#aeea44] hover:shadow-[0_0_20px_rgba(191,251,79,0.3)] active:scale-95 ${GoogleSansMedium.className}`}
 				>
 					<ChevronLeft
 						size={20}
@@ -84,7 +84,7 @@ const NotFoundExport = () => {
 				<Link
 					href={"/icons"}
 					onClick={() => trigger("medium")}
-					className={`group flex w-full items-center justify-center gap-2 rounded-xl border border-[#ffffff]/10 bg-[#ffffff]/3 px-4 py-3.5 text-base text-[#ffffff] backdrop-blur-sm transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/8 active:scale-95 ${GroteskRoman.className}`}
+					className={`group flex w-full items-center justify-center gap-2 rounded-xl border border-[#ffffff]/10 bg-[#ffffff]/3 px-4 py-3.5 text-base text-[#ffffff] backdrop-blur-sm transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/8 active:scale-95 ${GoogleSansMedium.className}`}
 				>
 					<Search
 						size={20}

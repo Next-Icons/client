@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskBold, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium } from "@/utils/fonts";
 
 //prettier-ignore
 import { Layers, Settings, Download, Search, Monitor, CheckCircle, Sparkles2, ChevronRight, ChevronDown, Clipboard, ChevronLeft, ChevronUp, Phone, PhoneCall, PhoneForwarded, PhoneIncoming, PhoneMissed, PhoneOff, PhoneOutgoing, Zap, Box } from "@deemlol/next-icons";
@@ -92,13 +92,17 @@ export default function Hero() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.6 }}
 				>
-					<h1 className={`mb-6 max-w-xl text-5xl text-[#ffffff] lg:text-[5.2rem] ${GroteskBold.className}`}>
+					<h1
+						className={`mb-6 max-w-xl text-[2.9rem] leading-none text-[#ffffff] lg:text-[4.8rem] ${GoogleSansBold.className}`}
+					>
 						The icon library{" "}
-						<span className="text-5xl text-[#bffb4f] lg:text-[6rem]">you&apos;ve been waiting for</span>
+						<span className="text-[3.6rem] text-[#bffb4f] lg:text-[6rem]">
+							you&apos;ve been waiting for
+						</span>
 					</h1>
 
 					<p
-						className={`mb-6 max-w-xl text-justify text-base leading-relaxed text-[#ffffff] lg:text-xl ${GroteskRoman.className}`}
+						className={`mb-6 max-w-xl text-justify text-base leading-relaxed tracking-tighter text-[#ffffff] lg:text-lg lg:tracking-tight ${GoogleSansMedium.className}`}
 					>
 						An open-source icon library for{" "}
 						<Link
@@ -127,10 +131,10 @@ export default function Hero() {
 					<div className="flex w-full max-w-xl flex-col gap-4 lg:flex-row">
 						<Link
 							href={"/icons"}
-							className={`flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg bg-[#bffb4f] px-4 py-3 text-base text-[#000000] backdrop-blur-md transition-all duration-300 hover:bg-[#bffb4f]/90 hover:text-[#000000] ${GroteskRoman.className}`}
+							className={`flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg bg-[#bffb4f] px-4 py-3 text-base text-[#000000] backdrop-blur-md transition-all duration-300 hover:bg-[#bffb4f]/90 hover:text-[#000000] ${GoogleSansMedium.className}`}
 							onClick={() => trigger("medium")}
 						>
-							<Sparkles2 size={18} strokeWidth={1.5} />
+							<Sparkles2 size={20} strokeWidth={1.5} />
 							Browse All Icons
 						</Link>
 
@@ -144,10 +148,10 @@ export default function Hero() {
 							aria-label={isCommandCopied ? "Copied" : "Copy install command"}
 						>
 							<div className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden">
-								<span className={`text-[#bffb4f] ${GroteskRoman.className}`}>$</span>
+								<span className={`text-[#bffb4f] ${GoogleSansMedium.className}`}>$</span>
 
 								<span
-									className={`truncate text-start text-base text-[#ffffff] ${GroteskRoman.className}`}
+									className={`truncate text-start text-base tracking-tight text-[#ffffff] ${GoogleSansMedium.className}`}
 								>
 									{installCommand}
 								</span>
@@ -169,7 +173,7 @@ export default function Hero() {
 							target="_blank"
 							rel="noopener noreferrer"
 							onClick={() => trigger("light")}
-							className={`hidden w-fit cursor-pointer self-center rounded-lg border border-[#fafafa]/15 bg-[#161616] px-3 py-2 text-center text-xs text-[#ffffff] transition-colors duration-300 hover:border-[#bffb4f] hover:text-[#bffb4f] lg:inline-flex ${GroteskRoman.className}`}
+							className={`hidden w-fit cursor-pointer self-center rounded-lg border border-[#fafafa]/15 bg-[#161616] px-3 py-2 text-center text-xs text-[#ffffff] transition-colors duration-300 hover:border-[#bffb4f] hover:text-[#bffb4f] lg:inline-flex ${GoogleSansMedium.className}`}
 						>
 							Ask AI
 						</Link>
@@ -200,7 +204,7 @@ export default function Hero() {
 							<Search size={22} strokeWidth={1.5} color="#000000" />
 
 							<span
-								className={`text-start text-base text-[#000000] lg:text-lg ${GroteskRoman.className}`}
+								className={`text-start text-base text-[#000000] lg:text-lg ${GoogleSansMedium.className}`}
 							>
 								Search {iconCount || 0} icons...
 							</span>

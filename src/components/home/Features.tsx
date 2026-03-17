@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskBold, GroteskMedium, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 
 import { Layers, Feather, Download, PenTool, Heart, Code } from "@deemlol/next-icons";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
@@ -43,11 +43,11 @@ const FeatureCard = ({ title, description, icon: Icon, delay }: { title: string;
 				<Icon size={34} strokeWidth={1.5} />
 			</div>
 
-			<h3 className={`mb-2 text-start text-2xl tracking-wide text-[#ffffff] ${GroteskMedium.className}`}>
+			<h3 className={`mb-2 text-start text-2xl text-[#ffffff] ${GoogleSansBold.className}`}>
 				{title}
 			</h3>
 
-			<p className={`relative z-10 text-justify text-base text-[#ffffff]/70 ${GroteskRoman.className}`}>
+			<p className={`relative z-10 text-justify text-base text-[#ffffff]/70 ${GoogleSansMedium.className}`}>
 				{description}
 			</p>
 
@@ -69,13 +69,13 @@ export default function Features() {
 					className="mb-10"
 				>
 					<h2
-						className={`mb-4 text-center text-[1.8rem] text-[#FFFFFF] lg:text-end lg:text-7xl ${GroteskBold.className}`}
+						className={`mb-2 text-center text-[1.8rem] tracking-tight text-[#FFFFFF] lg:mb-6 lg:text-end lg:text-7xl ${GoogleSansBold.className}`}
 					>
 						Engineered for <span className="text-[#bffb4f]">perfection</span>
 					</h2>
 
 					<p
-						className={`text-center text-lg text-[#ffffff]/60 lg:text-end lg:text-xl ${GroteskRoman.className}`}
+						className={`text-center text-base tracking-tight text-[#ffffff]/70 lg:text-end lg:text-xl ${GoogleSansRegular.className}`}
 					>
 						Obsessive attention to detail, ensuring clarity and consistency across your entire project.
 					</p>
@@ -84,13 +84,13 @@ export default function Features() {
 				<div className="grid gap-6 lg:grid-cols-3">
 					<FeatureCard
 						title="Elegant Shapes"
-						description="We design simple and unique icons based on a consistent grid system with strict geometric principles."
+						description="Simple and unique icons based on a consistent grid system with strict geometric principles."
 						icon={Heart}
 						delay={0.1}
 					/>
 					<FeatureCard
 						title="Lightweight"
-						description="The vectors are optimized using a minimal number of anchor points to achieve the smallest possible file size."
+						description="Vectors are optimized using a minimal number of anchor points to achieve smallest possible size."
 						icon={Feather}
 						delay={0.2}
 					/>
@@ -108,7 +108,7 @@ export default function Features() {
 					/>
 					<FeatureCard
 						title="Recolor Instantly"
-						description="With the color picker, you can change the color of the icons with one click and see the changes in real-time."
+						description="With the color picker, you can change the color of the icons with one click."
 						icon={PenTool}
 						delay={0.5}
 					/>

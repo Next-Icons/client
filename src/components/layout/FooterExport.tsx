@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskBlack, GroteskBold, GroteskLight, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 import { GITHUB_REPO_URL, NPM_PACKAGE_URL } from "@/utils/constants";
 import StatusWidget from "../StatusWidget";
 
@@ -65,7 +65,7 @@ export default function FooterExport() {
 					<div className="lg:col-span-5">
 						<Link
 							href={"/"}
-							className={`flex items-center gap-3 text-3xl tracking-wide text-[#ffffff] ${GroteskBlack.className}`}
+							className={`flex items-center gap-3 text-3xl text-[#ffffff] ${GoogleSansBold.className}`}
 							onClick={() => trigger("medium")}
 						>
 							<Image
@@ -81,7 +81,7 @@ export default function FooterExport() {
 						</Link>
 
 						<p
-							className={`mt-4 mb-4 max-w-sm text-base leading-relaxed text-[#ffffff]/70 ${GroteskRoman.className}`}
+							className={`mt-4 mb-4 max-w-sm text-base leading-relaxed tracking-tight text-[#ffffff]/70 ${GoogleSansRegular.className}`}
 						>
 							An open-source icon library for React and Next.js.
 						</p>
@@ -93,7 +93,7 @@ export default function FooterExport() {
 						{FOOTER_LINKS.map((column) => (
 							<div key={column?.title}>
 								<h3
-									className={`mb-4 text-base tracking-wider text-[#ffffff] uppercase ${GroteskBold.className}`}
+									className={`mb-4 text-base tracking-wider text-[#ffffff] uppercase ${GoogleSansMedium.className}`}
 								>
 									{column?.title}
 								</h3>
@@ -106,13 +106,13 @@ export default function FooterExport() {
 												target={link?.external ? "_blank" : undefined}
 												rel={link?.external ? "noopener noreferrer" : undefined}
 												onClick={() => trigger("light")}
-												className={`group flex w-fit items-center ${link?.badge ? "cursor-not-allowed opacity-100" : "transition-colors duration-300 hover:text-[#bffb4f]"} gap-2 text-sm text-[#ffffff]/70 ${GroteskRoman.className}`}
+												className={`group flex w-fit items-center ${link?.badge ? "cursor-not-allowed opacity-100" : "transition-colors duration-300 hover:text-[#bffb4f]"} gap-2 text-sm text-[#ffffff]/80 ${GoogleSansRegular.className}`}
 											>
 												<span className={link?.badge ? "opacity-70" : ""}>{link?.name}</span>
 
 												{link?.badge && (
 													<span
-														className={`rounded-full border border-[#bffb4f]/30 bg-[#bffb4f]/10 px-1.5 py-0.5 text-[10px] text-[#bffb4f] backdrop-blur-sm ${GroteskRoman.className}`}
+														className={`rounded-full border border-[#bffb4f]/30 bg-[#bffb4f]/10 px-1.5 py-0.5 text-[10px] text-[#bffb4f] backdrop-blur-sm ${GoogleSansRegular.className}`}
 													>
 														{link?.badge}
 													</span>
@@ -128,7 +128,7 @@ export default function FooterExport() {
 
 				<div className="border-t border-[#ffffff]/5 pt-6">
 					<div className="flex flex-col items-start justify-between gap-4 md:flex-row lg:items-center">
-						<p className={`text-start text-sm text-[#ffffff]/70 ${GroteskLight.className}`}>
+						<p className={`text-start text-sm text-[#ffffff]/70 ${GoogleSansRegular.className}`}>
 							&copy; {currentYear} Next Icons. All rights reserved.
 						</p>
 

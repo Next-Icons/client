@@ -1,14 +1,59 @@
 "use client";
 
-import { GroteskBold, GroteskMedium } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium } from "@/utils/fonts";
 import { useNpmStats } from "@/hooks/useNpmStats";
 
 import { motion } from "framer-motion";
 import * as React from "react";
 
+function formatCompactNumber(value: number): string {
+	if (value >= 1000) return `${(value / 1000).toFixed(1).replace(/\.0$/, "")}k`;
+	return value.toString();
+}
+
+function useCountUp(target: number, duration = 1600): number {
+	const [count, setCount] = React.useState(0);
+
+	React.useEffect(() => {
+		if (target <= 0) return setCount(0);
+
+		let animationFrameId = 0;
+		let startTime = 0;
+
+		const animate = (time: number) => {
+			if (startTime === 0) startTime = time;
+
+			const progress = Math.min((time - startTime) / duration, 1);
+			const easedProgress = 1 - Math.pow(1 - progress, 3);
+			const nextCount = Math.round(target * easedProgress);
+
+			setCount(nextCount);
+
+			if (progress < 1) {
+				animationFrameId = window.requestAnimationFrame(animate);
+			}
+		};
+
+		setCount(0);
+		animationFrameId = window.requestAnimationFrame(animate);
+
+		return () => {
+			window.cancelAnimationFrame(animationFrameId);
+		};
+	}, [duration, target]);
+
+	return count;
+}
+
+function AnimatedStatNumber({ value, compact }: { value: number; compact?: boolean }) {
+	const animatedValue = useCountUp(value);
+
+	return <>{compact ? formatCompactNumber(animatedValue) : animatedValue}</>;
+}
+
 export default function Stats() {
 	const [animatedIconCount, setAnimatedIconCount] = React.useState(0);
-	const { formattedDownloads } = useNpmStats("@deemlol/next-icons");
+	const { downloads } = useNpmStats("@deemlol/next-icons");
 	const [iconCount, setIconCount] = React.useState(0);
 
 	React.useEffect(() => {
@@ -62,9 +107,9 @@ export default function Stats() {
 			<div className="mx-auto max-w-7xl px-4 py-14 2xl:px-0">
 				<div className="grid grid-cols-3 gap-4 sm:gap-0">
 					{[
-						{ number: formattedDownloads || "0", label: "Downloads" },
-						{ number: iconCount || "0", label: "Static Icons" },
-						{ number: animatedIconCount || "0", label: "Animated Icons" },
+						{ value: downloads || 0, label: "Downloads", compact: true },
+						{ value: iconCount || 0, label: "Static Icons" },
+						{ value: animatedIconCount || 0, label: "Animated Icons" },
 					].map((stat, i) => (
 						<motion.div
 							key={i}
@@ -77,13 +122,13 @@ export default function Stats() {
 							}`}
 						>
 							<span
-								className={`text-center text-4xl text-[#bffb4f] lg:text-7xl ${GroteskBold.className}`}
+								className={`text-center text-4xl tracking-tight text-[#bffb4f] lg:text-7xl ${GoogleSansBold.className}`}
 							>
-								{stat?.number}
+								<AnimatedStatNumber value={stat?.value} compact={stat?.compact} />
 							</span>
 
 							<span
-								className={`text-xs tracking-widest text-[#a1a1aa] uppercase lg:text-sm ${GroteskMedium.className}`}
+								className={`text-xs text-[#a1a1aa] uppercase lg:text-sm ${GoogleSansMedium.className}`}
 							>
 								{stat?.label}
 							</span>

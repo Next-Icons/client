@@ -10,6 +10,9 @@ The library is lightweight and built for modern frontend development.
 Icons Library
 https://www.nexticons.com/icons
 
+Animated Icons
+https://www.nexticons.com/animated-icons
+
 Contact  
 https://www.nexticons.com/contact
 

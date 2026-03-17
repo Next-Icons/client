@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskBlack, GroteskBold, GroteskMedium, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular, GoogleSansSemiBold } from "@/utils/fonts";
 import { DOMAIN_BASE_URL, EMAIL_ADDRESS } from "@/utils/constants";
 
 import { useWebHaptics } from "web-haptics/react";
@@ -18,15 +18,15 @@ export default function PrivacyPolicyExport() {
 			className="min-h-screen px-4 pt-30 pb-30 lg:pt-42 2xl:px-0"
 		>
 			<div className="mx-auto max-w-7xl">
-				<h1 className={`mb-4 text-start text-4xl text-[#bffb4f] lg:text-7xl ${GroteskBlack.className}`}>
+				<h1 className={`mb-4 text-start text-5xl text-[#bffb4f] lg:text-7xl ${GoogleSansBold.className}`}>
 					Privacy Policy
 				</h1>
 
-				<p className={`mb-12 text-start text-base text-[#ffffff]/60 ${GroteskRoman.className}`}>
+				<p className={`mb-12 text-start text-base text-[#ffffff]/60 ${GoogleSansRegular.className}`}>
 					Last updated: March 15, 2026
 				</p>
 
-				<div className={`space-y-14 text-justify text-[#ffffff]/80 ${GroteskRoman.className}`}>
+				<div className={`space-y-14 text-justify text-[#ffffff]/90 ${GoogleSansRegular.className}`}>
 					<section>
 						<p className="leading-relaxed">
 							Welcome to Next Icons (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We are committed
@@ -47,7 +47,7 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>
+						<h2 className={`mb-4 text-xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
 							1. Information We Collect
 						</h2>
 
@@ -56,7 +56,7 @@ export default function PrivacyPolicyExport() {
 							website.
 						</p>
 
-						<h3 className={`mb-2 text-lg text-[#ffffff] ${GroteskMedium.className}`}>
+						<h3 className={`mb-2 text-lg text-[#ffffff] ${GoogleSansMedium.className}`}>
 							a) Information You Provide Voluntarily
 						</h3>
 
@@ -68,7 +68,7 @@ export default function PrivacyPolicyExport() {
 							</li>
 						</ul>
 
-						<h3 className={`mb-2 text-lg text-[#ffffff] ${GroteskMedium.className}`}>
+						<h3 className={`mb-2 text-lg text-[#ffffff] ${GoogleSansMedium.className}`}>
 							b) Automatically Collected Information
 						</h3>
 
@@ -91,7 +91,7 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>
+						<h2 className={`mb-4 text-xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
 							2. How We Use Your Information
 						</h2>
 
@@ -119,7 +119,7 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>
+						<h2 className={`mb-4 text-2xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
 							3. Cookies and Tracking Technologies
 						</h2>
 
@@ -143,7 +143,7 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>
+						<h2 className={`mb-4 text-xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
 							4. Third-Party Services
 						</h2>
 
@@ -173,7 +173,9 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>5. Data Retention</h2>
+						<h2 className={`mb-4 text-xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
+							5. Data Retention
+						</h2>
 
 						<ul className="list-decimal pl-5 leading-relaxed">
 							<li className="mb-2">
@@ -191,7 +193,9 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>6. Your Rights</h2>
+						<h2 className={`mb-4 text-xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
+							6. Your Rights
+						</h2>
 
 						<p className="mb-4 leading-relaxed">
 							Depending on your location (e.g., EEA/GDPR), you may have the following rights:
@@ -217,7 +221,7 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>
+						<h2 className={`mb-4 text-xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
 							7. Updates to This Policy
 						</h2>
 
@@ -228,7 +232,9 @@ export default function PrivacyPolicyExport() {
 					</section>
 
 					<section>
-						<h2 className={`mb-4 text-3xl text-[#ffffff] ${GroteskBold.className}`}>8. Contact Us</h2>
+						<h2 className={`mb-4 text-xl text-[#ffffff] md:text-3xl ${GoogleSansSemiBold.className}`}>
+							8. Contact Us
+						</h2>
 
 						<p className="leading-relaxed">
 							If you have questions or comments about this policy, you may email us at:{" "}

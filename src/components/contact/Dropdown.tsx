@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskRoman } from "@/utils/fonts";
+import { GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 
 import { ChevronDown } from "@deemlol/next-icons";
 import { useWebHaptics } from "web-haptics/react";
@@ -38,7 +38,7 @@ export default function Dropdown({
 
 	return (
 		<div className="relative" ref={dropdownRef}>
-			<label className={`mb-2 block text-base text-[#ffffff] ${GroteskRoman.className}`}>
+			<label className={`mb-2 block text-base tracking-tight text-[#ffffff] ${GoogleSansMedium.className}`}>
 				{label} <span className="text-[#ff6467]">*</span>
 			</label>
 
@@ -48,7 +48,7 @@ export default function Dropdown({
 					setIsOpen((prev) => !prev);
 					trigger("medium");
 				}}
-				className={`flex w-full cursor-pointer items-center justify-between rounded-lg border border-[#ffffff]/8 bg-[#ffffff]/4 px-4 py-3 text-start text-base text-[#ffffff] backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${error ? "border-[#ff6467] text-[#ff6467]" : ""} ${GroteskRoman.className}`}
+				className={`flex w-full cursor-pointer items-center justify-between rounded-lg border border-[#ffffff]/8 bg-[#ffffff]/4 px-4 py-3 text-start text-base text-[#ffffff] backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${error ? "border-[#ff6467] text-[#ff6467]" : ""} ${GoogleSansRegular.className}`}
 			>
 				<span className={value ? "text-[#ffffff]" : "text-[#ffffff]/80"}>{value || label}</span>
 
@@ -70,7 +70,7 @@ export default function Dropdown({
 								setIsOpen(false);
 								trigger("medium");
 							}}
-							className={`w-full cursor-pointer px-4 py-3 text-start text-base transition-colors duration-300 hover:bg-[#bffb4f] hover:text-[#000000] ${value === option ? "bg-[#bffb4f] text-[#000000]" : "text-[#ffffff]"} ${GroteskRoman.className}`}
+							className={`w-full cursor-pointer px-4 py-3 text-start text-base transition-colors duration-300 hover:bg-[#bffb4f] hover:text-[#000000] ${value === option ? "bg-[#bffb4f] text-[#000000]" : "text-[#ffffff]"} ${GoogleSansRegular.className}`}
 						>
 							{option}
 						</button>
@@ -78,7 +78,9 @@ export default function Dropdown({
 				</div>
 			)}
 
-			{error ? <p className={`mt-1 text-sm text-[#ff6467] ${GroteskRoman.className}`}>{error}</p> : null}
+			{error ? (
+				<p className={`mt-1 text-sm tracking-tight text-[#ff6467] ${GoogleSansRegular.className}`}>{error}</p>
+			) : null}
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskBold, GroteskMedium, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 
 //prettier-ignore
 import { Layers, Feather, Settings, Download, Search, PenTool, Monitor, Globe, CheckCircle, Sparkles2, ChevronRight, ChevronDown, Heart, ChevronLeft, ChevronUp, Phone, PhoneCall, PhoneForwarded, PhoneIncoming, Zap, Box, RotateCcw, Code } from "@deemlol/next-icons";
@@ -52,7 +52,7 @@ export default function Customization() {
 						initial={{ opacity: 0, y: 20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
-						className={`mb-4 text-center text-[2.4rem] text-[#FFFFFF] lg:text-start lg:text-7xl ${GroteskBold.className}`}
+						className={`mb-4 text-center text-[2.4rem] tracking-tighter text-[#FFFFFF] lg:text-start lg:text-7xl lg:tracking-tight ${GoogleSansBold.className}`}
 					>
 						Style as you <span className="text-[#bffb4f]">please</span>
 					</motion.h2>
@@ -62,7 +62,7 @@ export default function Customization() {
 						whileInView={{ opacity: 1, y: 0 }}
 						viewport={{ once: true }}
 						transition={{ delay: 0.1 }}
-						className={`text-center text-lg text-[#ffffff]/60 lg:text-start ${GroteskRoman.className}`}
+						className={`text-center text-base tracking-tight text-[#ffffff]/70 lg:text-start ${GoogleSansRegular.className}`}
 					>
 						Customize the icons to fit your needs, from the color to the size and stroke width.
 					</motion.p>
@@ -116,9 +116,7 @@ export default function Customization() {
 							</button>
 
 							<div>
-								<label
-									className={`mb-4 block text-lg tracking-wide text-[#ffffff] ${GroteskMedium.className}`}
-								>
+								<label className={`mb-4 block text-lg text-[#ffffff] ${GoogleSansMedium.className}`}>
 									Pick a color
 								</label>
 
@@ -144,12 +142,12 @@ export default function Customization() {
 								<div className="mb-4 flex items-center justify-between">
 									<label
 										htmlFor="icon-size-input"
-										className={`block text-lg tracking-wide text-[#ffffff] ${GroteskMedium.className}`}
+										className={`block text-lg text-[#ffffff] ${GoogleSansMedium.className}`}
 									>
 										Size
 									</label>
 
-									<span className={`text-base text-[#ffffff]/80 ${GroteskRoman.className}`}>
+									<span className={`text-base text-[#ffffff]/80 ${GoogleSansMedium.className}`}>
 										{size}px
 									</span>
 								</div>
@@ -173,12 +171,12 @@ export default function Customization() {
 								<div className="mb-4 flex items-center justify-between">
 									<label
 										htmlFor="icon-stroke-width-input"
-										className={`block text-lg tracking-wide text-[#ffffff] ${GroteskMedium.className}`}
+										className={`block text-lg text-[#ffffff] ${GoogleSansMedium.className}`}
 									>
 										Stroke Width
 									</label>
 
-									<span className={`text-base text-[#ffffff]/80 ${GroteskRoman.className}`}>
+									<span className={`text-base text-[#ffffff]/80 ${GoogleSansMedium.className}`}>
 										{strokeWidth}px
 									</span>
 								</div>
@@ -201,12 +199,12 @@ export default function Customization() {
 
 						<div className="relative overflow-hidden rounded-xl border border-[#ffffff]/5 bg-[#111111] p-6">
 							<div className="mb-4">
-								<span className={`text-base text-[#ffffff] ${GroteskMedium.className}`}>
+								<span className={`text-base text-[#ffffff] ${GoogleSansMedium.className}`}>
 									Code Preview
 								</span>
 							</div>
 
-							<pre className={`font-mono text-sm text-[#bffb4f]`}>{codeSnippet}</pre>
+							<pre className={`text-sm text-[#bffb4f] ${GoogleSansMedium.className}`}>{codeSnippet}</pre>
 						</div>
 					</motion.div>
 				</div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskMedium, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 
 import { Search, Sparkles2, Type, GitHub, Email, List, NPMJs, PlayCircle } from "@deemlol/next-icons";
 import { motion, AnimatePresence } from "framer-motion";
@@ -137,7 +137,7 @@ export default function GlobalSearch() {
 					onChange={(e) => setQuery(e?.target?.value)}
 					onFocus={() => setIsFocused(true)}
 					onClick={() => trigger("medium")}
-					className={`block w-40 rounded-full border border-[#ffffff]/8 bg-[#ffffff]/4 py-2 pr-3 pl-10 text-sm text-[#ffffff] placeholder-[#ffffff] backdrop-blur-lg transition-all duration-300 focus:w-80 focus:border-none focus:bg-[#bffb4f] focus:text-[#000000] focus:shadow-2xl focus:shadow-[#bffb4f] focus:outline-none focus:placeholder:text-[#000000] ${GroteskRoman.className} ${
+					className={`block w-40 rounded-full border border-[#ffffff]/8 bg-[#ffffff]/4 py-2 pr-3 pl-10 text-sm text-[#ffffff] placeholder-[#ffffff] backdrop-blur-lg transition-all duration-300 focus:w-80 focus:border-none focus:bg-[#bffb4f] focus:text-[#000000] focus:shadow-2xl focus:shadow-[#bffb4f] focus:outline-none focus:placeholder:text-[#000000] ${GoogleSansMedium.className} ${
 						isFocused ? "w-80 bg-[#bffb4f] text-[#000000] placeholder:text-[#000000]" : ""
 					}`}
 					placeholder="Search..."
@@ -145,7 +145,7 @@ export default function GlobalSearch() {
 
 				<div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
 					<span
-						className={`flex h-5 w-5 items-center justify-center rounded bg-[#ffffff] text-xs text-[#000000] ${GroteskRoman.className} ${
+						className={`flex h-5 w-5 items-center justify-center rounded bg-[#ffffff] text-xs text-[#000000] ${GoogleSansBold.className} ${
 							isFocused ? "opacity-0" : "opacity-100"
 						}`}
 					>
@@ -167,7 +167,7 @@ export default function GlobalSearch() {
 							{results?.length > 0 ? (
 								<>
 									<div
-										className={`px-2 py-1 text-start text-xs text-[#ffffff]/60 ${GroteskRoman.className}`}
+										className={`px-2 py-1 text-start text-xs text-[#ffffff]/60 ${GoogleSansMedium.className}`}
 									>
 										{query ? "Search Results" : "Suggested"}
 									</div>
@@ -195,13 +195,13 @@ export default function GlobalSearch() {
 
 											<div>
 												<div
-													className={`text-sm text-[#ffffff] group-hover:text-[#000000] ${GroteskMedium.className}`}
+													className={`text-sm text-[#ffffff] group-hover:text-[#000000] ${GoogleSansMedium.className}`}
 												>
 													{item?.name}
 												</div>
 
 												<div
-													className={`text-xs text-[#ffffff]/70 group-hover:text-[#000000]/70 ${GroteskRoman.className}`}
+													className={`text-xs text-[#ffffff]/90 group-hover:text-[#000000]/70 ${GoogleSansRegular.className}`}
 												>
 													{item?.description}
 												</div>
@@ -210,7 +210,9 @@ export default function GlobalSearch() {
 									))}
 								</>
 							) : (
-								<div className={`p-4 text-center text-base text-[#ffffff] ${GroteskRoman.className}`}>
+								<div
+									className={`p-4 text-center text-base text-[#ffffff] ${GoogleSansMedium.className}`}
+								>
 									No results found
 								</div>
 							)}

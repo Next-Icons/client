@@ -1,37 +1,41 @@
-import localFont from "next/font/local";
+import { Google_Sans } from "next/font/google";
 
-export const GroteskBlack = localFont({
-	src: "../../public/fonts/GroteskBlack.ttf",
+export const GoogleSansRegular = Google_Sans({
+	weight: "400",
+	style: "normal",
 	display: "swap",
+	subsets: ["latin"],
+	adjustFontFallback: false,
+	variable: "--font-google-sans-regular",
 	preload: false,
 });
 
-export const GroteskBold = localFont({
-	src: "../../public/fonts/GroteskBold.ttf",
+export const GoogleSansMedium = Google_Sans({
+	weight: "500",
+	style: "normal",
 	display: "swap",
+	subsets: ["latin"],
+	adjustFontFallback: false,
+	variable: "--font-google-sans-medium",
 	preload: false,
 });
 
-export const GroteskLight = localFont({
-	src: "../../public/fonts/GroteskLight.ttf",
+export const GoogleSansSemiBold = Google_Sans({
+	weight: "600",
+	style: "normal",
 	display: "swap",
+	subsets: ["latin"],
+	adjustFontFallback: false,
+	variable: "--font-google-sans-semi-bold",
 	preload: false,
 });
 
-export const GroteskMedium = localFont({
-	src: "../../public/fonts/GroteskMedium.ttf",
+export const GoogleSansBold = Google_Sans({
+	weight: "700",
+	style: "normal",
 	display: "swap",
-	preload: false,
-});
-
-export const GroteskRoman = localFont({
-	src: "../../public/fonts/GroteskRoman.ttf",
-	display: "swap",
-	preload: false,
-});
-
-export const GroteskThin = localFont({
-	src: "../../public/fonts/GroteskThin.ttf",
-	display: "swap",
+	subsets: ["latin"],
+	adjustFontFallback: false,
+	variable: "--font-google-sans-bold",
 	preload: false,
 });

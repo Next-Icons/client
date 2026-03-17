@@ -1,6 +1,6 @@
 "use client";
 
-import { GroteskBold, GroteskMedium, GroteskRoman } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
 import Dropdown from "@/components/contact/Dropdown";
 
 import { Check, Shield } from "@deemlol/next-icons";
@@ -199,13 +199,13 @@ export default function ContactExport() {
 			<div className="w-full px-4 pt-30 pb-30 lg:pt-0 lg:pb-0 2xl:px-0">
 				<div className="mx-auto max-w-2xl">
 					<h1
-						className={`${GroteskBold.className} text-start text-[2.4rem] text-[#bffb4f] md:text-center md:text-[4.8rem]`}
+						className={`${GoogleSansBold.className} text-start text-[2.3rem] tracking-tight text-[#bffb4f] md:text-center md:text-[4.6rem]`}
 					>
 						Get in touch with us
 					</h1>
 
 					<p
-						className={`${GroteskRoman.className} pb-14 text-start text-base text-[#ffffff] md:text-center md:text-xl`}
+						className={`${GoogleSansRegular.className} pb-14 text-start text-base tracking-tight text-[#ffffff] md:text-center md:text-xl`}
 					>
 						Do you have question, issues or suggestions?{" "}
 						<span className="hidden md:inline">Our team is here to help you.</span>
@@ -218,17 +218,16 @@ export default function ContactExport() {
 							className="rounded-lg bg-[#bffb4f] p-6"
 						>
 							<h3
-								className={`mb-2 text-center text-[1.47rem] text-[#000000] md:text-4xl ${GroteskMedium.className}`}
+								className={`mb-2 text-center text-[1.3rem] text-[#000000] md:text-4xl ${GoogleSansBold.className}`}
 							>
 								Thank you for your message!
 							</h3>
 
 							<p
-								className={`text-justify text-sm text-[#000000] md:text-start md:text-base ${GroteskRoman.className}`}
+								className={`text-justify text-sm tracking-tight text-[#000000] md:text-base ${GoogleSansRegular.className}`}
 							>
-								Thank you for your message. It has been sent and We will get back to you as soon as
-								possible using the contact information you provided. You can expect a response within 24
-								hours.
+								Thank you for your message. It has been sent and we will get back to you as soon as
+								possible using the contact information. You can expect a response within 24 hours.
 							</p>
 
 							<button
@@ -237,7 +236,7 @@ export default function ContactExport() {
 									setIsSubmitted(false);
 									trigger("light");
 								}}
-								className={`mt-6 cursor-pointer text-base text-[#000000] underline ${GroteskRoman.className}`}
+								className={`mt-6 cursor-pointer text-base text-[#000000] underline ${GoogleSansMedium.className}`}
 							>
 								Send another message
 							</button>
@@ -246,7 +245,7 @@ export default function ContactExport() {
 						<form onSubmit={handleSubmit} className="space-y-5">
 							{errors.form ? (
 								<div
-									className={`rounded-lg border border-[#f00c0c]/15 bg-[#ff6467]/10 px-4 py-2.5 text-sm text-[#ff6467] md:text-base ${GroteskRoman.className}`}
+									className={`rounded-lg border border-[#f00c0c]/15 bg-[#ff6467]/10 px-4 py-2.5 text-sm tracking-tight text-[#ff6467] md:text-base ${GoogleSansMedium.className}`}
 								>
 									{errors?.form}
 								</div>
@@ -255,7 +254,7 @@ export default function ContactExport() {
 							<div>
 								<label
 									htmlFor="email"
-									className={`mb-2 block text-base text-[#ffffff] ${GroteskRoman.className}`}
+									className={`mb-2 block text-base tracking-tight text-[#ffffff] ${GoogleSansMedium.className}`}
 								>
 									E-mail Address <span className="text-[#ff6467]">*</span>
 								</label>
@@ -270,13 +269,13 @@ export default function ContactExport() {
 									maxLength={50}
 									onChange={handleChange}
 									onClick={() => trigger("light")}
-									className={`w-full rounded-lg border bg-[#ffffff]/4 px-4 py-3 text-base backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${errors?.email ? "border-[#ff6467] text-[#ff6467]" : "border-[#ffffff]/8 text-[#ffffff]"} ${GroteskRoman.className}`}
+									className={`w-full rounded-lg border bg-[#ffffff]/4 px-4 py-3 text-base backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${errors?.email ? "border-[#ff6467] text-[#ff6467]" : "border-[#ffffff]/8 text-[#ffffff]"} ${GoogleSansRegular.className}`}
 									placeholder="contact@nexticons.com"
 								/>
 
 								{errors?.email ? (
 									<p
-										className={`mt-1 text-sm tracking-wide text-[#ff6467] ${GroteskRoman.className}`}
+										className={`mt-1 text-sm tracking-tight text-[#ff6467] ${GoogleSansRegular.className}`}
 									>
 										{errors?.email}
 									</p>
@@ -286,7 +285,7 @@ export default function ContactExport() {
 							<div>
 								<label
 									htmlFor="subject"
-									className={`mb-2 block text-base text-[#ffffff] ${GroteskRoman.className}`}
+									className={`mb-2 block text-base tracking-tight text-[#ffffff] ${GoogleSansMedium.className}`}
 								>
 									Subject <span className="text-[#ff6467]">*</span>
 								</label>
@@ -301,13 +300,13 @@ export default function ContactExport() {
 									value={formData?.subject}
 									onChange={handleChange}
 									onClick={() => trigger("light")}
-									className={`w-full rounded-lg border bg-[#ffffff]/4 px-4 py-3 text-base backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${errors?.subject ? "border-[#ff6467] text-[#ff6467]" : "border-[#ffffff]/8 text-[#ffffff]"} ${GroteskRoman.className}`}
+									className={`w-full rounded-lg border bg-[#ffffff]/4 px-4 py-3 text-base backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${errors?.subject ? "border-[#ff6467] text-[#ff6467]" : "border-[#ffffff]/8 text-[#ffffff]"} ${GoogleSansRegular.className}`}
 									placeholder="What is your message about?"
 								/>
 
 								{errors?.subject ? (
 									<p
-										className={`mt-1 text-sm tracking-wide text-[#ff6467] ${GroteskRoman.className}`}
+										className={`mt-1 text-sm tracking-tight text-[#ff6467] ${GoogleSansRegular.className}`}
 									>
 										{errors?.subject}
 									</p>
@@ -344,7 +343,7 @@ export default function ContactExport() {
 							<div>
 								<label
 									htmlFor="message"
-									className={`mb-2 block text-base text-[#ffffff] ${GroteskRoman.className}`}
+									className={`mb-2 block text-base tracking-tight text-[#ffffff] ${GoogleSansRegular.className}`}
 								>
 									Message <span className="text-[#ff6467]">*</span>
 								</label>
@@ -359,14 +358,14 @@ export default function ContactExport() {
 									onChange={handleChange}
 									rows={4}
 									onClick={() => trigger("light")}
-									className={`w-full resize-none rounded-lg border bg-[#ffffff]/4 px-4 py-3 text-base backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${errors?.message ? "border-[#ff6467] text-[#ff6467]" : "border-[#ffffff]/8 text-[#ffffff]"} ${GroteskRoman.className}`}
+									className={`w-full resize-none rounded-lg border bg-[#ffffff]/4 px-4 py-3 text-base backdrop-blur-sm transition-all outline-none focus:border-[#bffb4f] focus:ring focus:ring-[#bffb4f]/40 ${errors?.message ? "border-[#ff6467] text-[#ff6467]" : "border-[#ffffff]/8 text-[#ffffff]"} ${GoogleSansRegular.className}`}
 									placeholder="Describe the reason for your contact. Include all the details."
 								/>
 
 								<div className="flex items-start justify-between">
 									{errors?.message ? (
 										<p
-											className={`mt-1 text-sm tracking-wide text-[#ff6467] ${GroteskRoman.className}`}
+											className={`mt-1 text-sm tracking-tight text-[#ff6467] ${GoogleSansRegular.className}`}
 										>
 											{errors?.message}
 										</p>
@@ -375,7 +374,7 @@ export default function ContactExport() {
 									)}
 
 									<div
-										className={`mt-1 text-xs ${GroteskRoman.className} ${formData?.message?.length >= 400 ? "text-[#ff6467]" : "text-[#fafafa]/60"}`}
+										className={`mt-1 text-xs ${GoogleSansMedium.className} ${formData?.message?.length >= 400 ? "text-[#ff6467]" : "text-[#fafafa]/60"}`}
 									>
 										{formData?.message?.length}/400
 									</div>
@@ -417,7 +416,9 @@ export default function ContactExport() {
 										)}
 									</div>
 
-									<span className={`text-sm text-[#fafafa] ${GroteskRoman.className}`}>
+									<span
+										className={`text-sm tracking-tight text-[#fafafa] ${GoogleSansMedium.className}`}
+									>
 										{captchaStatus === "solved"
 											? "Verification successful"
 											: captchaStatus === "solving"
@@ -432,7 +433,7 @@ export default function ContactExport() {
 							</div>
 
 							<label
-								className={`group flex cursor-pointer items-center gap-3 pt-2 text-sm text-[#ffffff] ${GroteskRoman.className}`}
+								className={`group flex cursor-pointer items-center gap-3 pt-2 text-sm text-[#ffffff] ${GoogleSansRegular.className}`}
 								onClick={() => trigger("medium")}
 							>
 								<input
@@ -450,7 +451,7 @@ export default function ContactExport() {
 								</span>
 
 								<span
-									className={`${errors?.consent ? "text-[#ff6467]" : "text-[#ffffff]"} ${GroteskRoman.className}`}
+									className={`${errors?.consent ? "text-[#ff6467]" : "text-[#ffffff]"} ${GoogleSansRegular.className}`}
 								>
 									I have read and understood the{" "}
 									<Link
@@ -470,7 +471,7 @@ export default function ContactExport() {
 								type="submit"
 								disabled={isSubmitting || captchaStatus !== "solved"}
 								onClick={() => trigger("success")}
-								className={`w-full cursor-pointer rounded-lg bg-[#bffb4f] px-8 py-3 text-center text-[#000000] transition-all duration-300 hover:bg-[#bffb4f]/80 disabled:cursor-not-allowed disabled:opacity-60 ${GroteskRoman.className}`}
+								className={`w-full cursor-pointer rounded-lg bg-[#bffb4f] px-8 py-3 text-center text-[#000000] transition-all duration-300 hover:bg-[#bffb4f]/80 disabled:cursor-not-allowed disabled:opacity-60 ${GoogleSansMedium.className}`}
 							>
 								{isSubmitting ? "Sending..." : "Send Message"}
 							</button>
