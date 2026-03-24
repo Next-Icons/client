@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
 
-import { ChevronLeft, Search, Box, Zap } from "@deemlol/next-icons";
-import { useWebHaptics } from "web-haptics/react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { ChevronLeft, Search, Box, Zap } from "@deemlol/next-icons"
+import { useWebHaptics } from "web-haptics/react"
+import { motion } from "framer-motion"
+import Link from "next/link"
 
 const NotFoundExport = () => {
-	const { trigger } = useWebHaptics();
+	const { trigger } = useWebHaptics()
 
 	return (
 		<div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 2xl:px-0">
@@ -30,7 +30,11 @@ const NotFoundExport = () => {
 					transition={{ delay: 0.4, duration: 0.6, type: "spring" }}
 					className="absolute -top-12 -right-10 hidden rounded-xl bg-[#bffb4f] p-4 shadow-2xl shadow-[#bffb4f] lg:block"
 				>
-					<Box size={56} color="#000000" strokeWidth={1.5} />
+					<Box
+						size={56}
+						color="#000000"
+						strokeWidth={1.5}
+					/>
 				</motion.div>
 
 				<motion.div
@@ -39,7 +43,11 @@ const NotFoundExport = () => {
 					transition={{ delay: 0.5, duration: 0.6, type: "spring" }}
 					className="absolute -bottom-4 -left-12 hidden rounded-xl bg-[#bffb4f] p-4 shadow-2xl shadow-[#bffb4f] lg:block"
 				>
-					<Zap size={32} color="#000000" strokeWidth={1.5} />
+					<Zap
+						size={32}
+						color="#000000"
+						strokeWidth={1.5}
+					/>
 				</motion.div>
 			</motion.div>
 
@@ -96,7 +104,7 @@ const NotFoundExport = () => {
 				</Link>
 			</motion.div>
 		</div>
-	);
-};
+	)
+}
 
-export default NotFoundExport;
+export default NotFoundExport

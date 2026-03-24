@@ -1,31 +1,31 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
 interface StatusWidgetProps {
-	theme?: "light" | "dark" | "custom";
-	customColor?: string;
-	monitorId?: string;
+	theme?: "light" | "dark" | "custom"
+	customColor?: string
+	monitorId?: string
 }
 
 export default function StatusWidget({
 	theme = "custom",
 	customColor = "#111111",
-	monitorId = "699e3c3af7cb1dca93a4581c",
+	monitorId = "699e3c3af7cb1dca93a4581c"
 }: StatusWidgetProps) {
 	React.useEffect(() => {
-		const s = document?.createElement("script");
+		const s = document?.createElement("script")
 
-		s.src = "https://quiccstatus.com/script.js";
-		s.async = true;
-		document?.body?.appendChild(s);
+		s.src = "https://quiccstatus.com/script.js"
+		s.async = true
+		document?.body?.appendChild(s)
 
 		return () => {
 			try {
-				document?.body?.removeChild(s);
+				document?.body?.removeChild(s)
 			} catch {}
-		};
-	}, []);
+		}
+	}, [])
 
 	return (
 		<div
@@ -35,5 +35,5 @@ export default function StatusWidget({
 			data-background-color={customColor}
 			data-monitor={monitorId}
 		/>
-	);
+	)
 }

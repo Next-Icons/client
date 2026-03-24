@@ -1,67 +1,73 @@
-"use client";
+"use client"
 
-import { GoogleSansMedium } from "@/utils/fonts";
+import { GoogleSansMedium } from "@/utils/fonts"
 
-import { motion, AnimatePresence } from "framer-motion";
-import { useWebHaptics } from "web-haptics/react";
-import * as React from "react";
+import { motion, AnimatePresence } from "framer-motion"
+import { useWebHaptics } from "web-haptics/react"
+import * as React from "react"
 
 export default function ColorPicker({ color, onChange }: { color: string; onChange: (color: string) => void }) {
-	const [openDirection, setOpenDirection] = React.useState<"up" | "down">("down");
-	const containerRef = React.useRef<HTMLDivElement>(null);
-	const dropdownRef = React.useRef<HTMLDivElement>(null);
-	const [isOpen, setIsOpen] = React.useState(false);
-	const { trigger } = useWebHaptics();
+	const [openDirection, setOpenDirection] = React.useState<"up" | "down">("down")
+	const containerRef = React.useRef<HTMLDivElement>(null)
+	const dropdownRef = React.useRef<HTMLDivElement>(null)
+	const [isOpen, setIsOpen] = React.useState(false)
+	const { trigger } = useWebHaptics()
 
 	const updateDropdownDirection = React.useCallback(() => {
-		if (!containerRef?.current) return;
+		if (!containerRef?.current) return
 
-		const rect = containerRef?.current?.getBoundingClientRect();
-		const viewportHeight = window.innerHeight;
-		const dropdownHeight = dropdownRef?.current?.offsetHeight ?? 300;
-		const spaceBelow = viewportHeight - rect.bottom;
-		const spaceAbove = rect.top;
-		const shouldOpenUp = spaceBelow < Math.min(240, dropdownHeight) && spaceAbove > spaceBelow;
+		const rect = containerRef?.current?.getBoundingClientRect()
+		const viewportHeight = window.innerHeight
+		const dropdownHeight = dropdownRef?.current?.offsetHeight ?? 300
+		const spaceBelow = viewportHeight - rect.bottom
+		const spaceAbove = rect.top
+		const shouldOpenUp = spaceBelow < Math.min(240, dropdownHeight) && spaceAbove > spaceBelow
 
-		setOpenDirection(shouldOpenUp ? "up" : "down");
-	}, []);
+		setOpenDirection(shouldOpenUp ? "up" : "down")
+	}, [])
 
 	React.useEffect(() => {
 		function handleClickOutside(e: MouseEvent) {
 			if (containerRef?.current && !containerRef?.current?.contains(e?.target as Node)) {
-				setIsOpen(false);
+				setIsOpen(false)
 			}
 		}
 
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => document.removeEventListener("mousedown", handleClickOutside);
-	}, []);
+		document.addEventListener("mousedown", handleClickOutside)
+		return () => document.removeEventListener("mousedown", handleClickOutside)
+	}, [])
 
 	React.useEffect(() => {
-		if (!isOpen) return;
+		if (!isOpen) return
 
-		updateDropdownDirection();
-		window.addEventListener("resize", updateDropdownDirection);
-		window.addEventListener("scroll", updateDropdownDirection, true);
+		updateDropdownDirection()
+		window.addEventListener("resize", updateDropdownDirection)
+		window.addEventListener("scroll", updateDropdownDirection, true)
 
 		return () => {
-			window.removeEventListener("resize", updateDropdownDirection);
-			window.removeEventListener("scroll", updateDropdownDirection, true);
-		};
-	}, [isOpen, updateDropdownDirection]);
+			window.removeEventListener("resize", updateDropdownDirection)
+			window.removeEventListener("scroll", updateDropdownDirection, true)
+		}
+	}, [isOpen, updateDropdownDirection])
 
 	return (
-		<div className="relative" ref={containerRef}>
+		<div
+			className="relative"
+			ref={containerRef}
+		>
 			<button
 				onClick={() => {
-					setIsOpen(!isOpen);
-					trigger("light");
+					setIsOpen(!isOpen)
+					trigger("light")
 				}}
 				className={`flex h-10 w-full cursor-pointer items-center gap-3 rounded-lg border border-white/8 bg-[#ffffff]/5 px-3 transition-all duration-300 hover:bg-[#ffffff]/8 ${
 					isOpen ? "border-none ring ring-[#bffb4f]/80" : ""
 				}`}
 			>
-				<div className="h-6 w-6 rounded-full" style={{ backgroundColor: color }} />
+				<div
+					className="h-6 w-6 rounded-full"
+					style={{ backgroundColor: color }}
+				/>
 
 				<span className={`flex-1 text-start text-base text-[#ffffff] ${GoogleSansMedium.className}`}>
 					{color}
@@ -94,13 +100,13 @@ export default function ColorPicker({ color, onChange }: { color: string; onChan
 										type="text"
 										value={color?.replace("#", "")}
 										onChange={(e) => {
-											const val = e?.target?.value;
+											const val = e?.target?.value
 
 											if (/^[0-9A-Fa-f]*$/.test(val)) {
-												onChange(`#${val}`);
+												onChange(`#${val}`)
 											}
 
-											trigger("light");
+											trigger("light")
 										}}
 										maxLength={6}
 										className={`w-full rounded-lg border border-[#ffffff]/8 bg-[#ffffff]/4 py-2 pr-3 pl-7 text-sm tracking-tighter text-[#ffffff] outline-none focus:border-[#bffb4f]/80 ${GoogleSansMedium.className}`}
@@ -126,13 +132,13 @@ export default function ColorPicker({ color, onChange }: { color: string; onChan
 										"#ec4899",
 										"#6366f1",
 										"#14b8a6",
-										"#f43f5e",
+										"#f43f5e"
 									].map((c) => (
 										<button
 											key={c}
 											onClick={() => {
-												onChange(c);
-												trigger("light");
+												onChange(c)
+												trigger("light")
 											}}
 											className={`aspect-square w-full cursor-pointer rounded-md transition-transform duration-300 hover:scale-110 ${
 												color === c ? "ring-2 ring-[#ffffff]" : ""
@@ -147,5 +153,5 @@ export default function ColorPicker({ color, onChange }: { color: string; onChan
 				)}
 			</AnimatePresence>
 		</div>
-	);
+	)
 }

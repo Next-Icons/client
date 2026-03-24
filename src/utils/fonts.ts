@@ -1,41 +1,37 @@
-import { Google_Sans } from "next/font/google";
+import localFont from "next/font/local"
 
-export const GoogleSansRegular = Google_Sans({
-	weight: "400",
+export const GoogleSansRegular = localFont({
+	src: "../../public/fonts/GoogleSans-Regular.ttf",
 	style: "normal",
 	display: "swap",
-	subsets: ["latin"],
 	adjustFontFallback: false,
 	variable: "--font-google-sans-regular",
-	preload: false,
-});
+	preload: false
+})
 
-export const GoogleSansMedium = Google_Sans({
-	weight: "500",
+export const GoogleSansMedium = localFont({
+	src: "../../public/fonts/GoogleSans-Medium.ttf",
 	style: "normal",
 	display: "swap",
-	subsets: ["latin"],
 	adjustFontFallback: false,
 	variable: "--font-google-sans-medium",
-	preload: false,
-});
+	preload: false
+})
 
-export const GoogleSansSemiBold = Google_Sans({
-	weight: "600",
+export const GoogleSansSemiBold = localFont({
+	src: "../../public/fonts/GoogleSans-SemiBold.ttf",
 	style: "normal",
 	display: "swap",
-	subsets: ["latin"],
 	adjustFontFallback: false,
 	variable: "--font-google-sans-semi-bold",
-	preload: false,
-});
+	preload: false
+})
 
-export const GoogleSansBold = Google_Sans({
-	weight: "700",
+export const GoogleSansBold = localFont({
+	src: "../../public/fonts/GoogleSans-Bold.ttf",
 	style: "normal",
 	display: "swap",
-	subsets: ["latin"],
 	adjustFontFallback: false,
 	variable: "--font-google-sans-bold",
-	preload: false,
-});
+	preload: false
+})

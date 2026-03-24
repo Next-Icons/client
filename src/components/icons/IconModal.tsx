@@ -1,114 +1,117 @@
-"use client";
+"use client"
 
-import { GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
-import ColorPicker from "@/components/icons/ColorPicker";
+import { GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
+import ColorPicker from "@/components/icons/ColorPicker"
 
-import { useWebHaptics } from "web-haptics/react";
-import { X, Copy } from "@deemlol/next-icons";
-import * as React from "react";
+import { useWebHaptics } from "web-haptics/react"
+import { X, Copy } from "@deemlol/next-icons"
+import * as React from "react"
 
-type IconType = React.ComponentType<{ size?: number; color?: string; strokeWidth?: number; className?: string }>;
-type IconEntry = [string, IconType];
+type IconType = React.ComponentType<{ size?: number; color?: string; strokeWidth?: number; className?: string }>
+type IconEntry = [string, IconType]
 
 type IconModalProps = {
-	onClose: () => void;
-	selectedIcon: IconEntry;
-};
+	onClose: () => void
+	selectedIcon: IconEntry
+}
 
 export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
-	const [copiedImport, setCopiedImport] = React.useState(false);
-	const [copiedUsage, setCopiedUsage] = React.useState(false);
-	const [strokeWidth, setStrokeWidth] = React.useState(1.5);
-	const [copiedSvg, setCopiedSvg] = React.useState(false);
-	const previewRef = React.useRef<HTMLDivElement>(null);
-	const [color, setColor] = React.useState("#FFFFFF");
-	const [size, setSize] = React.useState(128);
-	const { trigger } = useWebHaptics();
-	const [name, Icon] = selectedIcon;
+	const [copiedImport, setCopiedImport] = React.useState(false)
+	const [copiedUsage, setCopiedUsage] = React.useState(false)
+	const [strokeWidth, setStrokeWidth] = React.useState(1.5)
+	const [copiedSvg, setCopiedSvg] = React.useState(false)
+	const previewRef = React.useRef<HTMLDivElement>(null)
+	const [color, setColor] = React.useState("#FFFFFF")
+	const [size, setSize] = React.useState(128)
+	const { trigger } = useWebHaptics()
+	const [name, Icon] = selectedIcon
 
-	const importCode = `import { ${name} } from "@deemlol/next-icons"`;
-	const usageCode = `<${name} size={${size}} color="${color}" strokeWidth={${strokeWidth}} />`;
+	const importCode = `import { ${name} } from "@deemlol/next-icons"`
+	const usageCode = `<${name} size={${size}} color="${color}" strokeWidth={${strokeWidth}} />`
 
 	React.useEffect(() => {
-		document.body.style.overflow = "hidden";
+		document.body.style.overflow = "hidden"
 
 		return () => {
-			document.body.style.overflow = "unset";
-		};
-	}, []);
+			document.body.style.overflow = "unset"
+		}
+	}, [])
 
 	const handleCopy = (text: string, setCopied: (v: boolean) => void) => {
-		navigator?.clipboard?.writeText(text);
+		navigator?.clipboard?.writeText(text)
 
-		setCopied(true);
-		setTimeout(() => setCopied(false), 2_300);
-	};
+		setCopied(true)
+		setTimeout(() => setCopied(false), 2_300)
+	}
 
 	const handleCopySvg = () => {
-		const svgElement = previewRef?.current?.querySelector("svg");
+		const svgElement = previewRef?.current?.querySelector("svg")
 
 		if (svgElement) {
-			navigator?.clipboard?.writeText(svgElement?.outerHTML);
+			navigator?.clipboard?.writeText(svgElement?.outerHTML)
 
-			setCopiedSvg(true);
-			setTimeout(() => setCopiedSvg(false), 2_300);
+			setCopiedSvg(true)
+			setTimeout(() => setCopiedSvg(false), 2_300)
 		}
-	};
+	}
 
 	const handleDownloadSvg = () => {
-		const svgElement = previewRef?.current?.querySelector("svg");
+		const svgElement = previewRef?.current?.querySelector("svg")
 
 		if (svgElement) {
-			const svgData = svgElement?.outerHTML;
-			const blob = new Blob([svgData], { type: "image/svg+xml" });
-			const link = document?.createElement("a");
-			const url = URL.createObjectURL(blob);
+			const svgData = svgElement?.outerHTML
+			const blob = new Blob([svgData], { type: "image/svg+xml" })
+			const link = document?.createElement("a")
+			const url = URL.createObjectURL(blob)
 
-			link.href = url;
-			link.download = `${name}.svg`;
-			document?.body.appendChild(link);
-			link?.click();
-			document?.body.removeChild(link);
+			link.href = url
+			link.download = `${name}.svg`
+			document?.body.appendChild(link)
+			link?.click()
+			document?.body.removeChild(link)
 		}
-	};
+	}
 
 	const handleDownloadImage = (format: "png" | "jpeg") => {
-		const svgElement = previewRef?.current?.querySelector("svg");
-		if (!svgElement) return;
+		const svgElement = previewRef?.current?.querySelector("svg")
+		if (!svgElement) return
 
-		const svgData = new XMLSerializer().serializeToString(svgElement);
-		const canvas = document?.createElement("canvas");
-		const ctx = canvas?.getContext("2d");
-		const img = new Image();
+		const svgData = new XMLSerializer().serializeToString(svgElement)
+		const canvas = document?.createElement("canvas")
+		const ctx = canvas?.getContext("2d")
+		const img = new Image()
 
-		const scale = 4;
-		canvas.width = size * scale;
-		canvas.height = size * scale;
+		const scale = 4
+		canvas.width = size * scale
+		canvas.height = size * scale
 
 		img.onload = () => {
 			if (ctx) {
 				if (format === "jpeg") {
-					ctx.fillStyle = "#FFFFFF";
-					ctx.fillRect(0, 0, canvas?.width, canvas?.height);
+					ctx.fillStyle = "#FFFFFF"
+					ctx.fillRect(0, 0, canvas?.width, canvas?.height)
 				}
 
-				ctx.scale(scale, scale);
-				ctx.drawImage(img, 0, 0, size, size);
+				ctx.scale(scale, scale)
+				ctx.drawImage(img, 0, 0, size, size)
 
-				const link = document?.createElement("a");
-				link.href = canvas?.toDataURL(`image/${format === "jpeg" ? "jpeg" : "png"}`);
-				link.download = `${name}.${format === "jpeg" ? "jpg" : "png"}`;
-				link?.click();
+				const link = document?.createElement("a")
+				link.href = canvas?.toDataURL(`image/${format === "jpeg" ? "jpeg" : "png"}`)
+				link.download = `${name}.${format === "jpeg" ? "jpg" : "png"}`
+				link?.click()
 			}
-		};
+		}
 
-		img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
-	};
+		img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)))
+	}
 
 	return (
 		<div className="fixed inset-0 z-50 overflow-y-auto">
 			<div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-				<div onClick={onClose} className="fixed inset-0 bg-[#000000]/70 backdrop-blur-xs transition-opacity" />
+				<div
+					onClick={onClose}
+					className="fixed inset-0 bg-[#000000]/70 backdrop-blur-xs transition-opacity"
+				/>
 
 				<div className="relative w-full max-w-2xl transform rounded-xl border border-[#ffffff]/8 bg-[#111111] text-left shadow-xl transition-all sm:my-8">
 					<div className="flex items-center justify-between border-b border-[#ffffff]/10 p-4">
@@ -120,12 +123,15 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 						<button
 							onClick={() => {
-								onClose();
-								trigger("light");
+								onClose()
+								trigger("light")
 							}}
 							className="cursor-pointer p-2 text-[#ffffff]"
 						>
-							<X size={26} strokeWidth={1.5} />
+							<X
+								size={26}
+								strokeWidth={1.5}
+							/>
 						</button>
 					</div>
 
@@ -139,15 +145,18 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 							<span className="text-[#98c379]">&quot;@deemlol/next-icons&quot;;</span>
 							<button
 								onClick={() => {
-									handleCopy(importCode, setCopiedImport);
-									trigger("success");
+									handleCopy(importCode, setCopiedImport)
+									trigger("success")
 								}}
 								className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer rounded-lg bg-[#ffffff]/5 p-2 text-[#ffffff] opacity-100 transition-all duration-300 focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
 							>
 								{copiedImport ? (
 									<span className="text-xs text-[#bffb4f]">Copied</span>
 								) : (
-									<Copy size={16} strokeWidth={1.5} />
+									<Copy
+										size={16}
+										strokeWidth={1.5}
+									/>
 								)}
 							</button>
 						</div>
@@ -159,7 +168,11 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 									className="flex aspect-square items-center justify-center rounded-lg border border-[#ffffff]/5 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-size-[30px_30px]"
 									id="modal-icon-preview"
 								>
-									<Icon size={size} color={color} strokeWidth={strokeWidth} />
+									<Icon
+										size={size}
+										color={color}
+										strokeWidth={strokeWidth}
+									/>
 								</div>
 							</div>
 
@@ -176,8 +189,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											<button
 												key={s}
 												onClick={() => {
-													setSize(s);
-													trigger("light");
+													setSize(s)
+													trigger("light")
 												}}
 												className={`flex h-10 w-full cursor-pointer items-center justify-center rounded-lg border transition-all duration-300 ${
 													size === s
@@ -199,8 +212,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											max="128"
 											value={size}
 											onChange={(e) => {
-												setSize(Number(e?.target?.value));
-												trigger("light");
+												setSize(Number(e?.target?.value))
+												trigger("light")
 											}}
 											className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-[#ffffff]/10 accent-[#bffb4f]"
 										/>
@@ -220,7 +233,10 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 										Colors
 									</label>
 
-									<ColorPicker color={color} onChange={setColor} />
+									<ColorPicker
+										color={color}
+										onChange={setColor}
+									/>
 								</div>
 
 								<div>
@@ -238,8 +254,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 											step="0.5"
 											value={strokeWidth}
 											onChange={(e) => {
-												setStrokeWidth(Number(e?.target?.value));
-												trigger("light");
+												setStrokeWidth(Number(e?.target?.value))
+												trigger("light")
 											}}
 											className="h-1 flex-1 cursor-pointer appearance-none rounded-full bg-[#ffffff]/10 accent-[#bffb4f]"
 										/>
@@ -259,8 +275,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 								<div className="grid grid-cols-3 gap-2">
 									<button
 										onClick={() => {
-											handleDownloadSvg();
-											trigger("success");
+											handleDownloadSvg()
+											trigger("success")
 										}}
 										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
@@ -269,8 +285,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 									<button
 										onClick={() => {
-											handleDownloadImage("png");
-											trigger("success");
+											handleDownloadImage("png")
+											trigger("success")
 										}}
 										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
@@ -279,8 +295,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 									<button
 										onClick={() => {
-											handleDownloadImage("jpeg");
-											trigger("success");
+											handleDownloadImage("jpeg")
+											trigger("success")
 										}}
 										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
@@ -299,8 +315,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 								<div className="grid grid-cols-2 gap-2">
 									<button
 										onClick={() => {
-											handleCopySvg();
-											trigger("success");
+											handleCopySvg()
+											trigger("success")
 										}}
 										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
@@ -309,8 +325,8 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 
 									<button
 										onClick={() => {
-											handleCopy(usageCode, setCopiedUsage);
-											trigger("success");
+											handleCopy(usageCode, setCopiedUsage)
+											trigger("success")
 										}}
 										className={`flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[#ffffff]/8 bg-[#ffffff]/4 px-3 py-2.5 text-sm text-[#ffffff] transition-all duration-300 hover:border-[#ffffff]/20 hover:bg-[#ffffff]/10 active:scale-95 ${GoogleSansMedium.className}`}
 									>
@@ -323,5 +339,5 @@ export default function IconModal({ selectedIcon, onClose }: IconModalProps) {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

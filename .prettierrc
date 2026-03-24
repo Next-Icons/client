@@ -2,11 +2,23 @@
 	"tabWidth": 4,
 	"printWidth": 120,
 
-	"semi": true,
+	"semi": false,
 	"useTabs": true,
 	"singleQuote": false,
+	"insertPragma": false,
 	"bracketSpacing": true,
-	"trailingComma": "all",
+	"requirePragma": false,
+	"jsxSingleQuote": false,
+	"bracketSameLine": false,
+	"singleAttributePerLine": true,
+
+	"endOfLine": "auto",
+	"proseWrap": "always",
+	"arrowParens": "always",
+	"trailingComma": "none",
+	"quoteProps": "as-needed",
+	"embeddedLanguageFormatting": "auto",
+	"htmlWhitespaceSensitivity": "strict",
 
 	"plugins": ["prettier-plugin-tailwindcss"]
 }

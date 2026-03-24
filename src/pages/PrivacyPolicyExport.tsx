@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular, GoogleSansSemiBold } from "@/utils/fonts";
-import { DOMAIN_BASE_URL, EMAIL_ADDRESS } from "@/utils/constants";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular, GoogleSansSemiBold } from "@/utils/fonts"
+import { DOMAIN_BASE_URL, EMAIL_ADDRESS } from "@/utils/constants"
 
-import { useWebHaptics } from "web-haptics/react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { useWebHaptics } from "web-haptics/react"
+import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function PrivacyPolicyExport() {
-	const { trigger } = useWebHaptics();
+	const { trigger } = useWebHaptics()
 
 	return (
 		<motion.div
@@ -251,5 +251,5 @@ export default function PrivacyPolicyExport() {
 				</div>
 			</div>
 		</motion.div>
-	);
+	)
 }

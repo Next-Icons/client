@@ -1,13 +1,13 @@
-import { GoogleSansRegular, GoogleSansMedium, GoogleSansSemiBold, GoogleSansBold } from "@/utils/fonts";
-import { DOMAIN_BASE_URL, EMAIL_ADDRESS } from "@/utils/constants";
-import FooterExport from "@/components/layout/FooterExport";
-import NavbarExport from "@/components/layout/NavbarExport";
-import { siteConfig } from "@/utils/siteConfig";
-import "@/styles/globals.css";
+import { GoogleSansRegular, GoogleSansMedium, GoogleSansSemiBold, GoogleSansBold } from "@/utils/fonts"
+import { DOMAIN_BASE_URL, EMAIL_ADDRESS } from "@/utils/constants"
+import FooterExport from "@/components/layout/FooterExport"
+import NavbarExport from "@/components/layout/NavbarExport"
+import { siteConfig } from "@/utils/siteConfig"
+import "@/styles/globals.css"
 
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
-import type { Metadata, Viewport } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
+import type { Metadata, Viewport } from "next"
 
 export const metadata: Metadata = {
 	metadataBase: new URL(DOMAIN_BASE_URL),
@@ -62,18 +62,18 @@ export const metadata: Metadata = {
 		"best icons library for nextjs",
 		"best icons for nextjs",
 		"what is next icon",
-		"lightweight icon library for react",
+		"lightweight icon library for react"
 	],
 	generator: "Next.js",
 	twitter: {
 		card: "summary",
 		title: siteConfig.title,
 		description: siteConfig.description,
-		images: `${DOMAIN_BASE_URL}/Logo.png`,
+		images: `${DOMAIN_BASE_URL}/Logo.png`
 	},
 	appleWebApp: {
 		title: siteConfig.title,
-		statusBarStyle: "black-translucent",
+		statusBarStyle: "black-translucent"
 	},
 	openGraph: {
 		siteName: siteConfig.applicationName,
@@ -89,12 +89,12 @@ export const metadata: Metadata = {
 				height: 512,
 				width: 512,
 				alt: "NextIcons",
-				type: "image/png",
-			},
-		],
+				type: "image/png"
+			}
+		]
 	},
 	alternates: {
-		canonical: "/",
+		canonical: "/"
 	},
 	creator: "NextIcons.com",
 	publisher: "NextIcons.com",
@@ -102,47 +102,50 @@ export const metadata: Metadata = {
 	authors: [
 		{
 			name: "Alexandr Virgovič",
-			url: "https://www.deemdev.com",
-		},
+			url: "https://www.deemdev.com"
+		}
 	],
 	icons: [
 		{
 			rel: "apple-touch-icon",
 			type: "image/png",
 			sizes: "180x180",
-			url: "/favicons/apple-touch-icon.png",
+			url: "/favicons/apple-touch-icon.png"
 		},
 		{
 			rel: "icon",
 			type: "image/png",
 			sizes: "96x96",
-			url: "/favicons/favicon-96x96.png",
+			url: "/favicons/favicon-96x96.png"
 		},
 		{
 			rel: "icon",
 			type: "image/x-icon",
 			sizes: "any",
-			url: "/favicons/favicon.ico",
+			url: "/favicons/favicon.ico"
 		},
 		{
 			rel: "icon",
 			type: "image/svg+xml",
 			sizes: "any",
-			url: "/favicons/favicon.svg",
-		},
-	],
-};
+			url: "/favicons/favicon.svg"
+		}
+	]
+}
 
 export const viewport: Viewport = {
 	initialScale: 1,
 	minimumScale: 1,
 	width: "device-width",
-	themeColor: "#bffb4f",
-};
+	themeColor: "#bffb4f"
+}
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<html
+			lang="en"
+			suppressHydrationWarning
+		>
 			<body
 				suppressHydrationWarning
 				className={`bg-[#121212] ${GoogleSansRegular.className} ${GoogleSansMedium.className} ${GoogleSansSemiBold.className} ${GoogleSansBold.className} antialiased`}
@@ -155,5 +158,5 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 				<SpeedInsights />
 			</body>
 		</html>
-	);
+	)
 }

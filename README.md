@@ -1,6 +1,7 @@
 # Next Icons Website
 
-Welcome to the client-side repository for [NextIcons.com](https://www.nexticons.com). This project is built on a modern stack using **Next.js**, **TypeScript**, and **Tailwind CSS**.
+Welcome to the client-side repository for [NextIcons.com](https://www.nexticons.com). This project is built on a modern
+stack using **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
 ## Prerequisites
 

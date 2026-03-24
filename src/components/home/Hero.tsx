@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium } from "@/utils/fonts"
 
 //prettier-ignore
 import { Layers, Settings, Download, Search, Monitor, CheckCircle, Sparkles2, ChevronRight, ChevronDown, Clipboard, ChevronLeft, ChevronUp, Phone, PhoneCall, PhoneForwarded, PhoneIncoming, PhoneMissed, PhoneOff, PhoneOutgoing, Zap, Box } from "@deemlol/next-icons";
-import { useWebHaptics } from "web-haptics/react";
-import { useRouter } from "next/navigation";
-import confetti from "canvas-confetti";
-import { motion } from "framer-motion";
-import * as React from "react";
-import Link from "next/link";
+import { useWebHaptics } from "web-haptics/react"
+import { useRouter } from "next/navigation"
+import confetti from "canvas-confetti"
+import { motion } from "framer-motion"
+import * as React from "react"
+import Link from "next/link"
 
 const PREVIEW_ICONS = [
 	{ icon: ChevronDown, name: "Chevron Down" },
@@ -29,45 +29,45 @@ const PREVIEW_ICONS = [
 	{ icon: Settings, name: "Settings" },
 	{ icon: Zap, name: "Zap" },
 	{ icon: Box, name: "Box" },
-	{ icon: Layers, name: "Layers" },
-];
+	{ icon: Layers, name: "Layers" }
+]
 
 export default function Hero() {
-	const [isCommandCopied, setIsCommandCopied] = React.useState(false);
-	const [iconCount, setIconCount] = React.useState(0);
-	const installCommand = "npm i @deemlol/next-icons";
-	const { trigger } = useWebHaptics();
-	const router = useRouter();
+	const [isCommandCopied, setIsCommandCopied] = React.useState(false)
+	const [iconCount, setIconCount] = React.useState(0)
+	const installCommand = "npm i @deemlol/next-icons"
+	const { trigger } = useWebHaptics()
+	const router = useRouter()
 
 	React.useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const res = await fetch("/api/allIcons", {
-					method: "GET",
-				});
+					method: "GET"
+				})
 
 				if (res?.ok) {
-					const data = await res?.json();
+					const data = await res?.json()
 
-					setIconCount(data?.icons || 0);
+					setIconCount(data?.icons || 0)
 				} else {
-					console.log("Failed to fetch the icon count");
+					console.log("Failed to fetch the icon count")
 				}
 			} catch (err) {
-				console.log("An error occurred while fetching the icon count");
-				console.error(err);
+				console.log("An error occurred while fetching the icon count")
+				console.error(err)
 			}
-		};
+		}
 
-		fetchData();
-	}, []);
+		fetchData()
+	}, [])
 
 	const handleCopyInstallCommand = async (e: React.MouseEvent<HTMLButtonElement>) => {
-		const rect = e?.currentTarget?.getBoundingClientRect();
+		const rect = e?.currentTarget?.getBoundingClientRect()
 
-		const x = (rect?.left + rect?.width / 2) / window?.innerWidth;
-		const y = (rect?.top + rect?.height / 2) / window?.innerHeight;
-		await navigator?.clipboard?.writeText(installCommand);
+		const x = (rect?.left + rect?.width / 2) / window?.innerWidth
+		const y = (rect?.top + rect?.height / 2) / window?.innerHeight
+		await navigator?.clipboard?.writeText(installCommand)
 
 		confetti({
 			particleCount: 50,
@@ -75,14 +75,14 @@ export default function Hero() {
 			origin: { x, y },
 			colors: ["#bffb4f", "#ffffff"],
 			disableForReducedMotion: true,
-			zIndex: 1000,
-		});
+			zIndex: 1000
+		})
 
-		setIsCommandCopied(true);
+		setIsCommandCopied(true)
 		window.setTimeout(() => {
-			setIsCommandCopied(false);
-		}, 2_300);
-	};
+			setIsCommandCopied(false)
+		}, 2_300)
+	}
 
 	return (
 		<section className="overflow-hidden px-4 pt-36 pb-28 lg:pt-48 lg:pb-40 2xl:px-0">
@@ -134,15 +134,18 @@ export default function Hero() {
 							className={`flex w-full cursor-pointer items-center justify-center gap-3 rounded-lg bg-[#bffb4f] px-4 py-3 text-base text-[#000000] backdrop-blur-md transition-all duration-300 hover:bg-[#bffb4f]/90 hover:text-[#000000] ${GoogleSansMedium.className}`}
 							onClick={() => trigger("medium")}
 						>
-							<Sparkles2 size={20} strokeWidth={1.5} />
+							<Sparkles2
+								size={20}
+								strokeWidth={1.5}
+							/>
 							Browse All Icons
 						</Link>
 
 						<button
 							type="button"
 							onClick={(e) => {
-								handleCopyInstallCommand(e);
-								trigger("success");
+								handleCopyInstallCommand(e)
+								trigger("success")
 							}}
 							className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-lg border border-[#fafafa]/15 bg-[#161616] px-4 py-3 transition-colors duration-300 hover:border-[#bffb4f]"
 							aria-label={isCommandCopied ? "Copied" : "Copy install command"}
@@ -159,9 +162,17 @@ export default function Hero() {
 
 							<span className="flex shrink-0 items-center justify-center text-[#ffffff]">
 								{isCommandCopied ? (
-									<CheckCircle size={18} strokeWidth={1.5} color="#bffb4f" />
+									<CheckCircle
+										size={18}
+										strokeWidth={1.5}
+										color="#bffb4f"
+									/>
 								) : (
-									<Clipboard size={18} strokeWidth={1.5} color="#ffffff" />
+									<Clipboard
+										size={18}
+										strokeWidth={1.5}
+										color="#ffffff"
+									/>
 								)}
 							</span>
 						</button>
@@ -186,7 +197,7 @@ export default function Hero() {
 					transition={{
 						duration: 0.8,
 						ease: [0.16, 1, 0.3, 1],
-						delay: 0.2,
+						delay: 0.2
 					}}
 					className="relative z-10 mx-auto w-full max-w-[600px] rotate-0 lg:mr-0 lg:rotate-4"
 				>
@@ -196,12 +207,16 @@ export default function Hero() {
 						<button
 							type="button"
 							onClick={() => {
-								router.push("/icons");
-								trigger("light");
+								router.push("/icons")
+								trigger("light")
 							}}
 							className="group mb-4 flex w-full cursor-pointer items-center gap-3 rounded-xl bg-[#ffffff] px-4 py-2 lg:py-3"
 						>
-							<Search size={22} strokeWidth={1.5} color="#000000" />
+							<Search
+								size={22}
+								strokeWidth={1.5}
+								color="#000000"
+							/>
 
 							<span
 								className={`text-start text-base text-[#000000] lg:text-lg ${GoogleSansMedium.className}`}
@@ -218,7 +233,11 @@ export default function Hero() {
 									aria-label={name}
 									className="group relative flex aspect-square items-center justify-center rounded-xl transition-transform duration-300 hover:scale-200 lg:scale-150"
 								>
-									<Icon size={20} strokeWidth={1.5} color="#000000" />
+									<Icon
+										size={20}
+										strokeWidth={1.5}
+										color="#000000"
+									/>
 								</button>
 							))}
 						</div>
@@ -226,5 +245,5 @@ export default function Hero() {
 				</motion.div>
 			</div>
 		</section>
-	);
+	)
 }

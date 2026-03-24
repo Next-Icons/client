@@ -1,76 +1,76 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular, GoogleSansSemiBold } from "@/utils/fonts";
-import { DOMAIN_BASE_URL, GITHUB_REPO_URL, NPM_PACKAGE_URL } from "@/utils/constants";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular, GoogleSansSemiBold } from "@/utils/fonts"
+import { DOMAIN_BASE_URL, GITHUB_REPO_URL, NPM_PACKAGE_URL } from "@/utils/constants"
 
-import { useWebHaptics } from "web-haptics/react";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { useWebHaptics } from "web-haptics/react"
+import { motion } from "framer-motion"
+import Image from "next/image"
+import Link from "next/link"
 
 const BRAND_COLORS = [
 	{ name: "Neon Lime", hex: "#bffb4f", usage: "Primary accent, CTA, focus" },
 	{ name: "Deep Charcoal", hex: "#121212", usage: "Main background and surfaces" },
 	{ name: "Graphite", hex: "#111111", usage: "Cards, elevated containers" },
-	{ name: "White", hex: "#ffffff", usage: "Headings, high-contrast text" },
-] as const;
+	{ name: "White", hex: "#ffffff", usage: "Headings, high-contrast text" }
+] as const
 
 const VOICE_EXAMPLES = [
 	{
 		title: "Do",
-		text: "Use concise and confident language. Keep statements practical, direct, and focused.",
+		text: "Use concise and confident language. Keep statements practical, direct, and focused."
 	},
 	{
 		title: "Avoid",
-		text: "Avoid vague claims, excessive hype, and copy that hides practical value behind buzzwords.",
-	},
-] as const;
+		text: "Avoid vague claims, excessive hype, and copy that hides practical value behind buzzwords."
+	}
+] as const
 
 const BRAND_FONTS = [
 	{ label: "Google Sans Regular", weight: "400", className: GoogleSansRegular.className },
 	{ label: "Google Sans Medium", weight: "500", className: GoogleSansMedium.className },
 	{ label: "Google Sans SemiBold", weight: "600", className: GoogleSansSemiBold.className },
-	{ label: "Google Sans Bold", weight: "700", className: GoogleSansBold.className },
-] as const;
+	{ label: "Google Sans Bold", weight: "700", className: GoogleSansBold.className }
+] as const
 
 const LOGO_RULES = [
 	{
 		title: "Minimum clear space",
-		text: "Maintain clear space around the logo equal to at least 50% of logo height.",
+		text: "Maintain clear space around the logo equal to at least 50% of logo height."
 	},
 	{ title: "Minimum size", text: "Do not render the logo below 28px height in digital interfaces." },
 	{
 		title: "Background contrast",
-		text: "Use the default logo on dark surfaces. Ensure sufficient contrast at all times.",
-	},
-] as const;
+		text: "Use the default logo on dark surfaces. Ensure sufficient contrast at all times."
+	}
+] as const
 
 const LOGO_VARIANTS = [
 	{
 		title: "Color Logo",
 		src: "/Logo.png",
-		previewClassName: "bg-[#121212]",
+		previewClassName: "bg-[#121212]"
 	},
 	{
 		title: "White Logo",
 		src: "/Logo-White.png",
-		previewClassName: "bg-[#1a1a1a]",
+		previewClassName: "bg-[#1a1a1a]"
 	},
 	{
 		title: "Black Logo",
 		src: "/Logo-Black.png",
-		previewClassName: "bg-[#f3f4f6]",
-	},
-] as const;
+		previewClassName: "bg-[#f3f4f6]"
+	}
+] as const
 
 const PROJECT_RESOURCES = [
 	{ label: "Website", href: DOMAIN_BASE_URL },
 	{ label: "GitHub", href: GITHUB_REPO_URL },
-	{ label: "NPM Package", href: NPM_PACKAGE_URL },
-] as const;
+	{ label: "NPM Package", href: NPM_PACKAGE_URL }
+] as const
 
 export default function BrandingGuidelineExport() {
-	const { trigger } = useWebHaptics();
+	const { trigger } = useWebHaptics()
 
 	return (
 		<motion.div
@@ -219,7 +219,10 @@ export default function BrandingGuidelineExport() {
 									key={color?.hex}
 									className="grid grid-cols-[70px_1fr] gap-4 rounded-lg border border-[#ffffff]/6 bg-[#ffffff]/3 p-3"
 								>
-									<div className="h-16 w-full rounded-lg" style={{ backgroundColor: color.hex }} />
+									<div
+										className="h-16 w-full rounded-lg"
+										style={{ backgroundColor: color.hex }}
+									/>
 
 									<div>
 										<div className={`text-[#ffffff] ${GoogleSansMedium.className}`}>
@@ -374,5 +377,5 @@ export default function BrandingGuidelineExport() {
 				</motion.div>
 			</div>
 		</motion.div>
-	);
+	)
 }

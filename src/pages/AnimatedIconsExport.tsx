@@ -1,60 +1,60 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
-import AnimatedIconModal from "@/components/icons/AnimatedIconModal";
-import ColorPicker from "@/components/icons/ColorPicker";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
+import AnimatedIconModal from "@/components/icons/AnimatedIconModal"
+import ColorPicker from "@/components/icons/ColorPicker"
 
-import { Search, ChevronLeft, ChevronRight, Settings, RotateCcw, Mail } from "@deemlol/next-icons";
-import { motion, AnimatePresence } from "framer-motion";
-import * as Icons from "@deemlol/next-icons/animated";
-import { useWebHaptics } from "web-haptics/react";
-import * as React from "react";
-import Link from "next/link";
+import { Search, ChevronLeft, ChevronRight, Settings, RotateCcw, Mail } from "@deemlol/next-icons"
+import { motion, AnimatePresence } from "framer-motion"
+import * as Icons from "@deemlol/next-icons/animated"
+import { useWebHaptics } from "web-haptics/react"
+import * as React from "react"
+import Link from "next/link"
 
 type IconType = React.ComponentType<{
-	size?: number;
-	color?: string;
-	strokeWidth?: number;
-	className?: string;
-}>;
+	size?: number
+	color?: string
+	strokeWidth?: number
+	className?: string
+}>
 
-type IconEntry = [string, IconType];
+type IconEntry = [string, IconType]
 
 export default function AnimatedIconsExport() {
-	const [selectedIcon, setSelectedIcon] = React.useState<IconEntry | null>(null);
-	const [globalColor, setGlobalColor] = React.useState("#FFFFFF");
-	const [isCustomizing, setIsCustomizing] = React.useState(false);
-	const [globalStroke, setGlobalStroke] = React.useState(1.5);
-	const [searchQuery, setSearchQuery] = React.useState("");
-	const [currentPage, setCurrentPage] = React.useState(1);
-	const [globalSize, setGlobalSize] = React.useState(38);
-	const { trigger } = useWebHaptics();
+	const [selectedIcon, setSelectedIcon] = React.useState<IconEntry | null>(null)
+	const [globalColor, setGlobalColor] = React.useState("#FFFFFF")
+	const [isCustomizing, setIsCustomizing] = React.useState(false)
+	const [globalStroke, setGlobalStroke] = React.useState(1.5)
+	const [searchQuery, setSearchQuery] = React.useState("")
+	const [currentPage, setCurrentPage] = React.useState(1)
+	const [globalSize, setGlobalSize] = React.useState(38)
+	const { trigger } = useWebHaptics()
 
 	const allIcons = React.useMemo(() => {
-		return Object.entries(Icons).filter(([n]) => n !== "default" && /^[A-Z]/.test(n)) as IconEntry[];
-	}, []);
+		return Object.entries(Icons).filter(([n]) => n !== "default" && /^[A-Z]/.test(n)) as IconEntry[]
+	}, [])
 
 	const filteredIcons = React.useMemo(() => {
-		return allIcons.filter(([n]) => n?.toLowerCase().includes(searchQuery?.toLowerCase()));
-	}, [allIcons, searchQuery]);
+		return allIcons.filter(([n]) => n?.toLowerCase().includes(searchQuery?.toLowerCase()))
+	}, [allIcons, searchQuery])
 
-	const totalPages = Math.ceil(filteredIcons?.length / 104);
+	const totalPages = Math.ceil(filteredIcons?.length / 104)
 
 	const currentIcons = React.useMemo(() => {
-		const start = (currentPage - 1) * 104;
-		return filteredIcons.slice(start, start + 104);
-	}, [filteredIcons, currentPage]);
+		const start = (currentPage - 1) * 104
+		return filteredIcons.slice(start, start + 104)
+	}, [filteredIcons, currentPage])
 
 	React.useEffect(() => {
-		setCurrentPage(1);
-	}, [searchQuery]);
+		setCurrentPage(1)
+	}, [searchQuery])
 
 	const handlePageChange = (page: number) => {
-		setCurrentPage(page);
-		trigger("light");
+		setCurrentPage(page)
+		trigger("light")
 
-		window?.scrollTo({ top: 0, behavior: "smooth" });
-	};
+		window?.scrollTo({ top: 0, behavior: "smooth" })
+	}
 
 	return (
 		<motion.div
@@ -78,8 +78,8 @@ export default function AnimatedIconsExport() {
 								placeholder={`Search ${allIcons?.length} animated icons...`}
 								value={searchQuery}
 								onChange={(e) => {
-									setSearchQuery(e?.target?.value);
-									trigger("light");
+									setSearchQuery(e?.target?.value)
+									trigger("light")
 								}}
 								className={`w-full rounded-lg border border-[#ffffff]/5 bg-[#ffffff]/3 py-2.5 pr-4 pl-12 text-start text-base text-[#ffffff] backdrop-blur-md transition-all duration-300 outline-none focus:border-[#bffb4f]/50 ${GoogleSansRegular.className}`}
 							/>
@@ -87,8 +87,8 @@ export default function AnimatedIconsExport() {
 
 						<button
 							onClick={() => {
-								setIsCustomizing(!isCustomizing);
-								trigger("medium");
+								setIsCustomizing(!isCustomizing)
+								trigger("medium")
 							}}
 							className={`flex cursor-pointer items-center gap-3 rounded-lg border px-4 py-2.5 transition-all duration-300 ${
 								isCustomizing
@@ -96,7 +96,10 @@ export default function AnimatedIconsExport() {
 									: "border-[#ffffff]/5 bg-[#ffffff]/3 text-[#ffffff]"
 							}`}
 						>
-							<Settings size={19} strokeWidth={1.5} />
+							<Settings
+								size={19}
+								strokeWidth={1.5}
+							/>
 
 							<span className={GoogleSansMedium.className}>Customize View</span>
 						</button>
@@ -114,14 +117,17 @@ export default function AnimatedIconsExport() {
 									<div className="mb-6 flex items-end justify-end">
 										<button
 											onClick={() => {
-												setGlobalSize(38);
-												setGlobalStroke(1.5);
-												setGlobalColor("#FFFFFF");
-												trigger("medium");
+												setGlobalSize(38)
+												setGlobalStroke(1.5)
+												setGlobalColor("#FFFFFF")
+												trigger("medium")
 											}}
 											className={`flex cursor-pointer items-center gap-2 rounded-lg bg-[#ffffff]/6 px-4 py-1.5 text-xs text-[#ffffff]/80 transition-all duration-300 hover:bg-[#ffffff]/10 ${GoogleSansRegular.className}`}
 										>
-											<RotateCcw size={14} strokeWidth={1.5} />
+											<RotateCcw
+												size={14}
+												strokeWidth={1.5}
+											/>
 											Reset to default
 										</button>
 									</div>
@@ -141,8 +147,8 @@ export default function AnimatedIconsExport() {
 												step="4"
 												value={globalSize}
 												onChange={(e) => {
-													setGlobalSize(Number(e?.target?.value));
-													trigger("light");
+													setGlobalSize(Number(e?.target?.value))
+													trigger("light")
 												}}
 												className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#ffffff]/10 accent-[#bffb4f]"
 											/>
@@ -162,8 +168,8 @@ export default function AnimatedIconsExport() {
 												step="0.5"
 												value={globalStroke}
 												onChange={(e) => {
-													setGlobalStroke(Number(e?.target?.value));
-													trigger("light");
+													setGlobalStroke(Number(e?.target?.value))
+													trigger("light")
 												}}
 												className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#ffffff]/10 accent-[#bffb4f]"
 											/>
@@ -176,7 +182,10 @@ export default function AnimatedIconsExport() {
 												Color
 											</label>
 
-											<ColorPicker color={globalColor} onChange={setGlobalColor} />
+											<ColorPicker
+												color={globalColor}
+												onChange={setGlobalColor}
+											/>
 										</div>
 									</div>
 								</div>
@@ -190,8 +199,8 @@ export default function AnimatedIconsExport() {
 						<button
 							key={name}
 							onClick={() => {
-								setSelectedIcon([name, Icon]);
-								trigger("medium");
+								setSelectedIcon([name, Icon])
+								trigger("medium")
 							}}
 							className="group relative flex aspect-square cursor-pointer flex-col items-center justify-center rounded-xl border border-[#ffffff]/4 bg-[#ffffff]/1 transition-all duration-300 hover:border-[#bffb4f]/60 hover:bg-[#bffb4f]/5"
 						>
@@ -228,11 +237,14 @@ export default function AnimatedIconsExport() {
 						<Link
 							href={"/contact"}
 							onClick={() => {
-								trigger("light");
+								trigger("light")
 							}}
 							className={`flex items-center justify-center gap-3 rounded-lg bg-[#bffb4f] px-16 py-3 text-base text-[#000000] transition-all duration-300 hover:bg-[#bffb4f]/90 active:scale-95 lg:text-lg ${GoogleSansMedium.className}`}
 						>
-							<Mail size={22} strokeWidth={1.5} />
+							<Mail
+								size={22}
+								strokeWidth={1.5}
+							/>
 							<span>Request an icon</span>
 						</Link>
 					</div>
@@ -242,29 +254,32 @@ export default function AnimatedIconsExport() {
 					<div className="mt-14 flex justify-center gap-3">
 						<button
 							onClick={() => {
-								handlePageChange(Math.max(1, currentPage - 1));
-								trigger("medium");
+								handlePageChange(Math.max(1, currentPage - 1))
+								trigger("medium")
 							}}
 							disabled={currentPage === 1}
 							className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-[#ffffff]/8 bg-[#ffffff]/4 text-[#ffffff] transition-colors hover:bg-[#ffffff]/8 disabled:cursor-not-allowed disabled:opacity-50"
 						>
-							<ChevronLeft size={22} strokeWidth={1.5} />
+							<ChevronLeft
+								size={22}
+								strokeWidth={1.5}
+							/>
 						</button>
 
 						{Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-							let p = i + 1;
+							let p = i + 1
 
 							if (totalPages > 5) {
-								if (currentPage > 3) p = currentPage - 2 + i;
-								if (p > totalPages) p = totalPages - (4 - i);
+								if (currentPage > 3) p = currentPage - 2 + i
+								if (p > totalPages) p = totalPages - (4 - i)
 							}
 
 							return (
 								<button
 									key={p}
 									onClick={() => {
-										handlePageChange(p);
-										trigger("medium");
+										handlePageChange(p)
+										trigger("medium")
 									}}
 									className={`h-10 w-10 cursor-pointer rounded-lg border text-base transition-colors duration-300 ${
 										currentPage === p
@@ -274,24 +289,32 @@ export default function AnimatedIconsExport() {
 								>
 									{p}
 								</button>
-							);
+							)
 						})}
 
 						<button
 							onClick={() => {
-								handlePageChange(Math.min(totalPages, currentPage + 1));
-								trigger("medium");
+								handlePageChange(Math.min(totalPages, currentPage + 1))
+								trigger("medium")
 							}}
 							disabled={currentPage === totalPages}
 							className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-[#ffffff]/8 bg-[#ffffff]/4 text-[#ffffff] transition-colors hover:bg-[#ffffff]/8 disabled:cursor-not-allowed disabled:opacity-50"
 						>
-							<ChevronRight size={22} strokeWidth={1.5} />
+							<ChevronRight
+								size={22}
+								strokeWidth={1.5}
+							/>
 						</button>
 					</div>
 				)}
 			</div>
 
-			{selectedIcon && <AnimatedIconModal selectedIcon={selectedIcon} onClose={() => setSelectedIcon(null)} />}
+			{selectedIcon && (
+				<AnimatedIconModal
+					selectedIcon={selectedIcon}
+					onClose={() => setSelectedIcon(null)}
+				/>
+			)}
 		</motion.div>
-	);
+	)
 }

@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
 
-import { Search, Sparkles2, Type, GitHub, Email, List, NPMJs, PlayCircle } from "@deemlol/next-icons";
-import { motion, AnimatePresence } from "framer-motion";
-import { useWebHaptics } from "web-haptics/react";
-import { useRouter } from "next/navigation";
-import * as React from "react";
+import { Search, Sparkles2, Type, GitHub, Email, List, NPMJs, PlayCircle } from "@deemlol/next-icons"
+import { motion, AnimatePresence } from "framer-motion"
+import { useWebHaptics } from "web-haptics/react"
+import { useRouter } from "next/navigation"
+import * as React from "react"
 
 type SearchItem = {
-	id: string;
-	name: string;
-	url: string;
-	description: string;
-	icon: React.ComponentType<{ size?: number; strokeWidth?: number }>;
-	category: "Page" | "External" | "Component";
-};
+	id: string
+	name: string
+	url: string
+	description: string
+	icon: React.ComponentType<{ size?: number; strokeWidth?: number }>
+	category: "Page" | "External" | "Component"
+}
 
 const SEARCH_ITEMS: SearchItem[] = [
 	{
@@ -24,7 +24,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "/icons",
 		description: "Browse our collection of icons",
 		icon: Sparkles2,
-		category: "Page",
+		category: "Page"
 	},
 	{
 		id: "animated-icons",
@@ -32,7 +32,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "/animated-icons",
 		description: "Browse all of our animated icons",
 		icon: PlayCircle,
-		category: "Page",
+		category: "Page"
 	},
 	{
 		id: "contact",
@@ -40,7 +40,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "/contact",
 		description: "Get in touch with our team",
 		icon: Email,
-		category: "Page",
+		category: "Page"
 	},
 	{
 		id: "privacy",
@@ -48,7 +48,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "/legal/privacy",
 		description: "Read our privacy policy",
 		icon: Type,
-		category: "Page",
+		category: "Page"
 	},
 	{
 		id: "branding-guideline",
@@ -56,7 +56,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "/legal/branding-guideline",
 		description: "Read our branding guideline",
 		icon: Type,
-		category: "Page",
+		category: "Page"
 	},
 	{
 		id: "github",
@@ -64,7 +64,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "https://github.com/Next-Icons/next-icons",
 		description: "Check out our source code",
 		icon: GitHub,
-		category: "External",
+		category: "External"
 	},
 	{
 		id: "license",
@@ -72,7 +72,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "https://github.com/Next-Icons/next-icons/blob/main/LICENCE",
 		description: "Read our license",
 		icon: Type,
-		category: "External",
+		category: "External"
 	},
 	{
 		id: "changelog",
@@ -80,7 +80,7 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "https://github.com/Next-Icons/next-icons/blob/main/CHANGELOG.md",
 		description: "Check out our change log",
 		icon: List,
-		category: "External",
+		category: "External"
 	},
 	{
 		id: "npm",
@@ -88,46 +88,49 @@ const SEARCH_ITEMS: SearchItem[] = [
 		url: "https://www.npmjs.com/package/@deemlol/next-icons",
 		description: "Check out our NPM package",
 		icon: NPMJs,
-		category: "External",
-	},
-];
+		category: "External"
+	}
+]
 
-const DEFAULT_SUGGESTIONS = SEARCH_ITEMS.slice(0, 3);
+const DEFAULT_SUGGESTIONS = SEARCH_ITEMS.slice(0, 3)
 
 export default function GlobalSearch() {
-	const [results, setResults] = React.useState<SearchItem[]>(DEFAULT_SUGGESTIONS);
-	const [isFocused, setIsFocused] = React.useState(false);
-	const searchRef = React.useRef<HTMLDivElement>(null);
-	const [query, setQuery] = React.useState("");
-	const { trigger } = useWebHaptics();
-	const router = useRouter();
+	const [results, setResults] = React.useState<SearchItem[]>(DEFAULT_SUGGESTIONS)
+	const [isFocused, setIsFocused] = React.useState(false)
+	const searchRef = React.useRef<HTMLDivElement>(null)
+	const [query, setQuery] = React.useState("")
+	const { trigger } = useWebHaptics()
+	const router = useRouter()
 
 	React.useEffect(() => {
 		const handleClickOutside = (e: MouseEvent) => {
 			if (searchRef?.current && !searchRef?.current?.contains(e?.target as Node)) {
-				setIsFocused(false);
+				setIsFocused(false)
 			}
-		};
+		}
 
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => document.removeEventListener("mousedown", handleClickOutside);
-	}, []);
+		document.addEventListener("mousedown", handleClickOutside)
+		return () => document.removeEventListener("mousedown", handleClickOutside)
+	}, [])
 
 	React.useEffect(() => {
 		if (query?.trim() === "") {
-			setResults(DEFAULT_SUGGESTIONS);
+			setResults(DEFAULT_SUGGESTIONS)
 		} else {
 			const filtered = SEARCH_ITEMS.filter(
 				(item) =>
 					item?.name?.toLowerCase()?.includes(query?.toLowerCase() || "") ||
-					item?.description?.toLowerCase()?.includes(query?.toLowerCase() || ""),
-			);
-			setResults(filtered);
+					item?.description?.toLowerCase()?.includes(query?.toLowerCase() || "")
+			)
+			setResults(filtered)
 		}
-	}, [query]);
+	}, [query])
 
 	return (
-		<div className="relative" ref={searchRef}>
+		<div
+			className="relative"
+			ref={searchRef}
+		>
 			<div className="group relative hidden lg:block">
 				<div className="pointer-events-none absolute inset-y-0 left-0 z-10 flex items-center pl-3">
 					<Search
@@ -184,21 +187,24 @@ export default function GlobalSearch() {
 										<button
 											key={item?.id}
 											onClick={() => {
-												trigger("light");
+												trigger("light")
 
 												if (item?.url?.startsWith("http")) {
-													window.open(item?.url, "_blank", "noopener,noreferrer");
+													window.open(item?.url, "_blank", "noopener,noreferrer")
 												} else {
-													router.push(item?.url);
+													router.push(item?.url)
 												}
 
-												setIsFocused(false);
-												setQuery("");
+												setIsFocused(false)
+												setQuery("")
 											}}
 											className="group flex w-full cursor-pointer items-center gap-4 rounded-lg p-2 text-start transition-colors duration-300 hover:bg-[#bffb4f]"
 										>
 											<div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1e1e1e] text-[#ffffff] transition-colors duration-300 group-hover:bg-[#000000] group-hover:text-[#bffb4f]">
-												<item.icon size={20} strokeWidth={1.5} />
+												<item.icon
+													size={20}
+													strokeWidth={1.5}
+												/>
 											</div>
 
 											<div>
@@ -229,5 +235,5 @@ export default function GlobalSearch() {
 				)}
 			</AnimatePresence>
 		</div>
-	);
+	)
 }

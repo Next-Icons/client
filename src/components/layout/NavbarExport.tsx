@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
-import { GITHUB_REPO_NAME, GITHUB_REPO_URL, X_URL } from "@/utils/constants";
-import { useGithubStats } from "@/hooks/useGithubStats";
-import GlobalSearch from "./GlobalSearch";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
+import { GITHUB_REPO_NAME, GITHUB_REPO_URL, X_URL } from "@/utils/constants"
+import { useGithubStats } from "@/hooks/useGithubStats"
+import GlobalSearch from "./GlobalSearch"
 
-import { Menu, X, ChevronDown, GitHub, Sparkles2, PlayCircle, AppWindow, Type, TwitterNew } from "@deemlol/next-icons";
-import { motion, AnimatePresence } from "framer-motion";
-import { useWebHaptics } from "web-haptics/react";
-import Image from "next/image";
-import * as React from "react";
-import Link from "next/link";
+import { Menu, X, ChevronDown, GitHub, Sparkles2, PlayCircle, AppWindow, Type, TwitterNew } from "@deemlol/next-icons"
+import { motion, AnimatePresence } from "framer-motion"
+import { useWebHaptics } from "web-haptics/react"
+import Image from "next/image"
+import * as React from "react"
+import Link from "next/link"
 
 type NavbarDropdownItem = {
-	url: string;
-	name: string;
-	desc: string;
-	disabled: boolean;
-	icon: React.ComponentType<{ size?: number }>;
-};
+	url: string
+	name: string
+	desc: string
+	disabled: boolean
+	icon: React.ComponentType<{ size?: number }>
+}
 
 type NavbarLink = {
-	name: string;
-	href: string;
-	disabled?: boolean;
-	hasDropdown: boolean;
-	dropdownItems?: NavbarDropdownItem[];
-};
+	name: string
+	href: string
+	disabled?: boolean
+	hasDropdown: boolean
+	dropdownItems?: NavbarDropdownItem[]
+}
 
 const NAVBAR_LINKS: NavbarLink[] = [
 	{
@@ -39,23 +39,23 @@ const NAVBAR_LINKS: NavbarLink[] = [
 				icon: Sparkles2,
 				desc: "Browse all of our icons",
 				url: "/icons",
-				disabled: false,
+				disabled: false
 			},
 			{
 				name: "Animated Icons",
 				icon: PlayCircle,
 				desc: "Browse all of our animated icons",
 				url: "/animated-icons",
-				disabled: false,
+				disabled: false
 			},
 			{
 				name: "UI Components",
 				icon: AppWindow,
 				desc: "Browse all of our UI components",
 				url: "#",
-				disabled: true,
-			},
-		],
+				disabled: true
+			}
+		]
 	},
 	{
 		name: "Legal",
@@ -67,51 +67,51 @@ const NAVBAR_LINKS: NavbarLink[] = [
 				icon: Type,
 				desc: "Read our privacy policy",
 				url: "/legal/privacy",
-				disabled: false,
+				disabled: false
 			},
 			{
 				name: "Licence",
 				icon: Type,
 				desc: "Read our licence",
 				url: "https://github.com/Next-Icons/next-icons/blob/main/LICENCE",
-				disabled: false,
-			},
-		],
+				disabled: false
+			}
+		]
 	},
-	{ name: "Contact Us", href: "/contact", hasDropdown: false, disabled: false },
-];
+	{ name: "Contact Us", href: "/contact", hasDropdown: false, disabled: false }
+]
 
 export default function NavbarExport() {
-	const [activeMobileDropdown, setActiveMobileDropdown] = React.useState<string | null>("Explore");
-	const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null);
-	const [hoveredLink, setHoveredLink] = React.useState<string | null>(null);
-	const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
-	const { formattedStars, loading } = useGithubStats(GITHUB_REPO_NAME);
-	const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
-	const [isScrolled, setIsScrolled] = React.useState(false);
-	const { trigger } = useWebHaptics();
+	const [activeMobileDropdown, setActiveMobileDropdown] = React.useState<string | null>("Explore")
+	const [activeDropdown, setActiveDropdown] = React.useState<string | null>(null)
+	const [hoveredLink, setHoveredLink] = React.useState<string | null>(null)
+	const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+	const { formattedStars, loading } = useGithubStats(GITHUB_REPO_NAME)
+	const timeoutRef = React.useRef<NodeJS.Timeout | null>(null)
+	const [isScrolled, setIsScrolled] = React.useState(false)
+	const { trigger } = useWebHaptics()
 
 	React.useEffect(() => {
 		const handleScroll = () => {
-			setIsScrolled(window?.scrollY > 20);
-		};
+			setIsScrolled(window?.scrollY > 20)
+		}
 
-		window.addEventListener("scroll", handleScroll);
-		return () => window.removeEventListener("scroll", handleScroll);
-	}, []);
+		window.addEventListener("scroll", handleScroll)
+		return () => window.removeEventListener("scroll", handleScroll)
+	}, [])
 
 	React.useEffect(() => {
 		if (!isMobileMenuOpen) {
-			document.body.style.overflow = "";
-			setActiveMobileDropdown(null);
-			return;
+			document.body.style.overflow = ""
+			setActiveMobileDropdown(null)
+			return
 		}
 
-		document.body.style.overflow = "hidden";
+		document.body.style.overflow = "hidden"
 		return () => {
-			document.body.style.overflow = "";
-		};
-	}, [isMobileMenuOpen]);
+			document.body.style.overflow = ""
+		}
+	}, [isMobileMenuOpen])
 
 	return (
 		<>
@@ -125,7 +125,10 @@ export default function NavbarExport() {
 			>
 				<div className="mx-auto max-w-7xl px-4 2xl:px-0">
 					<div className="flex items-center justify-between">
-						<Link href={"/"} className="group flex shrink-0 cursor-pointer items-center gap-3">
+						<Link
+							href={"/"}
+							className="group flex shrink-0 cursor-pointer items-center gap-3"
+						>
 							<Image
 								src={"/Logo.png"}
 								alt="Next Icons Logo"
@@ -146,18 +149,18 @@ export default function NavbarExport() {
 									className="group relative"
 									onMouseEnter={() => {
 										if (timeoutRef?.current) {
-											clearTimeout(timeoutRef?.current);
-											timeoutRef.current = null;
+											clearTimeout(timeoutRef?.current)
+											timeoutRef.current = null
 										}
 
-										setActiveDropdown(link?.name);
-										setHoveredLink(link?.name);
+										setActiveDropdown(link?.name)
+										setHoveredLink(link?.name)
 									}}
 									onMouseLeave={() => {
 										timeoutRef.current = setTimeout(() => {
-											setActiveDropdown(null);
-											setHoveredLink(null);
-										}, 400);
+											setActiveDropdown(null)
+											setHoveredLink(null)
+										}, 400)
 									}}
 								>
 									{link?.hasDropdown ? (
@@ -290,7 +293,10 @@ export default function NavbarExport() {
 								rel="noopener noreferrer"
 								className={`mt-2 flex items-center justify-center leading-none text-[#ffffff]`}
 							>
-								<TwitterNew size={26} strokeWidth={1.5} />
+								<TwitterNew
+									size={26}
+									strokeWidth={1.5}
+								/>
 							</Link>
 
 							<Link
@@ -300,7 +306,10 @@ export default function NavbarExport() {
 								aria-label="Check out our GitHub repository"
 								className={`flex items-center gap-2 text-lg leading-none text-[#ffffff] ${GoogleSansMedium.className}`}
 							>
-								<GitHub size={20} strokeWidth={1.5} />
+								<GitHub
+									size={20}
+									strokeWidth={1.5}
+								/>
 								<span>{loading ? 0 : formattedStars}</span>
 							</Link>
 						</div>
@@ -309,8 +318,8 @@ export default function NavbarExport() {
 							<button
 								type="button"
 								onClick={() => {
-									setIsMobileMenuOpen(!isMobileMenuOpen);
-									trigger("heavy");
+									setIsMobileMenuOpen(!isMobileMenuOpen)
+									trigger("heavy")
 								}}
 								className="relative flex h-10 w-10 items-center justify-center focus:outline-none"
 								aria-label="Open mobile menu"
@@ -324,7 +333,11 @@ export default function NavbarExport() {
 										transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
 										className="absolute inset-0 flex items-center justify-center"
 									>
-										<Menu size={34} color="#ffffff" strokeWidth={1.5} />
+										<Menu
+											size={34}
+											color="#ffffff"
+											strokeWidth={1.5}
+										/>
 									</motion.span>
 								</AnimatePresence>
 							</button>
@@ -354,8 +367,8 @@ export default function NavbarExport() {
 									<Link
 										href={"/"}
 										onClick={() => {
-											setIsMobileMenuOpen(false);
-											trigger("light");
+											setIsMobileMenuOpen(false)
+											trigger("light")
 										}}
 										className="flex items-center gap-3"
 									>
@@ -377,27 +390,34 @@ export default function NavbarExport() {
 									<button
 										type="button"
 										onClick={() => {
-											setIsMobileMenuOpen(false);
-											trigger("heavy");
+											setIsMobileMenuOpen(false)
+											trigger("heavy")
 										}}
 										className="flex h-10 w-10 items-center justify-center"
 										aria-label="Close mobile menu"
 									>
-										<X size={34} color="#ffffff" strokeWidth={1.5} />
+										<X
+											size={34}
+											color="#ffffff"
+											strokeWidth={1.5}
+										/>
 									</button>
 								</div>
 
 								<div className="flex-1 space-y-6 overflow-y-auto px-4 pt-8 pb-8">
 									{NAVBAR_LINKS.map((link) => (
-										<div key={link?.name} className="border-b border-[#fafafa]/7 pb-1.5">
+										<div
+											key={link?.name}
+											className="border-b border-[#fafafa]/7 pb-1.5"
+										>
 											{link?.hasDropdown ? (
 												<button
 													type="button"
 													onClick={() => {
 														setActiveMobileDropdown((prev) =>
-															prev === link?.name ? null : link?.name,
-														);
-														trigger("medium");
+															prev === link?.name ? null : link?.name
+														)
+														trigger("medium")
 													}}
 													className={`flex w-full items-center justify-between py-2 text-start text-3xl leading-none text-[#ffffff] ${GoogleSansBold.className}`}
 												>
@@ -442,11 +462,11 @@ export default function NavbarExport() {
 															}`}
 															onClick={(e) => {
 																if (item?.disabled) {
-																	e?.preventDefault();
-																	return;
+																	e?.preventDefault()
+																	return
 																}
 
-																setIsMobileMenuOpen(false);
+																setIsMobileMenuOpen(false)
 															}}
 														>
 															<div className="flex flex-1 flex-col">
@@ -488,12 +508,15 @@ export default function NavbarExport() {
 											rel="noopener noreferrer"
 											aria-label="Check out our GitHub repository"
 											onClick={() => {
-												setIsMobileMenuOpen(false);
-												trigger("medium");
+												setIsMobileMenuOpen(false)
+												trigger("medium")
 											}}
 											className={`inline-flex items-center gap-3 rounded-xl bg-[#bffb4f] px-4 py-1.5 text-lg text-[#000000] ${GoogleSansMedium.className}`}
 										>
-											<GitHub size={20} strokeWidth={1.5} />
+											<GitHub
+												size={20}
+												strokeWidth={1.5}
+											/>
 											<span>{loading ? 0 : formattedStars}</span>
 										</Link>
 									</div>
@@ -504,5 +527,5 @@ export default function NavbarExport() {
 				</AnimatePresence>
 			</motion.nav>
 		</>
-	);
+	)
 }

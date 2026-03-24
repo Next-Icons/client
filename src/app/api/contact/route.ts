@@ -1,94 +1,94 @@
-"use server";
+"use server"
 
-import { blacklistedTempMails } from "@/utils/blacklistedTempMails";
-import { EMAIL_ADDRESS } from "@/utils/constants";
+import { blacklistedTempMails } from "@/utils/blacklistedTempMails"
+import { EMAIL_ADDRESS } from "@/utils/constants"
 
-import { NextResponse, NextRequest } from "next/server";
-import { createTransport } from "nodemailer";
-import crypto from "crypto";
-import "dotenv/config";
+import { NextResponse, NextRequest } from "next/server"
+import { createTransport } from "nodemailer"
+import crypto from "crypto"
+import "dotenv/config"
 
-const tagOptions = ["Bug", "Question", "Typo", "Showcase", "Suggest Icon", "Other"] as const;
-const rateLimit = new Map<string, { count: number; timestamp: number }>();
-const POW_DIFFICULTY = 5;
+const tagOptions = ["Bug", "Question", "Typo", "Showcase", "Suggest Icon", "Other"] as const
+const rateLimit = new Map<string, { count: number; timestamp: number }>()
+const POW_DIFFICULTY = 5
 
 type ContactPayload = {
-	email: string;
-	subject: string;
-	message: string;
-	consent: boolean;
-	_honey?: string;
-	tag: (typeof tagOptions)[number];
-};
+	email: string
+	subject: string
+	message: string
+	consent: boolean
+	_honey?: string
+	tag: (typeof tagOptions)[number]
+}
 
 setInterval(() => {
-	const now = Date.now();
+	const now = Date.now()
 
 	for (const [ip, data] of rateLimit?.entries()) {
 		if (now - data?.timestamp > 60_000) {
-			rateLimit?.delete(ip);
+			rateLimit?.delete(ip)
 		}
 	}
-}, 60_000);
+}, 60_000)
 
 function getClientIp(req: NextRequest): string {
-	return req?.headers?.get("x-forwarded-for")?.split(",")[0] || "unknown";
+	return req?.headers?.get("x-forwarded-for")?.split(",")[0] || "unknown"
 }
 
 function checkRateLimit(ip: string, limit: number): boolean {
-	const now = Date.now();
-	const record = rateLimit?.get(ip);
+	const now = Date.now()
+	const record = rateLimit?.get(ip)
 
 	if (!record) {
-		rateLimit.set(ip, { count: 1, timestamp: now });
-		return true;
+		rateLimit.set(ip, { count: 1, timestamp: now })
+		return true
 	}
 
 	if (now - record?.timestamp > 60_000) {
-		rateLimit.set(ip, { count: 1, timestamp: now });
-		return true;
+		rateLimit.set(ip, { count: 1, timestamp: now })
+		return true
 	}
 
-	if (record?.count >= limit) return false;
-	record.count++;
+	if (record?.count >= limit) return false
+	record.count++
 
-	return true;
+	return true
 }
 
 function generateChallenge(ip: string): string {
 	const payload = JSON.stringify({
 		ts: Date.now(),
 		ip: ip,
-		rnd: crypto.randomBytes(8).toString("hex"),
-	});
+		rnd: crypto.randomBytes(8).toString("hex")
+	})
 
-	const payloadB64 = Buffer.from(payload).toString("base64");
+	const payloadB64 = Buffer.from(payload).toString("base64")
 
-	const signature = crypto.createHmac("sha256", process.env.CAPTCHA_SECRET).update(payloadB64).digest("hex");
-	return `${payloadB64}.${signature}`;
+	const signature = crypto.createHmac("sha256", process.env.CAPTCHA_SECRET).update(payloadB64).digest("hex")
+	return `${payloadB64}.${signature}`
 }
 
 function verifyChallenge(token: string, ip: string): boolean {
 	try {
-		const parts = token.split(".");
-		if (parts.length !== 2) return false;
+		const parts = token.split(".")
+		if (parts.length !== 2) return false
 
-		const [payloadB64, signature] = parts;
+		const [payloadB64, signature] = parts
 
 		const expectedSignature = crypto
 			.createHmac("sha256", process.env.CAPTCHA_SECRET)
 			.update(payloadB64)
-			.digest("hex");
+			.digest("hex")
 
-		if (signature !== expectedSignature) return false;
+		if (signature !== expectedSignature) return false
 
-		const payload = JSON.parse(Buffer.from(payloadB64, "base64").toString());
-		if (payload?.ip !== ip) return false;
+		const payload = JSON.parse(Buffer.from(payloadB64, "base64").toString())
+		if (payload?.ip !== ip) return false
 
-		if (Date.now() - payload?.ts > 300_000) return false;
-		return true;
+		if (Date.now() - payload?.ts > 300_000) return false
+		return true
 	} catch {
-		return false;
+		return false
 	}
 }
 
@@ -96,9 +96,9 @@ function verifyPoW(challenge: string, nonce: string): boolean {
 	const hash = crypto
 		.createHash("sha256")
 		.update(challenge + nonce)
-		.digest("hex");
+		.digest("hex")
 
-	return hash.startsWith("0".repeat(POW_DIFFICULTY));
+	return hash.startsWith("0".repeat(POW_DIFFICULTY))
 }
 
 function escapeHtml(unsafe: string) {
@@ -107,104 +107,104 @@ function escapeHtml(unsafe: string) {
 		.replace(/</g, "&lt;")
 		.replace(/>/g, "&gt;")
 		.replace(/"/g, "&quot;")
-		.replace(/'/g, "&#039;");
+		.replace(/'/g, "&#039;")
 }
 
 export async function GET(req: NextRequest) {
-	const ip = getClientIp(req);
+	const ip = getClientIp(req)
 
 	if (!checkRateLimit(ip, 10)) {
-		return NextResponse.json({ message: "Too many requests. Please try again later." }, { status: 429 });
+		return NextResponse.json({ message: "Too many requests. Please try again later." }, { status: 429 })
 	}
 
-	const challenge = generateChallenge(ip);
+	const challenge = generateChallenge(ip)
 
 	return NextResponse.json(
 		{
 			challenge,
-			difficulty: POW_DIFFICULTY,
+			difficulty: POW_DIFFICULTY
 		},
-		{ status: 200 },
-	);
+		{ status: 200 }
+	)
 }
 
 export async function POST(req: NextRequest) {
-	const errors: Record<string, string> = {};
-	let data: ContactPayload | null = null;
-	let challenge: string | undefined;
-	let nonce: string | undefined;
-	const ip = getClientIp(req);
+	const errors: Record<string, string> = {}
+	let data: ContactPayload | null = null
+	let challenge: string | undefined
+	let nonce: string | undefined
+	const ip = getClientIp(req)
 
 	if (!checkRateLimit(ip + "_post", 3)) {
-		return NextResponse.json({ message: "Too many submissions. Please try again later." }, { status: 429 });
+		return NextResponse.json({ message: "Too many submissions. Please try again later." }, { status: 429 })
 	}
 
 	try {
-		const body = (await req?.json()) as { formData: ContactPayload; challenge: string; nonce: string };
+		const body = (await req?.json()) as { formData: ContactPayload; challenge: string; nonce: string }
 
-		data = body?.formData;
-		challenge = body?.challenge;
-		nonce = body?.nonce;
+		data = body?.formData
+		challenge = body?.challenge
+		nonce = body?.nonce
 	} catch {
-		return NextResponse.json({ message: "Invalid data. Please try again." }, { status: 400 });
+		return NextResponse.json({ message: "Invalid data. Please try again." }, { status: 400 })
 	}
 
 	if (data?._honey) {
-		return NextResponse.json({ message: "Your message has been sent successfully" }, { status: 200 });
+		return NextResponse.json({ message: "Your message has been sent successfully" }, { status: 200 })
 	}
 
 	if (!challenge || !nonce) {
-		return NextResponse.json({ message: "Missing captcha solution" }, { status: 400 });
+		return NextResponse.json({ message: "Missing captcha solution" }, { status: 400 })
 	}
 
 	if (!verifyChallenge(challenge, ip)) {
-		return NextResponse.json({ message: "Invalid or expired captcha. Please refresh the page." }, { status: 400 });
+		return NextResponse.json({ message: "Invalid or expired captcha. Please refresh the page." }, { status: 400 })
 	}
 
 	if (!verifyPoW(challenge, nonce)) {
-		return NextResponse.json({ message: "Incorrect captcha solution" }, { status: 400 });
+		return NextResponse.json({ message: "Incorrect captcha solution" }, { status: 400 })
 	}
 
 	if (!data?.email?.trim()) {
-		errors.email = "Please enter your e-mail address";
+		errors.email = "Please enter your e-mail address"
 	} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data?.email)) {
-		errors.email = "E-mail address is not in the correct format";
+		errors.email = "E-mail address is not in the correct format"
 	} else if (data?.email?.trim().length < 5) {
-		errors.email = "E-mail address must be at least 5 characters long";
+		errors.email = "E-mail address must be at least 5 characters long"
 	} else if (data?.email?.trim().length > 50) {
-		errors.email = "E-mail address must not exceed 50 characters";
+		errors.email = "E-mail address must not exceed 50 characters"
 	} else if (blacklistedTempMails.includes(data?.email.split("@")[1])) {
-		return NextResponse.json({ message: "Temporary e-mail addresses are not allowed" }, { status: 400 });
+		return NextResponse.json({ message: "Temporary e-mail addresses are not allowed" }, { status: 400 })
 	}
 
 	if (!data?.subject?.trim()) {
-		errors.subject = "Please enter a subject";
+		errors.subject = "Please enter a subject"
 	} else if (data?.subject?.trim().length < 5) {
-		errors.subject = "Subject must be at least 5 characters long";
+		errors.subject = "Subject must be at least 5 characters long"
 	} else if (data?.subject?.trim().length > 40) {
-		errors.subject = "Subject must not exceed 40 characters";
+		errors.subject = "Subject must not exceed 40 characters"
 	}
 
 	if (!tagOptions.includes(data?.tag)) {
-		errors.tag = "Please select a tag";
+		errors.tag = "Please select a tag"
 	}
 
 	if (!data?.message?.trim()) {
-		errors.message = "Please enter a message";
+		errors.message = "Please enter a message"
 	} else if (data?.message?.trim().length < 20) {
-		errors.message = "Message must be at least 20 characters long";
+		errors.message = "Message must be at least 20 characters long"
 	} else if (data?.message?.trim().length > 400) {
-		errors.message = "Message must not exceed 400 characters";
+		errors.message = "Message must not exceed 400 characters"
 	}
 
-	if (!data?.consent) errors.consent = "You must give your consent to submit";
+	if (!data?.consent) errors.consent = "You must give your consent to submit"
 
 	if (Object.keys(errors).length > 0) {
-		return NextResponse.json({ message: "Correct the errors in the form and try again.", errors }, { status: 400 });
+		return NextResponse.json({ message: "Correct the errors in the form and try again.", errors }, { status: 400 })
 	}
 
 	if (!process.env.EMAIL_AUTH_USER || !process.env.EMAIL_AUTH_PASS) {
-		throw new Error("Please set EMAIL_AUTH_USER and EMAIL_AUTH_PASS in .env file.");
+		throw new Error("Please set EMAIL_AUTH_USER and EMAIL_AUTH_PASS in .env file.")
 	}
 
 	const transporter = createTransport({
@@ -213,9 +213,9 @@ export async function POST(req: NextRequest) {
 		secure: true,
 		auth: {
 			user: process.env.EMAIL_AUTH_USER,
-			pass: process.env.EMAIL_AUTH_PASS,
-		},
-	});
+			pass: process.env.EMAIL_AUTH_PASS
+		}
+	})
 
 	try {
 		await transporter.sendMail({
@@ -254,11 +254,11 @@ export async function POST(req: NextRequest) {
 						</div>
 					</div>
 				</div>
-			`,
-		});
+			`
+		})
 
-		return NextResponse.json({ ok: true, message: "Your message has been sent successfully" }, { status: 200 });
+		return NextResponse.json({ ok: true, message: "Your message has been sent successfully" }, { status: 200 })
 	} catch {
-		return NextResponse.json({ message: "Message could not be sent. Please try again." }, { status: 500 });
+		return NextResponse.json({ message: "Message could not be sent. Please try again." }, { status: 500 })
 	}
 }

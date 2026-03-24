@@ -1,46 +1,46 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansRegular, GoogleSansSemiBold } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansRegular, GoogleSansSemiBold } from "@/utils/fonts"
 
-import { ChevronDown, Disc } from "@deemlol/next-icons";
-import { AnimatePresence, motion } from "framer-motion";
-import { useWebHaptics } from "web-haptics/react";
-import * as React from "react";
+import { ChevronDown, Disc } from "@deemlol/next-icons"
+import { AnimatePresence, motion } from "framer-motion"
+import { useWebHaptics } from "web-haptics/react"
+import * as React from "react"
 
 type FaqItem = {
-	question: string;
-	answer: string;
-};
+	question: string
+	answer: string
+}
 
 const FAQ_ITEMS: FaqItem[] = [
 	{
 		question: "Is Next Icons free to use?",
-		answer: "Yes! Next Icons is completely free and open source. You can find the source code on GitHub.",
+		answer: "Yes! Next Icons is completely free and open source. You can find the source code on GitHub."
 	},
 	{
 		question: "I can't find the icon I'm looking for?",
-		answer: "We are sorry that we don't have the icon you're looking for. Next Icons is still in early development, and we are working hard to add more icons. If you have any suggestions for new icons, please let us know via our Contact Form. We will add it as soon as possible or you can add it yourself!",
+		answer: "We are sorry that we don't have the icon you're looking for. Next Icons is still in early development, and we are working hard to add more icons. If you have any suggestions for new icons, please let us know via our Contact Form. We will add it as soon as possible or you can add it yourself!"
 	},
 	{
 		question: "Can I customize the icons?",
-		answer: "Yes! Next Icons is designed to be highly customisable. You can easily adjust the size, color and other properties of the icons to suit your needs. Alternatively, you can download the SVG file and customise it further.",
+		answer: "Yes! Next Icons is designed to be highly customisable. You can easily adjust the size, color and other properties of the icons to suit your needs. Alternatively, you can download the SVG file and customise it further."
 	},
 	{
 		question: "Where can I report bugs or suggest new features?",
-		answer: "You can report bugs or suggest new features by opening an issue on our GitHub repository, or by contacting us via our contact form. We welcome your feedback and contributions!",
-	},
-];
+		answer: "You can report bugs or suggest new features by opening an issue on our GitHub repository, or by contacting us via our contact form. We welcome your feedback and contributions!"
+	}
+]
 
 function FAQRow({
 	item,
 	index,
 	isOpen,
-	onToggle,
+	onToggle
 }: {
-	item: FaqItem;
-	index: number;
-	isOpen: boolean;
-	onToggle: () => void;
+	item: FaqItem
+	index: number
+	isOpen: boolean
+	onToggle: () => void
 }) {
 	return (
 		<motion.div
@@ -60,7 +60,10 @@ function FAQRow({
 				aria-expanded={isOpen}
 			>
 				<div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#bffb4f]/25 bg-[#bffb4f]/10 text-[#bffb4f]">
-					<Disc size={22} strokeWidth={1.5} />
+					<Disc
+						size={22}
+						strokeWidth={1.5}
+					/>
 				</div>
 
 				<span className={`flex-1 text-base text-[#ffffff] lg:text-xl ${GoogleSansSemiBold.className}`}>
@@ -72,7 +75,10 @@ function FAQRow({
 					transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
 					className="flex h-9 w-9 shrink-0 items-center justify-center text-[#ffffff]"
 				>
-					<ChevronDown size={24} strokeWidth={1.5} />
+					<ChevronDown
+						size={24}
+						strokeWidth={1.5}
+					/>
 				</motion.span>
 			</button>
 
@@ -85,7 +91,7 @@ function FAQRow({
 						exit={{ height: 0, opacity: 0 }}
 						transition={{
 							height: { duration: 0.38, ease: [0.22, 1, 0.36, 1] },
-							opacity: { duration: 0.25, ease: "easeOut" },
+							opacity: { duration: 0.25, ease: "easeOut" }
 						}}
 						className="overflow-hidden"
 					>
@@ -102,15 +108,15 @@ function FAQRow({
 				)}
 			</AnimatePresence>
 		</motion.div>
-	);
+	)
 }
 
 export default function FAQ() {
-	const [openIndex, setOpenIndex] = React.useState(0);
-	const { trigger } = useWebHaptics();
+	const [openIndex, setOpenIndex] = React.useState(0)
+	const { trigger } = useWebHaptics()
 
 	return (
-		<section className="overflow-hidden px-4 pt-10 pb-28 lg:pt-18 lg:pb-36 2xl:px-0">
+		<section className="overflow-hidden px-4 pt-20 pb-28 lg:pt-46 lg:pb-36 2xl:px-0">
 			<div className="mx-auto max-w-7xl">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
@@ -133,13 +139,13 @@ export default function FAQ() {
 							index={index}
 							isOpen={openIndex === index}
 							onToggle={() => {
-								setOpenIndex((prev) => (prev === index ? -1 : index));
-								trigger(openIndex === index ? "light" : "medium");
+								setOpenIndex((prev) => (prev === index ? -1 : index))
+								trigger(openIndex === index ? "light" : "medium")
 							}}
 						/>
 					))}
 				</div>
 			</div>
 		</section>
-	);
+	)
 }

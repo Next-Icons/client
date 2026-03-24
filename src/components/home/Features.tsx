@@ -1,10 +1,10 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
 
-import { Layers, Feather, Download, PenTool, Heart, Code } from "@deemlol/next-icons";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import * as React from "react";
+import { Layers, Feather, Download, PenTool, Heart, Code } from "@deemlol/next-icons"
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
+import * as React from "react"
 
 //prettier-ignore
 const FeatureCard = ({ title, description, icon: Icon, delay }: { title: string; description: string; icon: React.ElementType; delay: number; }) => {
@@ -121,5 +121,5 @@ export default function Features() {
 				</div>
 			</div>
 		</section>
-	);
+	)
 }

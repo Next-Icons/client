@@ -1,59 +1,59 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
-import Dropdown from "@/components/contact/Dropdown";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
+import Dropdown from "@/components/contact/Dropdown"
 
-import { Check, Shield } from "@deemlol/next-icons";
-import { useWebHaptics } from "web-haptics/react";
-import { motion } from "framer-motion";
-import * as React from "react";
-import Link from "next/link";
+import { Check, Shield } from "@deemlol/next-icons"
+import { useWebHaptics } from "web-haptics/react"
+import { motion } from "framer-motion"
+import * as React from "react"
+import Link from "next/link"
 
-const tagOptions = ["Bug", "Question", "Typo", "Showcase", "Suggest Icon", "Other"] as const;
-type TagOption = (typeof tagOptions)[number];
+const tagOptions = ["Bug", "Question", "Typo", "Showcase", "Suggest Icon", "Other"] as const
+type TagOption = (typeof tagOptions)[number]
 
 type ContactFormData = {
-	email: string;
-	subject: string;
-	tag: TagOption;
-	message: string;
-	consent: boolean;
-	_honey: string;
-};
+	email: string
+	subject: string
+	tag: TagOption
+	message: string
+	consent: boolean
+	_honey: string
+}
 
-type FormErrors = Partial<Record<keyof ContactFormData | "form", string>>;
+type FormErrors = Partial<Record<keyof ContactFormData | "form", string>>
 
 async function solvePoW(challenge: string, difficulty: number): Promise<string> {
-	const encoder = new TextEncoder();
-	let nonce = 0;
+	const encoder = new TextEncoder()
+	let nonce = 0
 
 	while (true) {
-		const str = challenge + nonce;
-		const data = encoder.encode(str);
-		const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-		const hashArray = new Uint8Array(hashBuffer);
+		const str = challenge + nonce
+		const data = encoder.encode(str)
+		const hashBuffer = await crypto.subtle.digest("SHA-256", data)
+		const hashArray = new Uint8Array(hashBuffer)
 
-		let isValid = true;
-		const fullBytes = Math.floor(difficulty / 2);
+		let isValid = true
+		const fullBytes = Math.floor(difficulty / 2)
 
 		for (let i = 0; i < fullBytes; i++) {
 			if (hashArray[i] !== 0) {
-				isValid = false;
-				break;
+				isValid = false
+				break
 			}
 		}
 
 		if (isValid && difficulty % 2 === 1) {
 			if (hashArray[fullBytes] >= 16) {
-				isValid = false;
+				isValid = false
 			}
 		}
 
-		if (isValid) return nonce.toString();
+		if (isValid) return nonce.toString()
 
-		nonce++;
+		nonce++
 		if (nonce % 5000 === 0) {
-			await new Promise((resolve) => setTimeout(resolve, 0));
+			await new Promise((resolve) => setTimeout(resolve, 0))
 		}
 	}
 }
@@ -61,99 +61,99 @@ async function solvePoW(challenge: string, difficulty: number): Promise<string> 
 export default function ContactExport() {
 	//prettier-ignore
 	const [formData, setFormData] = React.useState<ContactFormData>({ email: "", subject: "", tag: tagOptions[0], message: "", consent: false, _honey: "" });
-	const [captchaSolution, setCaptchaSolution] = React.useState<{ challenge: string; nonce: string } | null>(null);
-	const [captchaStatus, setCaptchaStatus] = React.useState<"idle" | "solving" | "solved" | "error">("idle");
-	const [isSubmitting, setIsSubmitting] = React.useState(false);
-	const [isSubmitted, setIsSubmitted] = React.useState(false);
-	const [errors, setErrors] = React.useState<FormErrors>({});
-	const { trigger } = useWebHaptics();
+	const [captchaSolution, setCaptchaSolution] = React.useState<{ challenge: string; nonce: string } | null>(null)
+	const [captchaStatus, setCaptchaStatus] = React.useState<"idle" | "solving" | "solved" | "error">("idle")
+	const [isSubmitting, setIsSubmitting] = React.useState(false)
+	const [isSubmitted, setIsSubmitted] = React.useState(false)
+	const [errors, setErrors] = React.useState<FormErrors>({})
+	const { trigger } = useWebHaptics()
 
 	const handleCaptchaVerify = async () => {
-		if (captchaStatus === "solving" || captchaStatus === "solved") return;
-		setCaptchaStatus("solving");
+		if (captchaStatus === "solving" || captchaStatus === "solved") return
+		setCaptchaStatus("solving")
 
 		try {
-			const challengeRes = await fetch("/api/contact");
+			const challengeRes = await fetch("/api/contact")
 
 			if (!challengeRes?.ok) {
-				setCaptchaStatus("error");
+				setCaptchaStatus("error")
 
-				setErrors({ form: "Failed to initialize verification" });
-				return;
+				setErrors({ form: "Failed to initialize verification" })
+				return
 			}
 
-			const { challenge, difficulty } = await challengeRes?.json();
-			const nonce = await solvePoW(challenge, difficulty);
+			const { challenge, difficulty } = await challengeRes?.json()
+			const nonce = await solvePoW(challenge, difficulty)
 
-			setCaptchaSolution({ challenge, nonce });
-			setCaptchaStatus("solved");
+			setCaptchaSolution({ challenge, nonce })
+			setCaptchaStatus("solved")
 		} catch (err) {
-			console.error("An error occurred while solving PoW:", err);
-			setCaptchaStatus("error");
+			console.error("An error occurred while solving PoW:", err)
+			setCaptchaStatus("error")
 		}
-	};
+	}
 
 	const validateForm = (data: ContactFormData) => {
-		const nextErrors: FormErrors = {};
+		const nextErrors: FormErrors = {}
 
 		if (!data?.email?.trim()) {
-			nextErrors.email = "Please enter your e-mail address";
+			nextErrors.email = "Please enter your e-mail address"
 		} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data?.email)) {
-			nextErrors.email = "E-mail address is not in the correct format";
+			nextErrors.email = "E-mail address is not in the correct format"
 		} else if (data?.email?.trim().length < 5) {
-			nextErrors.email = "E-mail address must be at least 5 characters long";
+			nextErrors.email = "E-mail address must be at least 5 characters long"
 		} else if (data?.email?.trim().length > 50) {
-			nextErrors.email = "E-mail address must not exceed 50 characters";
+			nextErrors.email = "E-mail address must not exceed 50 characters"
 		}
 
 		if (!data?.subject?.trim()) {
-			nextErrors.subject = "Please enter a subject";
+			nextErrors.subject = "Please enter a subject"
 		} else if (data?.subject?.trim().length < 5) {
-			nextErrors.subject = "Subject must be at least 5 characters long";
+			nextErrors.subject = "Subject must be at least 5 characters long"
 		} else if (data?.subject?.trim().length > 40) {
-			nextErrors.subject = "Subject must not exceed 40 characters";
+			nextErrors.subject = "Subject must not exceed 40 characters"
 		}
 
 		if (!tagOptions.includes(data?.tag)) {
-			nextErrors.tag = "Please select a tag";
+			nextErrors.tag = "Please select a tag"
 		}
 
 		if (!data?.message?.trim()) {
-			nextErrors.message = "Please enter a message";
+			nextErrors.message = "Please enter a message"
 		} else if (data?.message?.trim().length < 20) {
-			nextErrors.message = "Message must be at least 20 characters long";
+			nextErrors.message = "Message must be at least 20 characters long"
 		} else if (data?.message?.trim().length > 400) {
-			nextErrors.message = "Message must not exceed 400 characters";
+			nextErrors.message = "Message must not exceed 400 characters"
 		}
 
-		if (!data?.consent) nextErrors.consent = "You must give your consent to submit";
+		if (!data?.consent) nextErrors.consent = "You must give your consent to submit"
 
-		return nextErrors;
-	};
+		return nextErrors
+	}
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-		const { name, value, type } = e?.currentTarget;
-		const nextValue = type === "checkbox" ? (e?.currentTarget as HTMLInputElement).checked : value;
+		const { name, value, type } = e?.currentTarget
+		const nextValue = type === "checkbox" ? (e?.currentTarget as HTMLInputElement).checked : value
 
-		setFormData((prev) => ({ ...prev, [name]: nextValue }));
-		if (errors[name as keyof ContactFormData]) setErrors((prev) => ({ ...prev, [name]: undefined }));
-	};
+		setFormData((prev) => ({ ...prev, [name]: nextValue }))
+		if (errors[name as keyof ContactFormData]) setErrors((prev) => ({ ...prev, [name]: undefined }))
+	}
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		e?.preventDefault();
+		e?.preventDefault()
 
-		const nextErrors = validateForm(formData);
-		setErrors(nextErrors);
+		const nextErrors = validateForm(formData)
+		setErrors(nextErrors)
 
-		if (Object.keys(nextErrors).length > 0) return;
+		if (Object.keys(nextErrors).length > 0) return
 
 		if (captchaStatus !== "solved" || !captchaSolution) {
-			setErrors((prev) => ({ ...prev, captcha: "Please verify you are human" }));
-			return;
+			setErrors((prev) => ({ ...prev, captcha: "Please verify you are human" }))
+			return
 		}
 
-		setIsSubmitting(true);
-		setErrors((prev) => ({ ...prev, form: undefined }));
+		setIsSubmitting(true)
+		setErrors((prev) => ({ ...prev, form: undefined }))
 
 		try {
 			const res = await fetch("/api/contact", {
@@ -162,32 +162,32 @@ export default function ContactExport() {
 				body: JSON.stringify({
 					formData,
 					challenge: captchaSolution?.challenge,
-					nonce: captchaSolution?.nonce,
-				}),
-			});
+					nonce: captchaSolution?.nonce
+				})
+			})
 
-			const result = await res?.json().catch(() => null);
+			const result = await res?.json().catch(() => null)
 
 			if (!res?.ok) {
 				setErrors((prev) => ({
 					...prev,
 					...(result?.errors ?? {}),
-					form: result?.message ?? "Message could not be sent. Please try again.",
-				}));
+					form: result?.message ?? "Message could not be sent. Please try again."
+				}))
 
-				return;
+				return
 			}
 
-			setIsSubmitted(true);
-			setCaptchaStatus("idle");
-			setCaptchaSolution(null);
-			setFormData({ email: "", subject: "", tag: tagOptions[0], message: "", consent: false, _honey: "" });
+			setIsSubmitted(true)
+			setCaptchaStatus("idle")
+			setCaptchaSolution(null)
+			setFormData({ email: "", subject: "", tag: tagOptions[0], message: "", consent: false, _honey: "" })
 		} catch {
-			setErrors((prev) => ({ ...prev, form: "Message could not be sent. Please try again." }));
+			setErrors((prev) => ({ ...prev, form: "Message could not be sent. Please try again." }))
 		} finally {
-			setIsSubmitting(false);
+			setIsSubmitting(false)
 		}
-	};
+	}
 
 	return (
 		<motion.div
@@ -233,8 +233,8 @@ export default function ContactExport() {
 							<button
 								type="button"
 								onClick={() => {
-									setIsSubmitted(false);
-									trigger("light");
+									setIsSubmitted(false)
+									trigger("light")
 								}}
 								className={`mt-6 cursor-pointer text-base text-[#000000] underline ${GoogleSansMedium.className}`}
 							>
@@ -242,7 +242,10 @@ export default function ContactExport() {
 							</button>
 						</motion.div>
 					) : (
-						<form onSubmit={handleSubmit} className="space-y-5">
+						<form
+							onSubmit={handleSubmit}
+							className="space-y-5"
+						>
 							{errors.form ? (
 								<div
 									className={`rounded-lg border border-[#f00c0c]/15 bg-[#ff6467]/10 px-4 py-2.5 text-sm tracking-tight text-[#ff6467] md:text-base ${GoogleSansMedium.className}`}
@@ -321,7 +324,7 @@ export default function ContactExport() {
 									onChange={(value) =>
 										setFormData((prev) => ({
 											...prev,
-											tag: value as TagOption,
+											tag: value as TagOption
 										}))
 									}
 									error={errors?.tag}
@@ -383,8 +386,8 @@ export default function ContactExport() {
 
 							<div
 								onClick={() => {
-									handleCaptchaVerify();
-									trigger("success");
+									handleCaptchaVerify()
+									trigger("success")
 								}}
 								className={`flex w-full cursor-pointer items-center justify-between overflow-hidden rounded-lg border bg-[#ffffff]/4 p-4 transition-all duration-300 ${
 									captchaStatus === "solved"
@@ -407,7 +410,11 @@ export default function ContactExport() {
 												initial={{ opacity: 0, scale: 0.5 }}
 												animate={{ opacity: 1, scale: 1 }}
 											>
-												<Check size={18} strokeWidth={1.5} color="#000000" />
+												<Check
+													size={18}
+													strokeWidth={1.5}
+													color="#000000"
+												/>
 											</motion.div>
 										)}
 
@@ -428,7 +435,11 @@ export default function ContactExport() {
 								</div>
 
 								<div className="flex flex-col items-end">
-									<Shield color="#ffffff" strokeWidth={1.5} size={28} />
+									<Shield
+										color="#ffffff"
+										strokeWidth={1.5}
+										size={28}
+									/>
 								</div>
 							</div>
 
@@ -447,7 +458,13 @@ export default function ContactExport() {
 								<span
 									className={`flex h-4 w-4 items-center justify-center rounded border transition-all duration-200 ${errors?.consent ? "border-[#ff6467]" : "border-[#ffffff]/50"} ${formData.consent ? "border-none bg-[#bffb4f]" : "bg-transparent"}`}
 								>
-									{formData?.consent ? <Check size={14} strokeWidth={1.5} color="#000000" /> : null}
+									{formData?.consent ? (
+										<Check
+											size={14}
+											strokeWidth={1.5}
+											color="#000000"
+										/>
+									) : null}
 								</span>
 
 								<span
@@ -480,5 +497,5 @@ export default function ContactExport() {
 				</div>
 			</div>
 		</motion.div>
-	);
+	)
 }

@@ -546,5 +546,5 @@ export const blacklistedTempMails = [
 	"zehnminutenmail.de",
 	"zippymail.info",
 	"zoemail.net",
-	"zomg.info",
-];
+	"zomg.info"
+]

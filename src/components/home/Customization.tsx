@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts";
+import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
 
 //prettier-ignore
 import { Layers, Feather, Settings, Download, Search, PenTool, Monitor, Globe, CheckCircle, Sparkles2, ChevronRight, ChevronDown, Heart, ChevronLeft, ChevronUp, Phone, PhoneCall, PhoneForwarded, PhoneIncoming, Zap, Box, RotateCcw, Code } from "@deemlol/next-icons";
-import { useWebHaptics } from "web-haptics/react";
-import { motion } from "framer-motion";
-import * as React from "react";
+import { useWebHaptics } from "web-haptics/react"
+import { motion } from "framer-motion"
+import * as React from "react"
 
 const PREVIEW_ICONS = [
 	Box,
@@ -32,20 +32,20 @@ const PREVIEW_ICONS = [
 	ChevronUp,
 	Feather,
 	Download,
-	RotateCcw,
-];
+	RotateCcw
+]
 
 export default function Customization() {
-	const [strokeWidth, setStrokeWidth] = React.useState(1.5);
-	const [color, setColor] = React.useState("#bffb4f");
-	const [size, setSize] = React.useState(32);
-	const { trigger } = useWebHaptics();
+	const [strokeWidth, setStrokeWidth] = React.useState(1.5)
+	const [color, setColor] = React.useState("#bffb4f")
+	const [size, setSize] = React.useState(32)
+	const { trigger } = useWebHaptics()
 
-	const codeSnippet = `<Icon \n    color="${color}"\n    size={${size}}\n    strokeWidth={${strokeWidth}}\n/>`;
-	const PREVIEW_COLORS = ["#bffb4f", "#ffffff", "#3b82f6", "#a855f7", "#ef4444", "#f97316"];
+	const codeSnippet = `<Icon \n    color="${color}"\n    size={${size}}\n    strokeWidth={${strokeWidth}}\n/>`
+	const PREVIEW_COLORS = ["#bffb4f", "#ffffff", "#3b82f6", "#a855f7", "#ef4444", "#f97316"]
 
 	return (
-		<section className="px-4 pt-28 pb-30 lg:pt-36 2xl:px-0">
+		<section className="px-4 pt-28 lg:pt-36 2xl:px-0">
 			<div className="mx-auto max-w-7xl">
 				<div className="mb-10">
 					<motion.h2
@@ -104,15 +104,18 @@ export default function Customization() {
 						<div className="relative flex flex-col gap-8 rounded-xl border border-[#ffffff]/5 bg-[#111111] p-8">
 							<button
 								onClick={() => {
-									setColor("#bffb4f");
-									setSize(32);
-									setStrokeWidth(1.5);
-									trigger("success");
+									setColor("#bffb4f")
+									setSize(32)
+									setStrokeWidth(1.5)
+									trigger("success")
 								}}
 								className="absolute top-6 right-6 flex cursor-pointer items-center justify-center transition-all duration-300 hover:rotate-180"
 								aria-label="Reset to defaults"
 							>
-								<RotateCcw size={20} color="#ffffff" />
+								<RotateCcw
+									size={20}
+									color="#ffffff"
+								/>
 							</button>
 
 							<div>
@@ -125,8 +128,8 @@ export default function Customization() {
 										<button
 											key={c}
 											onClick={() => {
-												setColor(c);
-												trigger("light");
+												setColor(c)
+												trigger("light")
 											}}
 											className={`h-8 w-8 cursor-pointer rounded-full border-2 transition-transform duration-300 hover:scale-110 lg:h-10 lg:w-10 ${
 												color === c ? "scale-110 border-[#ffffff]" : "border-transparent"
@@ -160,8 +163,8 @@ export default function Customization() {
 									step="4"
 									value={size}
 									onChange={(e) => {
-										setSize(Number(e?.target?.value));
-										trigger("light");
+										setSize(Number(e?.target?.value))
+										trigger("light")
 									}}
 									className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#ffffff]/15 accent-[#bffb4f]"
 								/>
@@ -189,8 +192,8 @@ export default function Customization() {
 									step="0.5"
 									value={strokeWidth}
 									onChange={(e) => {
-										setStrokeWidth(Number(e?.target?.value));
-										trigger("light");
+										setStrokeWidth(Number(e?.target?.value))
+										trigger("light")
 									}}
 									className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[#ffffff]/15 accent-[#bffb4f]"
 								/>
@@ -210,5 +213,5 @@ export default function Customization() {
 				</div>
 			</div>
 		</section>
-	);
+	)
 }
