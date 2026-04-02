@@ -1,6 +1,6 @@
 {
 	"name": "nexticons-website-client",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbopack -p 3000",
@@ -12,8 +12,6 @@
 	},
 	"dependencies": {
 		"@deemlol/next-icons": "^0.2.7",
-		"@vercel/analytics": "^2.0.1",
-		"@vercel/speed-insights": "^2.0.0",
 		"canvas-confetti": "^1.9.4",
 		"framer-motion": "^12.38.0",
 		"next": "^16.2.1",

@@ -5,8 +5,6 @@ import NavbarExport from "@/components/layout/NavbarExport"
 import { siteConfig } from "@/utils/siteConfig"
 import "@/styles/globals.css"
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/next"
 import type { Metadata, Viewport } from "next"
 
 export const metadata: Metadata = {
@@ -153,9 +151,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 				<NavbarExport />
 				<main>{children}</main>
 				<FooterExport />
-
-				<Analytics />
-				<SpeedInsights />
 			</body>
 		</html>
 	)

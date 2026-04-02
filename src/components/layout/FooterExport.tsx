@@ -2,7 +2,6 @@
 
 import { GoogleSansBold, GoogleSansMedium, GoogleSansRegular } from "@/utils/fonts"
 import { GITHUB_REPO_URL, NPM_PACKAGE_URL } from "@/utils/constants"
-import StatusWidget from "../StatusWidget"
 
 import { useWebHaptics } from "web-haptics/react"
 import Image from "next/image"
@@ -86,8 +85,6 @@ export default function FooterExport() {
 						>
 							An open-source icon library for React and Next.js.
 						</p>
-
-						<StatusWidget />
 					</div>
 
 					<div className="grid grid-cols-1 gap-10 sm:grid-cols-3 lg:col-span-7">
