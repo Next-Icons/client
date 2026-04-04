@@ -36,7 +36,7 @@ export default function IconsExport() {
 
 	const currentIcons = React.useMemo(() => {
 		const start = (currentPage - 1) * 104
-		return filteredIcons.slice(start, start + 104)
+		return filteredIcons?.slice(start, start + 104)
 	}, [filteredIcons, currentPage])
 
 	React.useEffect(() => {
@@ -122,7 +122,8 @@ export default function IconsExport() {
 												size={14}
 												strokeWidth={1.5}
 											/>
-											Reset to default
+
+											<span>Reset to default</span>
 										</button>
 									</div>
 
@@ -239,6 +240,7 @@ export default function IconsExport() {
 								size={22}
 								strokeWidth={1.5}
 							/>
+							
 							<span>Request an icon</span>
 						</Link>
 					</div>

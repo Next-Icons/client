@@ -15,7 +15,7 @@ Before you begin, ensure you have met the following requirements:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/client.git
+    git clone https://github.com/Next-Icons/client.git
     ```
 
 2. Install dependencies:
@@ -71,15 +71,6 @@ npm start
 ```
 
 _Note: The production server runs on port 8257 by default (as per `package.json`)._
-
-## Technologies Used
-
-- **[Next.js](https://nextjs.org/)** - The React Framework for Production
-- **[TypeScript](https://www.typescriptlang.org/)** - Typed JavaScript
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[Framer Motion](https://www.framer.com/motion/)** - Motion library for React
-- **Nodemailer** - Email sending
-- **ESLint & Prettier** - Code linting and formatting
 
 ## License
 

@@ -14,8 +14,8 @@ import Link from "next/link"
 type IconType = React.ComponentType<{
 	size?: number
 	color?: string
-	strokeWidth?: number
 	className?: string
+	strokeWidth?: number
 }>
 
 type IconEntry = [string, IconType]
@@ -42,7 +42,7 @@ export default function AnimatedIconsExport() {
 
 	const currentIcons = React.useMemo(() => {
 		const start = (currentPage - 1) * 104
-		return filteredIcons.slice(start, start + 104)
+		return filteredIcons?.slice(start, start + 104)
 	}, [filteredIcons, currentPage])
 
 	React.useEffect(() => {
@@ -128,7 +128,8 @@ export default function AnimatedIconsExport() {
 												size={14}
 												strokeWidth={1.5}
 											/>
-											Reset to default
+
+											<span>Reset to default</span>
 										</button>
 									</div>
 
@@ -245,6 +246,7 @@ export default function AnimatedIconsExport() {
 								size={22}
 								strokeWidth={1.5}
 							/>
+
 							<span>Request an icon</span>
 						</Link>
 					</div>
